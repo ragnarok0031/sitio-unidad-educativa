@@ -29,6 +29,7 @@ const updateDarkMode = () => {
     darkIcon.textContent = isDark ? '☀️' : '🌙';
 };
 
+// Cargar preferencia guardada
 if (localStorage.getItem('dark-mode') === 'true') {
     document.body.classList.add('dark-mode');
     darkIcon.textContent = '☀️';
@@ -36,17 +37,17 @@ if (localStorage.getItem('dark-mode') === 'true') {
 
 darkModeToggle.addEventListener('click', updateDarkMode);
 
-// Año dinámico en footer
+// Actualizar año del footer
 document.querySelector('footer p').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
 
-// Mejorar accesibilidad del menú
+// Cerrar menú con ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('open')) {
         toggleMenu();
     }
 });
 
-// Optimización de redimensionamiento
+// Optimizar animaciones durante resize
 let resizeTimer;
 window.addEventListener('resize', () => {
     document.body.classList.add('resize-animation-stopper');
