@@ -13,12 +13,14 @@
 <body>
     <header class="header">
         <div class="logo">Guido Arce Pimentel</div>
-        <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú" aria-expanded="false">
-            <span class="icon">&#9776;</span>
-        </button>
-        <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Cambiar modo de color">
-            <span class="icon">🌙</span>
-        </button>
+        <div class="header-controls">
+            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Cambiar modo de color">
+                <span class="icon">🌙</span>
+            </button>
+            <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú" aria-expanded="false">
+                <span class="icon">&#9776;</span>
+            </button>
+        </div>
     </header>
 
     <nav class="menu" id="menu" aria-hidden="true">
@@ -87,7 +89,7 @@
                 <img src="images/instagram.png" alt="Ícono Instagram" class="social-icon">
             </a>
         </div>
-        <p><!-- Año dinámico --></p>
+        <p></p>
     </footer>
 
     <script src="script.js"></script>
