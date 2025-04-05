@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación de calidad en Cochabamba desde 2014">
+    <meta name="keywords" content="educación, escuela, colegio, Cochabamba, aprendizaje, Bolivia">
+    <meta property="og:title" content="Unidad Educativa Guido Arce Pimentel">
+    <meta property="og:image" content="images/unidad_educativa.png">
     <title>Unidad Educativa Guido Arce Pimentel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="logo">Guido Arce Pimentel</div>
-        <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú" aria-expanded="false">
             <span class="icon">&#9776;</span>
         </button>
-        <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Modo oscuro">
+        <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Cambiar modo de color">
             <span class="icon">🌙</span>
         </button>
     </header>
 
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu" aria-hidden="true">
         <ul>
             <li><a href="#inicio" class="active">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
@@ -28,26 +31,63 @@
     </nav>
 
     <main>
-        <!-- Sección Inicio con imagen arriba del texto -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
-                     alt="Fachada principal de la institución"
+                     alt="Fachada principal de la unidad educativa"
                      loading="lazy">
             </div>
             <div class="content">
                 <h2>Nuestra Escuela</h2>
                 <p>Educando para el futuro desde 2014</p>
-                <a href="sobre-nosotros.html" class="button">Conoce más</a>
+                <a href="sobre-nosotros.html" class="button" role="button">Conoce más</a>
             </div>
         </section>
 
-        <!-- Resto de secciones se mantienen igual -->
-        <!-- ... -->
+        <section class="section" id="sobre-nosotros">
+            <img src="images/noticias.jpg" 
+                 alt="Estudiantes participando en feria científica"
+                 loading="lazy">
+            <div class="content">
+                <h2>Nuestras Noticias</h2>
+                <p>Últimas actividades y eventos</p>
+                <a href="noticias.html" class="button" role="button">Ver noticias</a>
+            </div>
+        </section>
+
+        <section class="section" id="programas">
+            <img src="images/eventos.jpg" 
+                 alt="Presentación de danzas folklóricas"
+                 loading="lazy">
+            <div class="content">
+                <h2>Eventos Escolares</h2>
+                <p>Calendario académico 2023-2024</p>
+                <a href="eventos.html" class="button" role="button">Ver calendario</a>
+            </div>
+        </section>
+
+        <section class="section" id="contacto">
+            <img src="images/contacto.jpg" 
+                 alt="Ubicación de la institución"
+                 loading="lazy">
+            <div class="content">
+                <h2>Contáctanos</h2>
+                <p>Dirección: Av. Principal 123, Cochabamba</p>
+                <a href="contacto.html" class="button" role="button">Enviar mensaje</a>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <!-- Footer se mantiene igual -->
+        <div class="social">
+            <a href="https://facebook.com/unidadeducativa" aria-label="Facebook">
+                <img src="images/facebook.png" alt="Ícono Facebook" class="social-icon">
+            </a>
+            <a href="https://instagram.com/unidadeducativa" aria-label="Instagram">
+                <img src="images/instagram.png" alt="Ícono Instagram" class="social-icon">
+            </a>
+        </div>
+        <p><!-- Año dinámico --></p>
     </footer>
 
     <script src="script.js"></script>
