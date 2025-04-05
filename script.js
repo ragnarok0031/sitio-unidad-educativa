@@ -5,7 +5,7 @@ const body = document.body;
 // Verificar modo almacenado
 if (localStorage.getItem('dark-mode') === 'true') {
     body.classList.add('dark-mode');
-    toggleButton.querySelector('.icon').textContent = '☀️'; // Cambiar a sol
+    toggleButton.querySelector('.icon').textContent = '☀️'; // Sol activo
 }
 
 toggleButton.addEventListener('click', () => {
@@ -18,7 +18,7 @@ toggleButton.addEventListener('click', () => {
     icon.textContent = isDark ? '☀️' : '🌙';
 });
 
-// ... Resto de tu código (animación de botones) ...
+// Animación de botones
 document.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
         document.body.style.transition = 'transform 0.5s';
