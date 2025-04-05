@@ -86,6 +86,15 @@ body {
         text-decoration: none;
         transition: color 0.3s;
     }
+
+    /* Ajustes para imágenes en móvil */
+    .section img {
+        max-height: 150px !important; /* Reduce la altura máxima */
+    }
+
+    .section {
+        padding: 1rem; /* Reduce el padding interno */
+    }
 }
 
 /* Escritorio */
