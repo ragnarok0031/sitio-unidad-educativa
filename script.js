@@ -12,6 +12,7 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 const body = document.body;
 const darkIcon = darkModeToggle.querySelector('.icon');
 
+// Verificar modo almacenado
 if (localStorage.getItem('dark-mode') === 'true') {
     body.classList.add('dark-mode');
     darkIcon.textContent = '☀️';
