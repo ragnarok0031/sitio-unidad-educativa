@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación de calidad en Cochabamba desde 2014">
+    <meta name="keywords" content="educación, escuela, colegio, Cochabamba, aprendizaje, Bolivia">
+    <meta property="og:title" content="Unidad Educativa Guido Arce Pimentel">
+    <meta property="og:image" content="images/unidad_educativa.png">
     <title>Unidad Educativa Guido Arce Pimentel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header fijo -->
     <header class="header">
         <div class="logo">Guido Arce Pimentel</div>
-        <button id="menu-toggle" class="menu-icon">
-            <span class="icon">&#9776;</span> <!-- Ícono hamburguesa -->
+        <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú" aria-expanded="false">
+            <span class="icon">&#9776;</span>
         </button>
-        <button id="dark-mode-toggle" class="dark-mode-toggle">
-            <span class="icon">🌙</span> <!-- Ícono modo oscuro -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Cambiar modo de color">
+            <span class="icon">🌙</span>
         </button>
     </header>
 
-    <!-- Menú desplegable único -->
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu" aria-hidden="true">
         <ul>
             <li><a href="#inicio" class="active">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
@@ -28,56 +30,65 @@
         </ul>
     </nav>
 
-    <!-- Contenido principal -->
     <main>
         <section class="section" id="inicio">
-            <img src="images/unidad_educativa.png" alt="Fachada de la escuela" loading="lazy">
+            <img src="images/unidad_educativa.png" 
+                 srcset="images/unidad_educativa-480.png 480w,
+                         images/unidad_educativa-800.png 800w"
+                 sizes="(max-width: 600px) 480px, 800px"
+                 alt="Fachada principal de la unidad educativa"
+                 loading="lazy">
             <div class="content">
                 <h2>Nuestra Escuela</h2>
                 <p>Educando para el futuro desde 2014</p>
-                <button onclick="location.href='sobre-nosotros.html'">Conoce más</button>
+                <a href="sobre-nosotros.html" class="button" role="button">Conoce más</a>
             </div>
         </section>
 
         <section class="section" id="sobre-nosotros">
-            <img src="images/noticias.jpg" alt="Noticias escolares" loading="lazy">
+            <img src="images/noticias.jpg" 
+                 alt="Estudiantes participando en feria científica 2023"
+                 loading="lazy">
             <div class="content">
                 <h2>Nuestras Noticias</h2>
                 <p>Últimas actividades y eventos</p>
-                <button onclick="location.href='noticias.html'">Ver noticias</button>
+                <a href="noticias.html" class="button" role="button">Ver noticias</a>
             </div>
         </section>
 
         <section class="section" id="programas">
-            <img src="images/eventos.jpg" alt="Eventos escolares" loading="lazy">
+            <img src="images/eventos.jpg" 
+                 alt="Presentación de danzas folklóricas en el auditorio"
+                 loading="lazy">
             <div class="content">
                 <h2>Eventos Escolares</h2>
                 <p>Calendario académico 2023-2024</p>
-                <button onclick="location.href='eventos.html'">Ver calendario</button>
+                <a href="eventos.html" class="button" role="button">Ver calendario</a>
             </div>
         </section>
 
         <section class="section" id="contacto">
-            <img src="images/contacto.jpg" alt="Información de contacto" loading="lazy">
+            <img src="images/contacto.jpg" 
+                 alt="Ubicación de la institución en mapa"
+                 loading="lazy">
             <div class="content">
                 <h2>Contáctanos</h2>
-                <p>Dirección: Av. Principal 123</p>
-                <button onclick="location.href='contacto.html'">Enviar mensaje</button>
+                <p>Dirección: Av. Principal 123, Cochabamba</p>
+                <a href="contacto.html" class="button" role="button">Enviar mensaje</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="social">
-            <a href="https://facebook.com/unidadeducativa">
-                <img src="images/facebook.png" alt="Facebook" class="social-icon">
+            <a href="https://facebook.com/unidadeducativa" aria-label="Facebook">
+                <img src="images/facebook.png" alt="Ícono Facebook" class="social-icon">
             </a>
-            <a href="https://instagram.com/unidadeducativa">
-                <img src="images/instagram.png" alt="Instagram" class="social-icon">
+            <a href="https://instagram.com/unidadeducativa" aria-label="Instagram">
+                <img src="images/instagram.png" alt="Ícono Instagram" class="social-icon">
             </a>
         </div>
-        <p>© 2023 Guido Arce Pimentel</p>
+        <p><!-- Año dinámico se inserta con JS --></p>
     </footer>
 
     <script src="script.js"></script>
