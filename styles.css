@@ -87,13 +87,17 @@ body {
         transition: color 0.3s;
     }
 
-    /* Ajustes para imágenes en móvil */
-    .section img {
-        max-height: 150px !important; /* Reduce la altura máxima */
-    }
-
+    /* Ajuste para imágenes en móvil */
     .section {
         padding: 1rem; /* Reduce el padding interno */
+    }
+
+    .section img {
+        max-height: 150px !important; /* Altura máxima en móvil */
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
     }
 }
 
@@ -116,6 +120,11 @@ body {
 
     .menu li {
         margin-left: 2rem;
+    }
+
+    /* Restablece el tamaño de las imágenes en escritorio */
+    .section img {
+        max-height: 200px;
     }
 }
 
@@ -181,4 +190,11 @@ footer {
 .social img {
     width: 30px;
     margin: 0 0.5rem;
+}
+
+/* Corrección final para imágenes en móvil */
+@media (max-width: 768px) {
+    .section img {
+        max-height: 150px !important; /* Asegura que el estilo tome prioridad */
+    }
 }
