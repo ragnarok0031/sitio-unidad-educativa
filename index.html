@@ -1,72 +1,162 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad Educativa Guido Arce Pimentel</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">Guido Arce Pimentel</div>
-        <nav class="menu">
-            <a href="#inicio" class="active">Inicio</a>
-            <a href="#sobre-nosotros">Sobre Nosotros</a>
-            <a href="#programas">Programas</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <!-- Secciones principales -->
-    <main>
-        <section class="section" id="inicio">
-            <img src="images/unidad_educativa.png" alt="Edificio escolar">
-            <div class="content">
-                <h2>Nuestra Escuela</h2>
-                <p>Educando para el futuro desde 2014</p> <!-- CAMBIO AQUÍ -->
-                <button onclick="location.href='sobre-nosotros.html'">Conoce más</button>
-            </div>
-        </section>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
 
-        <!-- Resto del código igual -->
-        <section class="section" id="sobre-nosotros">
-            <img src="images/noticias.jpg" alt="Noticias escolares">
-            <div class="content">
-                <h2>Nuestras Noticias</h2>
-                <p>Últimas actividades y eventos</p>
-                <button onclick="location.href='noticias.html'">Ver noticias</button>
-            </div>
-        </section>
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
 
-        <section class="section" id="programas">
-            <img src="images/eventos.jpg" alt="Eventos escolares">
-            <div class="content">
-                <h2>Eventos Escolares</h2>
-                <p>Calendario académico 2023-2024</p>
-                <button onclick="location.href='eventos.html'">Ver calendario</button>
-            </div>
-        </section>
+/* Menú hamburguesa */
+#menu-toggle {
+    display: none;
+}
 
-        <section class="section" id="contacto">
-            <img src="images/contacto.jpg" alt="Contacto">
-            <div class="content">
-                <h2>Contáctanos</h2>
-                <p>Dirección: Av. Principal 123</p>
-                <button onclick="location.href='contacto.html'">Enviar mensaje</button>
-            </div>
-        </section>
-    </main>
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+}
 
-    <!-- Footer -->
-    <footer>
-        <div class="social">
-            <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-        </div>
-        <p>&copy; 2023 Guido Arce Pimentel</p>
-    </footer>
+/* Menú responsive */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 1rem;
+    }
 
-    <script src="script.js"></script>
-</body>
-</html>
+    .menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu li {
+        margin: 0.5rem 0;
+    }
+
+    /* Mostrar el icono hamburguesa */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Mostrar el menú al activar el checkbox */
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+}
+
+/* Estilos para el menú en escritorio */
+@media (min-width: 769px) {
+    .menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu li {
+        margin-left: 2rem;
+    }
+}
+
+/* Estilos comunes del menú */
+.menu li a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu li a:hover,
+.menu li a.active {
+    color: #ff6f00;
+}
+
+/* Secciones principales */
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: #fff;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.section img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.content h2 {
+    color: #2e7d32;
+    margin-bottom: 0.5rem;
+}
+
+.content p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: #ff6f00;
+    color: white;
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e65c00;
+}
+
+/* Footer */
+footer {
+    background: #fff;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.social img {
+    width: 30px;
+    margin: 0 0.5rem;
+}
