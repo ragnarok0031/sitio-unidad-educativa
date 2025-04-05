@@ -11,20 +11,22 @@
     <header class="header">
         <div class="logo">Guido Arce Pimentel</div>
         <button id="menu-toggle" class="menu-icon">
-            <span class="icon">&#9776;</span> <!-- Ícono de hamburguesa -->
+            <span class="icon">&#9776;</span> <!-- Ícono hamburguesa -->
         </button>
         <button id="dark-mode-toggle" class="dark-mode-toggle">
-            <span class="icon">🌙</span>
+            <span class="icon">🌙</span> <!-- Ícono modo oscuro -->
         </button>
-        <nav class="menu" id="menu">
-            <ul>
-                <li><a href="#inicio" class="active">Inicio</a></li>
-                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-                <li><a href="#programas">Programas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
+
+    <!-- Menú desplegable -->
+    <nav class="menu" id="menu">
+        <ul>
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#programas">Programas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
     <!-- Contenido principal -->
     <main>
@@ -37,14 +39,43 @@
             </div>
         </section>
 
-        <!-- ... Otras secciones ... -->
+        <section class="section" id="sobre-nosotros">
+            <img src="images/noticias.jpg" alt="Noticias escolares" loading="lazy">
+            <div class="content">
+                <h2>Nuestras Noticias</h2>
+                <p>Últimas actividades y eventos</p>
+                <button onclick="location.href='noticias.html'">Ver noticias</button>
+            </div>
+        </section>
+
+        <section class="section" id="programas">
+            <img src="images/eventos.jpg" alt="Eventos escolares" loading="lazy">
+            <div class="content">
+                <h2>Eventos Escolares</h2>
+                <p>Calendario académico 2023-2024</p>
+                <button onclick="location.href='eventos.html'">Ver calendario</button>
+            </div>
+        </section>
+
+        <section class="section" id="contacto">
+            <img src="images/contacto.jpg" alt="Información de contacto" loading="lazy">
+            <div class="content">
+                <h2>Contáctanos</h2>
+                <p>Dirección: Av. Principal 123</p>
+                <button onclick="location.href='contacto.html'">Enviar mensaje</button>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="social">
-            <a href="https://facebook.com/unidadeducativa"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="https://instagram.com/unidadeducativa"><img src="images/instagram.png" alt="Instagram"></a>
+            <a href="https://facebook.com/unidadeducativa">
+                <img src="images/facebook.png" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://instagram.com/unidadeducativa">
+                <img src="images/instagram.png" alt="Instagram" class="social-icon">
+            </a>
         </div>
         <p>© 2023 Guido Arce Pimentel</p>
     </footer>
