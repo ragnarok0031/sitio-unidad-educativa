@@ -10,10 +10,10 @@ body {
     font-family: 'Poppins', sans-serif;
     background: #f5f5f5;
     color: #333;
-    padding-top: 60px; /* Espacio para el header fijo */
+    padding-top: 60px; /* Espacio para el header fijo (IMPORTANTE) */
 }
 
-/* Header */
+/* Header fijo */
 .header {
     position: fixed;
     top: 0;
@@ -53,7 +53,7 @@ body {
     }
 
     #menu-toggle:checked ~ .menu {
-        max-height: 300px; /* Altura máxima ajustada */
+        max-height: 300px;
     }
 
     .menu li {
@@ -86,14 +86,9 @@ body {
         text-decoration: none;
         transition: color 0.3s;
     }
-
-    .menu li a:hover,
-    .menu li a.active {
-        color: #ff6f00;
-    }
 }
 
-/* Escritorio */
+/* Estilos para escritorio */
 @media (min-width: 769px) {
     .header {
         position: relative;
@@ -115,7 +110,7 @@ body {
     }
 }
 
-/* Secciones principales */
+/* Resto de estilos... */
 .section {
     display: flex;
     flex-direction: column;
@@ -125,14 +120,6 @@ body {
     margin: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.section img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
 }
 
 .content h2 {
@@ -159,19 +146,12 @@ button:hover {
     background: #e65c00;
 }
 
-/* Footer */
 footer {
     background: #fff;
     padding: 1rem;
     text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-}
-
-.social {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
 }
 
 .social img {
