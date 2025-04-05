@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilos generales optimizados para móviles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background: #f5f5f5;
     color: #333;
-    padding-top: 60px;
+    padding-top: 60px; /* Espacio para el header fijo */
 }
 
 /* Header fijo */
@@ -22,166 +22,70 @@ body {
     z-index: 9999;
     background: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 1rem 2rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-/* Botón de modo oscuro */
-.dark-mode-toggle {
-    background: transparent;
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu-icon {
+    background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    margin-left: 1rem;
     color: #555;
-    transition: color 0.3s;
 }
 
-.dark-mode-toggle:hover {
-    color: #ff6f00;
-}
-
-/* Menú hamburguesa */
-.menu-icon {
-    display: none;
+.dark-mode-toggle {
+    background: none;
+    border: none;
     font-size: 1.5rem;
     cursor: pointer;
     color: #555;
 }
 
-/* Menú responsive */
-@media (max-width: 768px) {
-    .dark-mode-toggle {
-        margin-left: 0;
-        margin-right: 1rem;
-    }
-
-    .menu-icon {
-        display: block;
-        margin-right: 1rem;
-    }
-
-    .menu {
-        position: absolute;
-        top: 100%;
-        right: 2rem;
-        width: 200px;
-        background: white;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        padding: 1rem;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-    }
-
-    #menu-toggle:checked ~ .menu {
-        max-height: 300px;
-    }
-
-    .menu li {
-        margin: 0.5rem 0;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    #menu-toggle:checked ~ .menu li {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0.1s;
-    }
-
-    .menu ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .menu li a {
-        display: block;
-        padding: 0.8rem;
-        color: #555;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    /* Ajustes para imágenes en móvil */
-    .section {
-        padding: 1rem;
-    }
-
-    .section img {
-        max-height: 150px !important;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 1rem;
-    }
+/* Menú desplegable */
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-/* Escritorio */
-@media (min-width: 769px) {
-    .header {
-        position: relative;
-    }
-
-    .menu {
-        display: flex;
-        align-items: center;
-    }
-
-    .menu ul {
-        display: flex;
-        list-style: none;
-        padding: 0;
-    }
-
-    .menu li {
-        margin-left: 2rem;
-    }
-
-    .section img {
-        max-height: 200px;
-    }
+.menu.open {
+    max-height: 300px;
 }
 
-/* Modo oscuro */
-body.dark-mode {
-    background: #1a1a1a;
-    color: #fff;
-    transition: background 0.5s, color 0.5s;
+.menu ul {
+    list-style: none;
+    padding: 1rem;
 }
 
-body.dark-mode .header {
-    background: #2d2d2d;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    color: #fff;
+.menu li {
+    margin: 0.5rem 0;
 }
 
-body.dark-mode .section {
-    background: #2d2d2d;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .social img {
-    filter: invert(1); /* Invertir logos de redes */
-}
-
-body.dark-mode .dark-mode-toggle .icon {
-    color: #fff;
-}
-
-body.dark-mode .dark-mode-toggle:hover .icon {
-    color: #ff6f00;
+.menu li a {
+    display: block;
+    padding: 0.8rem;
+    color: #555;
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 
 /* Secciones principales */
 .section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
+    padding: 1rem;
     background: #fff;
     margin: 1rem;
     border-radius: 10px;
@@ -190,7 +94,7 @@ body.dark-mode .dark-mode-toggle:hover .icon {
 
 .section img {
     width: 100%;
-    max-height: 200px;
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -199,25 +103,25 @@ body.dark-mode .dark-mode-toggle:hover .icon {
 .content h2 {
     color: #2e7d32;
     margin-bottom: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .content p {
     color: #666;
     margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
 button {
     background: #ff6f00;
     color: white;
-    padding: 0.7rem 2rem;
+    padding: 0.8rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #e65c00;
+    font-size: 1rem;
+    width: 100%;
+    min-height: 48px; /* Tamaño mínimo para interacción táctil */
 }
 
 /* Footer */
@@ -226,11 +130,6 @@ footer {
     padding: 1rem;
     text-align: center;
     margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-body.dark-mode footer {
-    background: #2d2d2d;
 }
 
 .social {
@@ -244,6 +143,30 @@ body.dark-mode footer {
     margin: 0 0.5rem;
 }
 
+/* Modo oscuro */
+body.dark-mode {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+body.dark-mode .header,
+body.dark-mode .section,
+body.dark-mode footer {
+    background: #2d2d2d;
+}
+
+body.dark-mode .menu {
+    background: #2d2d2d;
+}
+
+body.dark-mode .menu li a {
+    color: #fff;
+}
+
 body.dark-mode .social img {
     filter: invert(1);
+}
+
+body.dark-mode button {
+    background: #ff8c00;
 }
