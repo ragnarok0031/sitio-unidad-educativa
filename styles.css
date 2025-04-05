@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.3s ease; /* Transición global */
 }
 
 body {
@@ -37,8 +38,6 @@ body {
 /* Menú responsive */
 @media (max-width: 768px) {
     .menu {
-        display: none;
-        width: 100%;
         position: absolute;
         top: 100%;
         left: 0;
@@ -46,6 +45,14 @@ body {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         flex-direction: column;
         padding: 1rem;
+        /* ANIMACIÓN DE ALTURA */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        max-height: 200px; /* Altura máxima según contenido */
     }
 
     .menu ul {
@@ -55,16 +62,19 @@ body {
 
     .menu li {
         margin: 0.5rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* Mostrar el icono hamburguesa */
+    #menu-toggle:checked ~ .menu li {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.1s; /* Retraso para efecto secuencial */
+    }
+
     .menu-icon {
         display: block;
-    }
-
-    /* Mostrar el menú al activar el checkbox */
-    #menu-toggle:checked ~ .menu {
-        display: flex;
     }
 }
 
