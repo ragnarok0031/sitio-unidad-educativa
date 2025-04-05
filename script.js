@@ -1,38 +1,57 @@
-// Menú hamburguesa
+// Menu Hamburguesa
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('menu');
 
-menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-    menuToggle.classList.toggle('active');
+const toggleMenu = () => {
+    const isOpen = menu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    menu.setAttribute('aria-hidden', !isOpen);
+};
+
+menuToggle.addEventListener('click', toggleMenu);
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+        menu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+    }
 });
 
-// Modo oscuro
+// Modo Oscuro
 const darkModeToggle = document.getElementById('dark-mode-toggle');
-const body = document.body;
 const darkIcon = darkModeToggle.querySelector('.icon');
 
-// Verificar modo almacenado
-if (localStorage.getItem('dark-mode') === 'true') {
-    body.classList.add('dark-mode');
-    darkIcon.textContent = '☀️';
-} else {
-    darkIcon.textContent = '🌙';
-}
-
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
+const updateDarkMode = () => {
+    const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('dark-mode', isDark);
     darkIcon.textContent = isDark ? '☀️' : '🌙';
+};
+
+if (localStorage.getItem('dark-mode') === 'true') {
+    document.body.classList.add('dark-mode');
+    darkIcon.textContent = '☀️';
+}
+
+darkModeToggle.addEventListener('click', updateDarkMode);
+
+// Año dinámico en footer
+document.querySelector('footer p').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
+
+// Mejorar accesibilidad del menú
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+        toggleMenu();
+    }
 });
 
-// Animación táctil en botones
-document.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('touchstart', () => {
-        btn.style.transform = 'scale(0.95)';
-    });
-    btn.addEventListener('touchend', () => {
-        btn.style.transform = 'scale(1)';
-    });
+// Optimización de redimensionamiento
+let resizeTimer;
+window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        document.body.classList.remove('resize-animation-stopper');
+    }, 400);
 });
