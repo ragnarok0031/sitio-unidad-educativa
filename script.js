@@ -1,30 +1,36 @@
-// Botón de modo oscuro
-const toggleButton = document.getElementById('dark-mode-toggle');
-const body = document.body;
+// Menú hamburguesa
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
 
-// Verificar modo almacenado
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+});
+
+// Modo oscuro
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+const icon = darkModeToggle.querySelector('.icon');
+
 if (localStorage.getItem('dark-mode') === 'true') {
     body.classList.add('dark-mode');
-    toggleButton.querySelector('.icon').textContent = '☀️'; // Sol activo
+    icon.textContent = '☀️';
+} else {
+    icon.textContent = '🌙';
 }
 
-toggleButton.addEventListener('click', () => {
+darkModeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
     const isDark = body.classList.contains('dark-mode');
     localStorage.setItem('dark-mode', isDark);
-    
-    // Cambiar ícono
-    const icon = toggleButton.querySelector('.icon');
     icon.textContent = isDark ? '☀️' : '🌙';
 });
 
-// Animación de botones
+// Animación suave en botones
 document.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.body.style.transition = 'transform 0.5s';
-        document.body.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            document.body.style.transform = 'scale(1)';
-        }, 500);
+    btn.addEventListener('touchstart', () => {
+        btn.style.transform = 'scale(0.95)';
+    });
+    btn.addEventListener('touchend', () => {
+        btn.style.transform = 'scale(1)';
     });
 });
