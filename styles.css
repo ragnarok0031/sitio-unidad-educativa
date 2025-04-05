@@ -53,6 +53,12 @@ body {
     color: var(--color-secundario);
 }
 
+.header-controls {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
 .menu-icon,
 .dark-mode-toggle {
     background: transparent;
