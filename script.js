@@ -1,3 +1,4 @@
+// script.js
 document.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
         // Animación de escala al hacer clic en botones
