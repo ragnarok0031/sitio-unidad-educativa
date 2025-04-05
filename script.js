@@ -29,7 +29,6 @@ const updateDarkMode = () => {
     darkIcon.textContent = isDark ? '☀️' : '🌙';
 };
 
-// Cargar preferencia guardada
 if (localStorage.getItem('dark-mode') === 'true') {
     document.body.classList.add('dark-mode');
     darkIcon.textContent = '☀️';
