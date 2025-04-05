@@ -37,6 +37,16 @@ body {
 
 /* Menú responsive */
 @media (max-width: 768px) {
+    .header {
+        position: fixed; /* Header fijo en móvil */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
     .menu {
         position: absolute;
         top: 100%;
@@ -45,7 +55,6 @@ body {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         flex-direction: column;
         padding: 1rem;
-        /* ANIMACIÓN DE ALTURA */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
@@ -70,15 +79,20 @@ body {
     #menu-toggle:checked ~ .menu li {
         opacity: 1;
         transform: translateY(0);
-        transition-delay: 0.1s; /* Retraso para efecto secuencial */
+        transition-delay: 0.1s; /* Efecto secuencial */
     }
 
     .menu-icon {
         display: block;
     }
+
+    /* Ajuste de contenido para evitar superposición */
+    body {
+        padding-top: 60px; /* Altura del header fijo */
+    }
 }
 
-/* Estilos para el menú en escritorio */
+/* Estilos para escritorio */
 @media (min-width: 769px) {
     .menu {
         display: flex;
