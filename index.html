@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <nav class="menu" id="menu" aria-hidden="true">
+    <nav class="menu" id="menu" aria-hidden="true" aria-label="Menú principal">
         <ul>
             <li><a href="#inicio" class="active">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
@@ -36,62 +36,120 @@
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
-                     alt="Fachada principal de la unidad educativa"
+                     alt="Entrada principal de la Unidad Educativa Guido Arce Pimentel con estudiantes y personal educativo"
                      loading="lazy">
             </div>
             <div class="content">
                 <h2>Nuestra Escuela</h2>
                 <p>Educando para el futuro desde 2014</p>
-                <a href="sobre-nosotros.html" class="button" role="button">Conoce más</a>
+                <a href="sobre-nosotros.html" class="button">Conoce más</a>
             </div>
         </section>
 
         <section class="section" id="sobre-nosotros">
             <img src="images/noticias.jpg" 
-                 alt="Estudiantes participando en feria científica"
+                 alt="Estudiantes participando en una feria científica con stands interactivos"
                  loading="lazy">
             <div class="content">
-                <h2>Nuestras Noticias</h2>
-                <p>Últimas actividades y eventos</p>
-                <a href="noticias.html" class="button" role="button">Ver noticias</a>
+                <h2>Últimas Noticias</h2>
+                <p>Mantente informado sobre nuestras actividades y eventos</p>
+                <a href="noticias.html" class="button">Ver noticias</a>
             </div>
         </section>
 
         <section class="section" id="programas">
             <img src="images/eventos.jpg" 
-                 alt="Presentación de danzas folklóricas"
+                 alt="Presentación cultural de danzas folklóricas en el patio de la escuela"
                  loading="lazy">
             <div class="content">
-                <h2>Eventos Escolares</h2>
-                <p>Calendario académico 2023-2024</p>
-                <a href="eventos.html" class="button" role="button">Ver calendario</a>
+                <h2>Eventos Académicos</h2>
+                <p>Calendario de actividades 2023-2024</p>
+                <a href="eventos.html" class="button">Ver calendario</a>
             </div>
         </section>
 
         <section class="section" id="contacto">
             <img src="images/contacto.jpg" 
-                 alt="Ubicación de la institución"
+                 alt="Ubicación geográfica de la institución en Cochabamba"
                  loading="lazy">
             <div class="content">
                 <h2>Contáctanos</h2>
                 <p>Dirección: Av. Principal 123, Cochabamba</p>
-                <a href="contacto.html" class="button" role="button">Enviar mensaje</a>
+                <a href="contacto.html" class="button">Enviar mensaje</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="social">
-            <a href="https://facebook.com/unidadeducativa" aria-label="Facebook">
+            <a href="https://facebook.com/unidadeducativa" aria-label="Visita nuestra página de Facebook">
                 <img src="images/facebook.png" alt="Ícono Facebook" class="social-icon">
             </a>
-            <a href="https://instagram.com/unidadeducativa" aria-label="Instagram">
+            <a href="https://instagram.com/unidadeducativa" aria-label="Síguenos en Instagram">
                 <img src="images/instagram.png" alt="Ícono Instagram" class="social-icon">
             </a>
         </div>
-        <p></p>
+        <p class="copyright"></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Menu Hamburguesa
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        const toggleMenu = () => {
+            const isOpen = menu.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            menu.setAttribute('aria-hidden', !isOpen);
+        };
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menu.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menu.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Modo Oscuro
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkIcon = darkModeToggle.querySelector('.icon');
+
+        const updateDarkMode = () => {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('dark-mode', isDark);
+            darkIcon.textContent = isDark ? '☀️' : '🌙';
+        };
+
+        if (localStorage.getItem('dark-mode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkIcon.textContent = '☀️';
+        }
+
+        darkModeToggle.addEventListener('click', updateDarkMode);
+
+        // Actualizar año del footer
+        document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
+
+        // Cerrar menú con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+
+        // Optimizar animaciones durante resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            document.body.classList.add('resize-animation-stopper');
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                document.body.classList.remove('resize-animation-stopper');
+            }, 400);
+        });
+    </script>
 </body>
 </html>
