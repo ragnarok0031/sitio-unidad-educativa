@@ -3,12 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación de calidad en Cochabamba desde 2014">
-    <meta name="keywords" content="educación, escuela, colegio, Cochabamba, aprendizaje, Bolivia">
+    <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación de calidad en Bolivia desde 2014">
+    <meta name="keywords" content="educación, escuela, colegio, Santa Cruz, Los Negros, Bolivia">
     <meta property="og:title" content="Unidad Educativa Guido Arce Pimentel">
     <meta property="og:image" content="images/unidad_educativa.png">
     <title>Unidad Educativa Guido Arce Pimentel</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --color-primario: #ff6f00;
+            --color-secundario: #2e7d32;
+            --color-fondo: #f5f5f5;
+            --color-texto: #333;
+            --color-header: #ffffff;
+            --sombra: 0 2px 5px rgba(0,0,0,0.1);
+            --borde-radius: 15px;
+        }
+
+        .dark-mode {
+            --color-primario: #ff8c00;
+            --color-secundario: #4caf50;
+            --color-fondo: #121212;
+            --color-texto: #ffffff;
+            --color-header: #2d2d2d;
+            --sombra: 0 2px 5px rgba(255,255,255,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            padding-top: 60px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 1000;
+            background: var(--color-header);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+            box-shadow: var(--sombra);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-secundario);
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .menu-icon,
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-texto);
+            padding: 0.5rem;
+        }
+
+        .menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: var(--color-header);
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 999;
+            max-height: 0;
+        }
+
+        .menu.open {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 100vh;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 1rem;
+        }
+
+        .menu li a {
+            display: block;
+            padding: 1rem;
+            color: var(--color-texto);
+            text-decoration: none;
+            border-radius: var(--borde-radius);
+            transition: background-color 0.2s;
+        }
+
+        .menu li a:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .imagen-destacada {
+            width: 100%;
+            height: 250px;
+            border-radius: var(--borde-radius);
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            margin-bottom: 1.5rem;
+        }
+
+        .imagen-destacada img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .section {
+            padding: 1.5rem;
+            margin: 1.5rem auto;
+            max-width: 800px;
+        }
+
+        .content {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-secundario);
+        }
+
+        .content p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--color-primario);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--borde-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--sombra);
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--color-header);
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            box-shadow: var(--sombra);
+            text-align: center;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        @media (min-width: 768px) {
+            .menu {
+                transform: translateX(-100%);
+            }
+
+            .menu.open {
+                transform: translateX(0);
+            }
+
+            .menu-icon {
+                display: none;
+            }
+
+            .menu {
+                position: static;
+                display: flex;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .menu ul {
+                display: flex;
+                gap: 2rem;
+                padding: 0;
+                margin-left: auto;
+            }
+
+            .section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                padding: 3rem 2rem;
+            }
+
+            .imagen-destacada {
+                height: 400px;
+            }
+
+            .content {
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -69,12 +307,27 @@
         </section>
 
         <section class="section" id="contacto">
-            <img src="images/contacto.jpg" 
-                 alt="Ubicación geográfica de la institución en Cochabamba"
-                 loading="lazy">
+            <div class="imagen-destacada">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.5!2d-64.1212119!3d-18.0633661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s20250402.1!2sEgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D!5e0!3m2!1ses!2sbo!4v1718520000!5m2!1ses!2sbo" 
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    alt="Mapa de ubicación de la Unidad Educativa">
+                </iframe>
+            </div>
             <div class="content">
                 <h2>Contáctanos</h2>
-                <p>Dirección: Av. Principal 123, Cochabamba</p>
+                <p>
+                    Dirección: Pueblo de Los Negros, <br>
+                    Municipio de Pampagrande, <br>
+                    Provincia Florida, Santa Cruz, Bolivia
+                </p>
+                <a href="https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D" 
+                   class="button" target="_blank">Ver en Google Maps</a>
                 <a href="contacto.html" class="button">Enviar mensaje</a>
             </div>
         </section>
@@ -93,7 +346,7 @@
     </footer>
 
     <script>
-        // Menu Hamburguesa
+        // Menú hamburguesa
         const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
 
@@ -114,7 +367,7 @@
             }
         });
 
-        // Modo Oscuro
+        // Modo oscuro
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         const darkIcon = darkModeToggle.querySelector('.icon');
 
@@ -132,7 +385,7 @@
         darkModeToggle.addEventListener('click', updateDarkMode);
 
         // Actualizar año del footer
-        document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
+        document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
 
         // Cerrar menú con ESC
         document.addEventListener('keydown', (e) => {
