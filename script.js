@@ -1,7 +1,6 @@
-// script.js
 document.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
-        // Agrega animación de transición suave
+        // Animación de escala al hacer clic en botones
         document.body.style.transition = 'transform 0.5s';
         document.body.style.transform = 'scale(0.9)';
         setTimeout(() => {
