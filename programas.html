@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">Programas Académicos - Unidad Educativa [Nombre]</title> <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Estilos adicionales */
+        body {
+            font-family: 'Inter', sans-serif; /* Fuente Inter */
+        }
+        /* Estilos para elementos editables */
+        [contenteditable="true"] {
+            outline: 2px dashed rgba(0, 119, 255, 0.5); /* Borde punteado azul claro al enfocar */
+            cursor: text;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: outline 0.2s ease-in-out;
+        }
+        [contenteditable="true"]:hover,
+        [contenteditable="true"]:focus {
+            outline: 2px solid rgba(0, 119, 255, 0.8); /* Borde sólido azul al pasar el mouse o enfocar */
+            background-color: rgba(0, 119, 255, 0.05);
+        }
+        /* Estilos para los cuadrados interactivos */
+        .interactive-square {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .interactive-square:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        /* Botón de edición (opcional, para enlaces/imágenes) */
+        .edit-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            width: 24px; /* Tamaño fijo para el icono */
+            height: 24px; /* Tamaño fijo para el icono */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10; /* Asegura que esté sobre el contenido */
+        }
+         .editable-container:hover .edit-btn,
+        .editable-image-container:hover .edit-btn { /* Asegurar que se muestre en hover de imagen */
+             opacity: 1;
+        }
+         /* Contenedor para imagen y botón */
+        .editable-image-container {
+             position: relative; /* Necesario para posicionar el botón */
+            display: block; /* Cambiado a block para centrar */
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px; /* Máximo ancho de la imagen */
+            width: 100%; /* Ocupar ancho disponible hasta el máximo */
+        }
+         /* Estilo para el mensaje de guardado */
+        #save-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(40, 167, 69, 0.9); /* Verde éxito con transparencia */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none; /* Para que no interfiera con clicks */
+        }
+        #save-indicator.show {
+            opacity: 1;
+        }
+        /* Asegurar contraste para accesibilidad */
+        .high-contrast-text {
+             text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Sombra ligera para mejorar contraste sobre imágenes */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="save-indicator">¡Cambios guardados localmente!</div>
+
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 id="header-title" class="text-2xl font-bold editable" data-storage-key="headerTitle">
+                Unidad Educativa [Nombre Editable]
+            </h1>
+            <nav aria-label="Navegación principal">
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-blue-200">Inicio</a></li>
+                    <li><a href="nosotros.html" class="hover:text-blue-200">Sobre Nosotros</a></li>
+                     <li><a href="programas.html" class="hover:text-blue-200 font-semibold text-blue-100" aria-current="page">Programas</a></li>
+                    <li><a href="contacto.html" class="hover:text-blue-200">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        <h2 id="page-title-programas" class="text-3xl font-semibold mb-6 editable" data-storage-key="pageTitleProgramas">Programas Académicos</h2>
+        <p id="page-content-programas" class="text-lg text-gray-700 editable" data-storage-key="pageContentProgramas">
+            Descubre nuestra oferta educativa completa, desde inicial hasta bachillerato, con detalles sobre nuestros planes de estudio innovadores. [Puedes editar este texto]
+        </p>
+         <div class="editable-image-container mt-6">
+            <img id="image-programas" src="https://placehold.co/800x400/6f42c1/ffffff?text=Imagen+Programas+Editable" alt="Imagen de programas académicos" class="rounded-lg shadow-md editable-image" data-storage-key-img="imageProgramasSrc" style="width: 100%; height: auto; display: block;">
+            <button class="edit-btn edit-image-btn" data-target-id="image-programas" aria-label="Editar imagen de Programas">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image-plus"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><line x1="16" x2="22" y1="5" y2="5"/><line x1="19" x2="19" y1="2" y2="8"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+           </button>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p id="footer-text" class="editable" data-storage-key="footerText">
+                © 2025 Unidad Educativa [Nombre Editable]. Todos los derechos reservados.
+            </p>
+            <p class="text-sm text-gray-400 mt-2">
+                <span id="footer-address" class="editable" data-storage-key="footerAddress">Dirección: Calle Falsa 123, Ciudad</span> |
+                <span id="footer-phone" class="editable" data-storage-key="footerPhone">Teléfono: +123 456 7890</span>
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+            const editableElements = document.querySelectorAll('.editable');
+            const editableLinks = document.querySelectorAll('a[data-storage-key-link]');
+            const editableImages = document.querySelectorAll('img.editable-image[data-storage-key-img]');
+            const saveIndicator = document.getElementById('save-indicator');
+            let saveTimeout;
+
+            // Función para mostrar indicador de guardado
+            function showSaveIndicator() {
+                clearTimeout(saveTimeout);
+                saveIndicator.classList.add('show');
+                saveTimeout = setTimeout(() => {
+                    saveIndicator.classList.remove('show');
+                }, 2000); // Ocultar después de 2 segundos
+            }
+
+            // Cargar contenido de localStorage para texto
+            editableElements.forEach(el => {
+                const storageKey = el.dataset.storageKey;
+                if (storageKey) {
+                    const savedContent = localStorage.getItem(storageKey);
+                    if (savedContent) {
+                        el.innerHTML = savedContent; // Usar innerHTML para permitir formato básico si es necesario
+                    }
+                    // Habilitar edición
+                    el.contentEditable = true;
+                    el.setAttribute('aria-label', `Contenido editable: ${el.textContent.substring(0, 30)}...`); // Etiqueta ARIA básica
+
+                    // Guardar al perder el foco (blur)
+                    el.addEventListener('blur', () => {
+                        localStorage.setItem(storageKey, el.innerHTML);
+                        el.setAttribute('aria-label', `Contenido editable: ${el.textContent.substring(0, 30)}...`); // Actualizar ARIA
+                        showSaveIndicator();
+                    });
+
+                     // Permitir Enter solo si no es un título o elemento corto (evita saltos de línea no deseados)
+                    if (!el.tagName.startsWith('H') && !el.matches('span')) {
+                         el.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') {
+                                // Comportamiento por defecto (nuevo párrafo/línea)
+                            }
+                        });
+                    } else {
+                         el.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault(); // Prevenir salto de línea en títulos
+                                el.blur(); // Guardar al presionar Enter
+                            }
+                        });
+                    }
+                }
+            });
+
+            // Cargar contenido de localStorage para enlaces (href)
+            editableLinks.forEach(link => {
+                const storageKey = link.dataset.storageKeyLink;
+                if (storageKey) {
+                    const savedHref = localStorage.getItem(storageKey);
+                    if (savedHref) {
+                        link.href = savedHref;
+                    }
+                }
+            });
+
+            // Cargar contenido de localStorage para imágenes (src)
+            editableImages.forEach(img => {
+                const storageKey = img.dataset.storageKeyImg;
+                 if (storageKey) {
+                    const savedSrc = localStorage.getItem(storageKey);
+                    if (savedSrc) {
+                        img.src = savedSrc;
+                    }
+                     // Añadir fallback simple
+                    img.onerror = function() {
+                        console.warn(`Error loading image: ${img.src}. Falling back to placeholder.`);
+                        // Usar dimensiones intrínsecas o predeterminadas si están disponibles
+                        const width = img.naturalWidth > 0 ? img.naturalWidth : (img.width || 300);
+                        const height = img.naturalHeight > 0 ? img.naturalHeight : (img.height || 200);
+                        img.src = `https://placehold.co/${width}x${height}/cccccc/ffffff?text=Error+al+cargar`;
+                    };
+                }
+            });
+
+
+            // --- Funcionalidad de Botones de Edición ---
+
+            // Editar Enlaces
+            document.querySelectorAll('.edit-link-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); // Evitar que el enlace se active
+                    e.stopPropagation(); // Detener la propagación al contenedor
+                    const targetId = button.dataset.targetId;
+                    const linkElement = document.getElementById(targetId);
+                    if (linkElement && linkElement.tagName === 'A') {
+                        const currentHref = linkElement.getAttribute('href'); // Usar getAttribute para obtener el valor exacto
+                        const newHref = prompt(`Editar URL del enlace (actual: ${currentHref}):`, currentHref);
+                        if (newHref !== null && newHref.trim() !== '') {
+                            linkElement.href = newHref.trim();
+                            const storageKey = linkElement.dataset.storageKeyLink;
+                            if (storageKey) {
+                                localStorage.setItem(storageKey, newHref.trim());
+                                showSaveIndicator();
+                                console.log(`Link ${targetId} updated to: ${newHref.trim()}`);
+                            }
+                        } else if (newHref === null) {
+                            console.log("Link edit cancelled.");
+                        } else {
+                            alert("La URL no puede estar vacía.");
+                        }
+                    } else {
+                        console.error(`Target element with ID ${targetId} not found or is not an anchor tag.`);
+                    }
+                });
+            });
+
+             // Editar Imágenes
+            document.querySelectorAll('.edit-image-btn').forEach(button => {
+                const targetId = button.dataset.targetId;
+                const imgElement = document.getElementById(targetId);
+                 if (imgElement) {
+                    // Asegurar que el botón está dentro del contenedor correcto
+                     let container = imgElement.closest('.editable-image-container');
+                    if (container && !container.contains(button)) {
+                         container.appendChild(button); // Mover el botón si no está dentro
+                    } else if (!container) {
+                         // Si no hay contenedor, crear uno (como en el script original)
+                         container = document.createElement('div');
+                        container.className = 'editable-image-container';
+                        imgElement.parentNode.insertBefore(container, imgElement);
+                        container.appendChild(imgElement);
+                        container.appendChild(button);
+                    }
+
+
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const currentSrc = imgElement.src;
+                        const newSrc = prompt(`Editar URL de la imagen:`, currentSrc);
+                        if (newSrc !== null && newSrc.trim() !== '') {
+                            imgElement.src = newSrc.trim();
+                            const storageKey = imgElement.dataset.storageKeyImg;
+                            if (storageKey) {
+                                localStorage.setItem(storageKey, newSrc.trim());
+                                showSaveIndicator();
+                                console.log(`Image ${targetId} updated to: ${newSrc.trim()}`);
+                            }
+                             // Reasignar onerror por si la nueva URL también falla
+                            imgElement.onerror = function() {
+                                console.warn(`Error loading image: ${imgElement.src}. Falling back to placeholder.`);
+                                const width = imgElement.naturalWidth > 0 ? imgElement.naturalWidth : (imgElement.width || 300);
+                                const height = imgElement.naturalHeight > 0 ? imgElement.naturalHeight : (imgElement.height || 200);
+                                imgElement.src = `https://placehold.co/${width}x${height}/cccccc/ffffff?text=Error+al+cargar`;
+                            };
+                        } else if (newSrc === null) {
+                             console.log("Image edit cancelled.");
+                        } else {
+                            alert("La URL de la imagen no puede estar vacía.");
+                        }
+                    });
+                } else {
+                     console.error(`Target image element with ID ${targetId} not found.`);
+                }
+            });
+
+
+            // Inicializar Lucide Icons (si se usan directamente en HTML)
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            console.log("Editor inicializado. Elementos editables encontrados:", editableElements.length);
+            console.log("Enlaces editables encontrados:", editableLinks.length);
+            console.log("Imágenes editables encontradas:", editableImages.length);
+        });
+    </script>
+
+</body>
+</html>
