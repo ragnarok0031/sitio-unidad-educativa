@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad Educativa</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        .square {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .square:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .editable {
+            padding: 20px;
+            border: 2px dashed #3498db;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white p-4 text-center">
+        <h1 id="header" class="editable" contenteditable="true">Unidad Educativa [Nombre]</h1>
+    </header>
+
+    <main class="container mx-auto p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            <!-- Cuadrado 1: Inicio -->
+            <a href="inicio.html" class="square bg-white p-8 rounded-lg shadow-md hover:bg-blue-100">
+                <div class="text-center">
+                    <h2 class="editable" contenteditable="true">Inicio</h2>
+                    <p class="editable" contenteditable="true">Novedades y bienvenida</p>
+                </div>
+            </a>
+
+            <!-- Cuadrado 2: Sobre Nosotros -->
+            <a href="nosotros.html" class="square bg-white p-8 rounded-lg shadow-md hover:bg-blue-100">
+                <div class="text-center">
+                    <h2 class="editable" contenteditable="true">Sobre Nosotros</h2>
+                    <p class="editable" contenteditable="true">Historia y valores</p>
+                </div>
+            </a>
+
+            <!-- Cuadrado 3: Programas -->
+            <a href="programas.html" class="square bg-white p-8 rounded-lg shadow-md hover:bg-blue-100">
+                <div class="text-center">
+                    <h2 class="editable" contenteditable="true">Programas Académicos</h2>
+                    <p class="editable" contenteditable="true">Oferta educativa</p>
+                </div>
+            </a>
+
+            <!-- Cuadrado 4: Contacto -->
+            <a href="contacto.html" class="square bg-white p-8 rounded-lg shadow-md hover:bg-blue-100">
+                <div class="text-center">
+                    <h2 class="editable" contenteditable="true">Contacto</h2>
+                    <p class="editable" contenteditable="true">Información de contacto</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-blue-600 text-white p-4 text-center mt-8">
+        <p id="footer" class="editable" contenteditable="true">© 2025 Unidad Educativa</p>
+    </footer>
+
+    <script>
+        // Guardar cambios en localStorage
+        document.querySelectorAll('.editable').forEach(element => {
+            element.addEventListener('input', () => {
+                localStorage.setItem(element.id || element.tagName, element.innerHTML);
+            });
+        });
+
+        // Cargar datos al cargar la página
+        document.querySelectorAll('.editable').forEach(element => {
+            const savedData = localStorage.getItem(element.id || element.tagName);
+            if (savedData) {
+                element.innerHTML = savedData;
+            }
+        });
+    </script>
+</body>
+</html>
