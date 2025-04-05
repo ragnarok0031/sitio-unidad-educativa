@@ -1,4 +1,4 @@
-/* styles.css */
+/* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,6 +11,7 @@ body {
     color: #333;
 }
 
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -18,26 +19,86 @@ body {
     padding: 1rem 2rem;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
 }
 
-.logo {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ff6f00;
+/* Menú hamburguesa */
+#menu-toggle {
+    display: none;
 }
 
-.menu a {
+.menu-icon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu li {
+        margin: 0.5rem 0;
+    }
+
+    /* Mostrar el icono hamburguesa */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Mostrar el menú al activar el checkbox */
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+}
+
+/* Estilos para el menú en escritorio */
+@media (min-width: 769px) {
+    .menu {
+        display: flex;
+        align-items: center;
+    }
+
+    .menu ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .menu li {
+        margin-left: 2rem;
+    }
+}
+
+/* Estilos comunes del menú */
+.menu li a {
     color: #555;
     text-decoration: none;
-    margin-left: 1.5rem;
     transition: color 0.3s;
 }
 
-.menu a:hover,
-.menu a.active {
+.menu li a:hover,
+.menu li a.active {
     color: #ff6f00;
 }
 
+/* Secciones principales */
 .section {
     display: flex;
     flex-direction: column;
@@ -81,6 +142,14 @@ button:hover {
     background: #e65c00;
 }
 
+/* Footer */
+footer {
+    background: #fff;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
 .social {
     display: flex;
     justify-content: center;
@@ -90,17 +159,4 @@ button:hover {
 .social img {
     width: 30px;
     margin: 0 0.5rem;
-}
-
-@media (min-width: 768px) {
-    .section {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .content {
-        width: 50%;
-        padding-left: 2rem;
-    }
 }
