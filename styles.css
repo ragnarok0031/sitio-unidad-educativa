@@ -53,7 +53,7 @@ body {
 }
 
 .menu.open {
-    max-height: 400px; /* Altura suficiente para contenido */
+    max-height: 100vh; /* Altura máxima dinámica */
 }
 
 .menu ul {
@@ -179,4 +179,17 @@ a:hover {
 
 body.dark-mode footer {
     background: #2d2d2d;
+}
+
+body.dark-mode .social-icon {
+    filter: invert(1);
+}
+
+/* Animación del ícono del menú */
+.menu-icon .icon {
+    transition: transform 0.3s ease;
+}
+
+.menu-icon.active .icon {
+    transform: rotate(180deg); /* Gira al abrir */
 }
