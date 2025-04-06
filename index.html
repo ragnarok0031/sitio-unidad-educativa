@@ -57,6 +57,17 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--color-secundario);
+            transition: font-size 0.3s;
+        }
+        /* ABRIRLOGÍA A "G.A.P." EN MÓVILES */
+        @media (max-width: 767px) {
+            .logo {
+                font-size: 1.8rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                content: "G.A.P.";
+            }
         }
         .header-controls {
             display: flex;
@@ -104,6 +115,27 @@
         .menu li a:hover {
             background-color: rgba(0,0,0,0.05);
         }
+        /* ESTILOS PARA MÓVILES */
+        @media (max-width: 767px) {
+            .header {
+                padding: 0 1rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            .menu-icon {
+                display: block !important;
+            }
+            .menu[aria-hidden="true"] {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            .menu {
+                transform: translateY(0);
+                transition: transform 0.3s, opacity 0.3s;
+            }
+        }
+        /* EL RESTO DE LOS ESTILOS */
         .imagen-destacada {
             width: 100%;
             height: 250px;
@@ -168,7 +200,7 @@
         .social-icon:hover {
             transform: scale(1.1);
         }
-        /* Estilos para la sección "Sobre Nosotros" */
+        /* SECCIÓN "Sobre Nosotros" */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -228,49 +260,6 @@
             width: 40px;
             height: 40px;
             filter: invert(1);
-        }
-        /* Estilos para calendario */
-        #fecha-hora-menu {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--color-texto);
-            opacity: 0.8;
-            text-align: center;
-        }
-        #calendar-container {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            font-size: 0.9rem;
-        }
-        .calendar-day-header {
-            background: var(--color-secundario);
-            color: white;
-            padding: 0.5rem;
-            text-align: center;
-        }
-        .calendar-row {
-            display: flex;
-            gap: 5px;
-        }
-        .calendar-cell {
-            background: white;
-            padding: 0.8rem;
-            border-radius: 5px;
-            text-align: center;
-            cursor: default;
-        }
-        .calendar-cell.today {
-            background: var(--color-primario);
-            color: white;
-            font-weight: bold;
-        }
-        @media (max-width: 767px) {
-            .calendar-cell {
-                padding: 0.6rem;
-                font-size: 0.8rem;
-            }
         }
         @media (min-width: 768px) {
             .menu {
@@ -332,12 +321,10 @@
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
             <li><a href="#programas">Programas</a></li>
             <li><a href="#contacto">Contacto</a></li>
-            <li class="menu-time">
-                <p id="fecha-hora-menu">Cargando fecha/hora...</p>
-            </li>
         </ul>
     </nav>
     <main>
+        <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
@@ -350,6 +337,7 @@
                 <a href="sobre-nosotros.html" class="button">Conoce más</a>
             </div>
         </section>
+        <!-- SECCIÓN SOBRE NOSOTROS -->
         <section class="section" id="sobre-nosotros">
             <div class="imagen-destacada">
                 <img src="images/sobre-nosotros.jpg" 
@@ -359,10 +347,89 @@
             <div class="content">
                 <h2>Quiénes Somos</h2>
                 <div class="info-grid">
-                    <!-- ... (sección "Sobre Nosotros" existente) ... -->
+                    <!-- UBICACIÓN -->
+                    <div class="info-card">
+                        <h3>Ubicación</h3>
+                        <p>
+                            <strong>UNIDAD EDUCATIVA "GUIDO ARCE PIMENTEL"</strong><br>
+                            <small>
+                                Dirección: Pueblo de Los Negros, Municipio de Pampagrande<br>
+                                Colinda con:<br>
+                                - Al norte: Coliseo Los Negros<br>
+                                - Al sur: Mercado Nuevo Los Negros<br>
+                                - Al este: Avenida 6 de Agosto (Carretera Antigua Cochabamba-Santa Cruz)<br>
+                                - Al oeste: Cerro Natural
+                            </small>
+                        </p>
+                        <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
+                    </div>
+                    <!-- INFRAESTRUCTURA -->
+                    <div class="info-card">
+                        <h3>Infraestructura</h3>
+                        <ul class="features-list">
+                            <li>12 aulas equipadas con pizarras acrílicas</li>
+                            <li>1 dirección y 2 baterías de baño</li>
+                            <li>Mesas y sillas para estudiantes</li>
+                            <li>Sillas unipersonales para docentes</li>
+                        </ul>
+                        <p class="needs">Necesidades urgentes: <strong>Centro de cómputo, laboratorio y equipamiento moderno.</strong></p>
+                    </div>
+                    <!-- RECURSOS HUMANOS -->
+                    <div class="info-card">
+                        <h3>Recursos Humanos</h3>
+                        <ul class="team-list">
+                            <li>Director: 1</li>
+                            <li>Secretaria: 1</li>
+                            <li>Portero: 1</li>
+                            <li>Docentes: 13</li>
+                            <li>Estudiantes: 300</li>
+                        </ul>
+                        <p class="note">*En crecimiento constante.</p>
+                    </div>
+                    <!-- CONTEXTO COMUNITARIO -->
+                    <div class="info-card community-card">
+                        <h3>Contexto Comunitario</h3>
+                        <div class="community-content">
+                            <div class="icon-box">
+                                <img src="images/agricultura.png" alt="Ícono de agricultura" class="info-icon">
+                            </div>
+                            <div class="text-box">
+                                <h4>Capital de las Verduras</h4>
+                                <p>
+                                    La comunidad es conocida por su producción agrícola. La mayoría de los padres de familia trabajan en:
+                                    <ul>
+                                        <li>Cultivo de verduras (ej. lechugas, tomates)</li>
+                                        <li>Comercialización en mercados de Santa Cruz y Cochabamba</li>
+                                        <li>Servicio de taxi local</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- VIDA ESTUDIANTIL -->
+                    <div class="info-card student-card">
+                        <h3>Vida Estudiantil</h3>
+                        <div class="student-story">
+                            <div class="icon-box">
+                                <img src="images/estudiante.png" alt="Ícono de estudiante" class="info-icon">
+                            </div>
+                            <div class="text-box">
+                                <h4>Trabajo y Estudio: Un Equilibrio</h4>
+                                <p>
+                                    Nuestros estudiantes colaboran en:
+                                    <ul>
+                                        <li>Actividades agrícolas ("chacos") por las mañanas</li>
+                                        <li>Asisten a clases por las tardes</li>
+                                    </ul>
+                                    <strong>Misión:</strong> Formar jóvenes con conocimientos para un futuro mejor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+        <!-- SECCIÓN PROGRAMAS -->
         <section class="section" id="programas">
             <div class="imagen-destacada">
                 <img src="images/eventos.jpg" 
@@ -375,17 +442,7 @@
                 <a href="eventos.html" class="button">Ver calendario</a>
             </div>
         </section>
-        <section class="section" id="calendario">
-            <div class="imagen-destacada">
-                <img src="images/calendario.jpg" 
-                     alt="Imagen de calendario educativo"
-                     loading="lazy">
-            </div>
-            <div class="content">
-                <h2>Calendario Escolar</h2>
-                <div id="calendar-container"></div>
-            </div>
-        </section>
+        <!-- SECCIÓN CONTACTO -->
         <section class="section" id="contacto">
             <div class="imagen-destacada">
                 <iframe 
@@ -424,7 +481,7 @@
         <p class="copyright"></p>
     </footer>
     <script>
-        // Menú hamburguesa
+        // MENÚ HAMBURGUESA
         const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
         const toggleMenu = () => {
@@ -433,6 +490,7 @@
             menu.setAttribute('aria-hidden', !isOpen);
         };
         menuToggle.addEventListener('click', toggleMenu);
+        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
                 menu.classList.remove('open');
@@ -440,7 +498,7 @@
                 menu.setAttribute('aria-hidden', 'true');
             }
         });
-        // Modo oscuro
+        // MODO OSCURO
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         const darkIcon = darkModeToggle.querySelector('.icon');
         const updateDarkMode = () => {
@@ -453,81 +511,35 @@
             darkIcon.textContent = '☀️';
         }
         darkModeToggle.addEventListener('click', updateDarkMode);
-        // Actualizar año del footer
-        document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
+        // AÑADIR ABRIRLOGÍA "G.A.P." EN MÓVILES
+        document.querySelector('.logo').textContent = 
+            window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
+        // ACTUALIZAR AÑO DEL FOOTER
+        document.querySelector('.copyright').textContent = 
+            `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
         // Cerrar menú con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menu.classList.contains('open')) {
                 toggleMenu();
             }
         });
-        // FECHA Y HORA EN EL MENÚ
-        function actualizarFechaHora() {
-            const fechaHoraElement = document.getElementById('fecha-hora-menu');
-            const options = { 
-                weekday: 'long', 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric', 
-                hour: 'numeric', 
-                minute: 'numeric' 
-            };
-            const now = new Date().toLocaleString('es-BO', options);
-            fechaHoraElement.textContent = now;
+        // FUNCIÓN PARA MOSTRAR MAPA
+        function showMap() {
+            window.open(
+                "https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D",
+                "_blank"
+            );
         }
-        setInterval(actualizarFechaHora, 1000);
-        actualizarFechaHora();
-        // GENERAR CALENDARIO
-        function generarCalendario() {
-            const calendarioContainer = document.getElementById('calendar-container');
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth();
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-            // Crear encabezado de días
-            const headerRow = document.createElement('div');
-            days.forEach(day => {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day-header';
-                dayElement.textContent = day;
-                headerRow.appendChild(dayElement);
-            });
-            calendarioContainer.appendChild(headerRow);
-            // Crear celdas del calendario
-            let currentDay = 1;
-            const daysInMonth = lastDay.getDate();
-            const firstDayOfWeek = firstDay.getDay();
-            for (let i = 0; i < 6; i++) {
-                const row = document.createElement('div');
-                row.className = 'calendar-row';
-                for (let j = 0; j < 7; j++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'calendar-cell';
-                    if (i === 0 && j < firstDayOfWeek) {
-                        cell.textContent = '';
-                    } else if (currentDay > daysInMonth) {
-                        break;
-                    } else {
-                        cell.textContent = currentDay++;
-                        if (new Date(year, month, currentDay - 1).toLocaleDateString() === new Date().toLocaleDateString()) {
-                            cell.classList.add('today');
-                        }
-                    }
-                    row.appendChild(cell);
-                }
-                calendarioContainer.appendChild(row);
-            }
-        }
-        generarCalendario();
-        // Optimizar animaciones durante resize
+        // OPTIMIZACIÓN DE RESIZE
         let resizeTimer;
         window.addEventListener('resize', () => {
             document.body.classList.add('resize-animation-stopper');
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
                 document.body.classList.remove('resize-animation-stopper');
+                // Actualizar abreviatura del logo al cambiar el tamaño
+                document.querySelector('.logo').textContent = 
+                    window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
             }, 400);
         });
     </script>
