@@ -57,16 +57,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--color-secundario);
-            transition: font-size 0.3s;
         }
-        /* ABRIRLOGÍA A "G.A.P." EN MÓVILES */
+        /* ABRIRLOGÍA EN MÓVILES */
         @media (max-width: 767px) {
             .logo {
                 font-size: 1.8rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                content: "G.A.P.";
             }
         }
         .header-controls {
@@ -120,9 +115,6 @@
             .header {
                 padding: 0 1rem;
             }
-            .logo {
-                font-size: 1.8rem;
-            }
             .menu-icon {
                 display: block !important;
             }
@@ -135,7 +127,7 @@
                 transition: transform 0.3s, opacity 0.3s;
             }
         }
-        /* EL RESTO DE LOS ESTILOS */
+        /* ESTILOS PARA IMÁGENES */
         .imagen-destacada {
             width: 100%;
             height: 250px;
@@ -148,8 +140,17 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center top; /* Recorte hacia arriba en móviles */
         }
+        @media (min-width: 768px) {
+            .imagen-destacada {
+                height: 400px;
+            }
+            .imagen-destacada img {
+                object-position: center; /* Recorte centrado en escritorio */
+            }
+        }
+        /* EL RESTO DE LOS ESTILOS */
         .section {
             padding: 1.5rem;
             margin: 1.5rem auto;
@@ -261,6 +262,7 @@
             height: 40px;
             filter: invert(1);
         }
+        /* ESTILOS PARA ESCRITORIO */
         @media (min-width: 768px) {
             .menu {
                 transform: translateX(-100%);
@@ -288,9 +290,6 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
                 padding: 3rem 2rem;
-            }
-            .imagen-destacada {
-                height: 400px;
             }
             .content {
                 text-align: left;
@@ -511,7 +510,7 @@
             darkIcon.textContent = '☀️';
         }
         darkModeToggle.addEventListener('click', updateDarkMode);
-        // AÑADIR ABRIRLOGÍA "G.A.P." EN MÓVILES
+        // ABRIRLOGÍA "G.A.P." EN MÓVILES
         document.querySelector('.logo').textContent = 
             window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
         // ACTUALIZAR AÑO DEL FOOTER
