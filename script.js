@@ -1,4 +1,4 @@
-// Menu Hamburguesa
+// Menú hamburguesa
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('menu');
 
@@ -19,7 +19,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Modo Oscuro
+// Modo oscuro
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 const darkIcon = darkModeToggle.querySelector('.icon');
 
@@ -36,8 +36,8 @@ if (localStorage.getItem('dark-mode') === 'true') {
 
 darkModeToggle.addEventListener('click', updateDarkMode);
 
-// Actualizar año del footer
-document.querySelector('footer p').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
+// Actualizar año del footer (CORREGIDO)
+document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Guido Arce Pimentel`;
 
 // Cerrar menú con ESC
 document.addEventListener('keydown', (e) => {
@@ -46,6 +46,10 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ABRIRLOGÍA "G.A.P." EN MÓVILES (NUEVO)
+document.querySelector('.logo').textContent = 
+    window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
+
 // Optimizar animaciones durante resize
 let resizeTimer;
 window.addEventListener('resize', () => {
@@ -53,5 +57,8 @@ window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
         document.body.classList.remove('resize-animation-stopper');
+        // Actualizar abreviatura del logo al cambiar el tamaño
+        document.querySelector('.logo').textContent = 
+            window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
     }, 400);
 });
