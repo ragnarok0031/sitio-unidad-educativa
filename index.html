@@ -58,7 +58,6 @@
             font-weight: 700;
             color: var(--color-secundario);
         }
-        /* ABRIRLOGÍA EN MÓVILES */
         @media (max-width: 767px) {
             .logo {
                 font-size: 1.8rem;
@@ -127,30 +126,63 @@
                 transition: transform 0.3s, opacity 0.3s;
             }
         }
-        /* ESTILOS PARA IMÁGENES */
+        /* NUEVOS ESTILOS PARA IMÁGENES */
         .imagen-destacada {
             width: 100%;
-            height: 250px;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            position: relative;
             border-radius: var(--borde-radius);
             overflow: hidden;
-            box-shadow: var(--sombra);
             margin-bottom: 1.5rem;
+            box-shadow: var(--sombra);
         }
-        .imagen-destacada img {
+        .imagen-destacada img,
+        .imagen-destacada iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* Recorte hacia arriba en móviles */
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
+        /* ESTILOS PARA ESCRITORIO */
         @media (min-width: 768px) {
-            .imagen-destacada {
-                height: 400px;
+            .menu {
+                transform: translateX(-100%);
             }
-            .imagen-destacada img {
-                object-position: center; /* Recorte centrado en escritorio */
+            .menu.open {
+                transform: translateX(0);
+            }
+            .menu-icon {
+                display: none;
+            }
+            .menu {
+                position: static;
+                display: flex;
+                background: transparent;
+                box-shadow: none;
+            }
+            .menu ul {
+                display: flex;
+                gap: 2rem;
+                padding: 0;
+                margin-left: auto;
+            }
+            .section {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                padding: 3rem 2rem;
+            }
+            .imagen-destacada {
+                padding-bottom: 56.25%; /* Relación de aspecto 16:9 en escritorio */
+            }
+            .content {
+                text-align: left;
             }
         }
-        /* EL RESTO DE LOS ESTILOS */
+        /* ESTILOS COMPLEMENTARES */
         .section {
             padding: 1.5rem;
             margin: 1.5rem auto;
@@ -261,39 +293,6 @@
             width: 40px;
             height: 40px;
             filter: invert(1);
-        }
-        /* ESTILOS PARA ESCRITORIO */
-        @media (min-width: 768px) {
-            .menu {
-                transform: translateX(-100%);
-            }
-            .menu.open {
-                transform: translateX(0);
-            }
-            .menu-icon {
-                display: none;
-            }
-            .menu {
-                position: static;
-                display: flex;
-                background: transparent;
-                box-shadow: none;
-            }
-            .menu ul {
-                display: flex;
-                gap: 2rem;
-                padding: 0;
-                margin-left: auto;
-            }
-            .section {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-                padding: 3rem 2rem;
-            }
-            .content {
-                text-align: left;
-            }
         }
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -446,13 +445,9 @@
             <div class="imagen-destacada">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.5!2d-64.1212119!3d-18.0633661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s20250402.1!2sEgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D!5e0!3m2!1ses!2sbo!4v1718520000!5m2!1ses!2sbo" 
-                    width="100%" 
-                    height="250" 
                     style="border:0;" 
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    alt="Mapa de ubicación de la Unidad Educativa">
+                    allowfullscreen 
+                    loading="lazy">
                 </iframe>
             </div>
             <div class="content">
