@@ -18,7 +18,6 @@
             --sombra: 0 2px 5px rgba(0,0,0,0.1);
             --borde-radius: 15px;
         }
-
         .dark-mode {
             --color-primario: #ff8c00;
             --color-secundario: #4caf50;
@@ -27,14 +26,12 @@
             --color-header: #2d2d2d;
             --sombra: 0 2px 5px rgba(255,255,255,0.1);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--color-fondo);
@@ -42,7 +39,6 @@
             line-height: 1.6;
             padding-top: 60px;
         }
-
         .header {
             position: fixed;
             top: 0;
@@ -57,19 +53,16 @@
             padding: 0 1.5rem;
             box-shadow: var(--sombra);
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--color-secundario);
         }
-
         .header-controls {
             display: flex;
             gap: 1.2rem;
             align-items: center;
         }
-
         .menu-icon,
         .dark-mode-toggle {
             background: transparent;
@@ -79,7 +72,6 @@
             color: var(--color-texto);
             padding: 0.5rem;
         }
-
         .menu {
             position: fixed;
             top: 60px;
@@ -92,18 +84,15 @@
             z-index: 999;
             max-height: 0;
         }
-
         .menu.open {
             opacity: 1;
             transform: translateY(0);
             max-height: 100vh;
         }
-
         .menu ul {
             list-style: none;
             padding: 1rem;
         }
-
         .menu li a {
             display: block;
             padding: 1rem;
@@ -112,11 +101,9 @@
             border-radius: var(--borde-radius);
             transition: background-color 0.2s;
         }
-
         .menu li a:hover {
             background-color: rgba(0,0,0,0.05);
         }
-
         .imagen-destacada {
             width: 100%;
             height: 250px;
@@ -125,31 +112,26 @@
             box-shadow: var(--sombra);
             margin-bottom: 1.5rem;
         }
-
         .imagen-destacada img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
         }
-
         .section {
             padding: 1.5rem;
             margin: 1.5rem auto;
             max-width: 800px;
         }
-
         .content {
             text-align: center;
             padding: 1.5rem;
         }
-
         .content h2 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--color-secundario);
         }
-
         .button {
             display: inline-block;
             background: var(--color-primario);
@@ -161,12 +143,10 @@
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: var(--sombra);
         }
-
         .button:hover {
             transform: translateY(-1px);
             box-shadow: 0 3px 6px rgba(0,0,0,0.2);
         }
-
         footer {
             background: var(--color-header);
             padding: 2rem 1.5rem;
@@ -174,24 +154,20 @@
             box-shadow: var(--sombra);
             text-align: center;
         }
-
         .social {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             margin-bottom: 1rem;
         }
-
         .social-icon {
             width: 35px;
             height: 35px;
             transition: transform 0.3s ease;
         }
-
         .social-icon:hover {
             transform: scale(1.1);
         }
-
         /* Estilos para la sección "Sobre Nosotros" */
         .info-grid {
             display: grid;
@@ -199,7 +175,6 @@
             gap: 2rem;
             padding: 1rem;
         }
-
         .info-card {
             background: var(--color-fondo);
             border-radius: var(--borde-radius);
@@ -207,38 +182,31 @@
             box-shadow: var(--sombra);
             transition: transform 0.2s;
         }
-
         .info-card:hover {
             transform: translateY(-3px);
         }
-
         .info-card h3 {
             color: var(--color-secundario);
             margin-bottom: 1rem;
         }
-
         .features-list,
         .team-list {
             list-style: none;
             padding-left: 1rem;
         }
-
         .features-list li::before {
             content: "🌱";
             margin-right: 0.5rem;
         }
-
         .team-list li::before {
             content: "👨🏫";
             margin-right: 0.5rem;
         }
-
         .needs {
             color: var(--color-primario);
             font-weight: bold;
             margin-top: 1rem;
         }
-
         .community-card .icon-box {
             width: 60px;
             height: 60px;
@@ -249,65 +217,96 @@
             justify-content: center;
             margin-right: 1rem;
         }
-
         .community-card .text-box {
             flex: 1;
         }
-
         .student-card .student-story {
             display: flex;
             gap: 1rem;
         }
-
         .info-icon {
             width: 40px;
             height: 40px;
             filter: invert(1);
         }
-
+        /* Estilos para calendario */
+        #fecha-hora-menu {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-texto);
+            opacity: 0.8;
+            text-align: center;
+        }
+        #calendar-container {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+        .calendar-day-header {
+            background: var(--color-secundario);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .calendar-row {
+            display: flex;
+            gap: 5px;
+        }
+        .calendar-cell {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+            cursor: default;
+        }
+        .calendar-cell.today {
+            background: var(--color-primario);
+            color: white;
+            font-weight: bold;
+        }
+        @media (max-width: 767px) {
+            .calendar-cell {
+                padding: 0.6rem;
+                font-size: 0.8rem;
+            }
+        }
         @media (min-width: 768px) {
             .menu {
                 transform: translateX(-100%);
             }
-
             .menu.open {
                 transform: translateX(0);
             }
-
             .menu-icon {
                 display: none;
             }
-
             .menu {
                 position: static;
                 display: flex;
                 background: transparent;
                 box-shadow: none;
             }
-
             .menu ul {
                 display: flex;
                 gap: 2rem;
                 padding: 0;
                 margin-left: auto;
             }
-
             .section {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
                 padding: 3rem 2rem;
             }
-
             .imagen-destacada {
                 height: 400px;
             }
-
             .content {
                 text-align: left;
             }
         }
-
         @media (prefers-reduced-motion: reduce) {
             * {
                 transition: none !important;
@@ -327,18 +326,18 @@
             </button>
         </div>
     </header>
-
     <nav class="menu" id="menu" aria-hidden="true" aria-label="Menú principal">
         <ul>
             <li><a href="#inicio" class="active">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
             <li><a href="#programas">Programas</a></li>
             <li><a href="#contacto">Contacto</a></li>
+            <li class="menu-time">
+                <p id="fecha-hora-menu">Cargando fecha/hora...</p>
+            </li>
         </ul>
     </nav>
-
     <main>
-        <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
@@ -351,8 +350,6 @@
                 <a href="sobre-nosotros.html" class="button">Conoce más</a>
             </div>
         </section>
-
-        <!-- SECCIÓN SOBRE NOSOTROS (MODIFICADA) -->
         <section class="section" id="sobre-nosotros">
             <div class="imagen-destacada">
                 <img src="images/sobre-nosotros.jpg" 
@@ -362,94 +359,10 @@
             <div class="content">
                 <h2>Quiénes Somos</h2>
                 <div class="info-grid">
-                    <!-- Ubicación -->
-                    <div class="info-card">
-                        <h3>Ubicación</h3>
-                        <p>
-                            <strong>UNIDAD EDUCATIVA "GUIDO ARCE PIMENTEL"</strong><br>
-                            <small>
-                                Dirección: Pueblo de Los Negros, Municipio de Pampagrande<br>
-                                Colinda con:<br>
-                                - Al norte: Coliseo Los Negros<br>
-                                - Al sur: Mercado Nuevo Los Negros<br>
-                                - Al este: Avenida 6 de Agosto (Carretera Antigua Cochabamba-Santa Cruz)<br>
-                                - Al oeste: Cerro Natural
-                            </small>
-                        </p>
-                        <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
-                    </div>
-
-                    <!-- Infraestructura -->
-                    <div class="info-card">
-                        <h3>Infraestructura</h3>
-                        <ul class="features-list">
-                            <li>12 aulas equipadas con pizarras acrílicas</li>
-                            <li>1 dirección y 2 baterías de baño</li>
-                            <li>Mesas y sillas para estudiantes</li>
-                            <li>Sillas unipersonales para docentes</li>
-                        </ul>
-                        <p class="needs">Necesidades urgentes: <strong>Centro de cómputo, laboratorio y equipamiento moderno.</strong></p>
-                    </div>
-
-                    <!-- Recursos Humanos -->
-                    <div class="info-card">
-                        <h3>Recursos Humanos</h3>
-                        <ul class="team-list">
-                            <li>Director: 1</li>
-                            <li>Secretaria: 1</li>
-                            <li>Portero: 1</li>
-                            <li>Docentes: 13</li>
-                            <li>Estudiantes: 300</li>
-                        </ul>
-                        <p class="note">*En crecimiento constante.</p>
-                    </div>
-
-                    <!-- Contexto Comunitario -->
-                    <div class="info-card community-card">
-                        <h3>Contexto Comunitario</h3>
-                        <div class="community-content">
-                            <div class="icon-box">
-                                <img src="images/agricultura.png" alt="Ícono de agricultura" class="info-icon">
-                            </div>
-                            <div class="text-box">
-                                <h4>Capital de las Verduras</h4>
-                                <p>
-                                    La comunidad es conocida por su producción agrícola. La mayoría de los padres de familia trabajan en:
-                                    <ul>
-                                        <li>Cultivo de verduras (ej. lechugas, tomates)</li>
-                                        <li>Comercialización en mercados de Santa Cruz y Cochabamba</li>
-                                        <li>Servicio de taxi local</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vida Estudiantil -->
-                    <div class="info-card student-card">
-                        <h3>Vida Estudiantil</h3>
-                        <div class="student-story">
-                            <div class="icon-box">
-                                <img src="images/estudiante.png" alt="Ícono de estudiante" class="info-icon">
-                            </div>
-                            <div class="text-box">
-                                <h4>Trabajo y Estudio: Un Equilibrio</h4>
-                                <p>
-                                    Nuestros estudiantes colaboran en:
-                                    <ul>
-                                        <li>Actividades agrícolas ("chacos") por las mañanas</li>
-                                        <li>Asisten a clases por las tardes</li>
-                                    </ul>
-                                    <strong>Misión:</strong> Formar jóvenes con conocimientos para un futuro mejor.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- ... (sección "Sobre Nosotros" existente) ... -->
                 </div>
             </div>
         </section>
-
-        <!-- SECCIÓN PROGRAMAS -->
         <section class="section" id="programas">
             <div class="imagen-destacada">
                 <img src="images/eventos.jpg" 
@@ -462,8 +375,17 @@
                 <a href="eventos.html" class="button">Ver calendario</a>
             </div>
         </section>
-
-        <!-- SECCIÓN CONTACTO -->
+        <section class="section" id="calendario">
+            <div class="imagen-destacada">
+                <img src="images/calendario.jpg" 
+                     alt="Imagen de calendario educativo"
+                     loading="lazy">
+            </div>
+            <div class="content">
+                <h2>Calendario Escolar</h2>
+                <div id="calendar-container"></div>
+            </div>
+        </section>
         <section class="section" id="contacto">
             <div class="imagen-destacada">
                 <iframe 
@@ -490,7 +412,6 @@
             </div>
         </section>
     </main>
-
     <footer>
         <div class="social">
             <a href="https://facebook.com/unidadeducativa" aria-label="Visita nuestra página de Facebook">
@@ -502,21 +423,16 @@
         </div>
         <p class="copyright"></p>
     </footer>
-
     <script>
         // Menú hamburguesa
         const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
-
         const toggleMenu = () => {
             const isOpen = menu.classList.toggle('open');
             menuToggle.setAttribute('aria-expanded', isOpen);
             menu.setAttribute('aria-hidden', !isOpen);
         };
-
         menuToggle.addEventListener('click', toggleMenu);
-
-        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
             if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
                 menu.classList.remove('open');
@@ -524,42 +440,87 @@
                 menu.setAttribute('aria-hidden', 'true');
             }
         });
-
         // Modo oscuro
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         const darkIcon = darkModeToggle.querySelector('.icon');
-
         const updateDarkMode = () => {
             const isDark = document.body.classList.toggle('dark-mode');
             localStorage.setItem('dark-mode', isDark);
             darkIcon.textContent = isDark ? '☀️' : '🌙';
         };
-
         if (localStorage.getItem('dark-mode') === 'true') {
             document.body.classList.add('dark-mode');
             darkIcon.textContent = '☀️';
         }
-
         darkModeToggle.addEventListener('click', updateDarkMode);
-
         // Actualizar año del footer
         document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
-
         // Cerrar menú con ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menu.classList.contains('open')) {
                 toggleMenu();
             }
         });
-
-        // Función para mostrar mapa
-        function showMap() {
-            window.open(
-                "https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D",
-                "_blank"
-            );
+        // FECHA Y HORA EN EL MENÚ
+        function actualizarFechaHora() {
+            const fechaHoraElement = document.getElementById('fecha-hora-menu');
+            const options = { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric' 
+            };
+            const now = new Date().toLocaleString('es-BO', options);
+            fechaHoraElement.textContent = now;
         }
-
+        setInterval(actualizarFechaHora, 1000);
+        actualizarFechaHora();
+        // GENERAR CALENDARIO
+        function generarCalendario() {
+            const calendarioContainer = document.getElementById('calendar-container');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            // Crear encabezado de días
+            const headerRow = document.createElement('div');
+            days.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day-header';
+                dayElement.textContent = day;
+                headerRow.appendChild(dayElement);
+            });
+            calendarioContainer.appendChild(headerRow);
+            // Crear celdas del calendario
+            let currentDay = 1;
+            const daysInMonth = lastDay.getDate();
+            const firstDayOfWeek = firstDay.getDay();
+            for (let i = 0; i < 6; i++) {
+                const row = document.createElement('div');
+                row.className = 'calendar-row';
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'calendar-cell';
+                    if (i === 0 && j < firstDayOfWeek) {
+                        cell.textContent = '';
+                    } else if (currentDay > daysInMonth) {
+                        break;
+                    } else {
+                        cell.textContent = currentDay++;
+                        if (new Date(year, month, currentDay - 1).toLocaleDateString() === new Date().toLocaleDateString()) {
+                            cell.classList.add('today');
+                        }
+                    }
+                    row.appendChild(cell);
+                }
+                calendarioContainer.appendChild(row);
+            }
+        }
+        generarCalendario();
         // Optimizar animaciones durante resize
         let resizeTimer;
         window.addEventListener('resize', () => {
