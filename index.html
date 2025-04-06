@@ -150,12 +150,6 @@
             color: var(--color-secundario);
         }
 
-        .content p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
         .button {
             display: inline-block;
             background: var(--color-primario);
@@ -196,6 +190,79 @@
 
         .social-icon:hover {
             transform: scale(1.1);
+        }
+
+        /* Estilos para la sección "Sobre Nosotros" */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .info-card {
+            background: var(--color-fondo);
+            border-radius: var(--borde-radius);
+            padding: 1.5rem;
+            box-shadow: var(--sombra);
+            transition: transform 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .info-card h3 {
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+
+        .features-list,
+        .team-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .features-list li::before {
+            content: "🌱";
+            margin-right: 0.5rem;
+        }
+
+        .team-list li::before {
+            content: "👨🏫";
+            margin-right: 0.5rem;
+        }
+
+        .needs {
+            color: var(--color-primario);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .community-card .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--color-primario);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .community-card .text-box {
+            flex: 1;
+        }
+
+        .student-card .student-story {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            filter: invert(1);
         }
 
         @media (min-width: 768px) {
@@ -271,6 +338,7 @@
     </nav>
 
     <main>
+        <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
@@ -284,21 +352,110 @@
             </div>
         </section>
 
+        <!-- SECCIÓN SOBRE NOSOTROS (MODIFICADA) -->
         <section class="section" id="sobre-nosotros">
-            <img src="images/noticias.jpg" 
-                 alt="Estudiantes participando en una feria científica con stands interactivos"
-                 loading="lazy">
+            <div class="imagen-destacada">
+                <img src="images/sobre-nosotros.jpg" 
+                     alt="Foto de la comunidad de Los Negros con estudiantes y docentes"
+                     loading="lazy">
+            </div>
             <div class="content">
-                <h2>Últimas Noticias</h2>
-                <p>Mantente informado sobre nuestras actividades y eventos</p>
-                <a href="noticias.html" class="button">Ver noticias</a>
+                <h2>Quiénes Somos</h2>
+                <div class="info-grid">
+                    <!-- Ubicación -->
+                    <div class="info-card">
+                        <h3>Ubicación</h3>
+                        <p>
+                            <strong>UNIDAD EDUCATIVA "GUIDO ARCE PIMENTEL"</strong><br>
+                            <small>
+                                Dirección: Pueblo de Los Negros, Municipio de Pampagrande<br>
+                                Colinda con:<br>
+                                - Al norte: Coliseo Los Negros<br>
+                                - Al sur: Mercado Nuevo Los Negros<br>
+                                - Al este: Avenida 6 de Agosto (Carretera Antigua Cochabamba-Santa Cruz)<br>
+                                - Al oeste: Cerro Natural
+                            </small>
+                        </p>
+                        <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
+                    </div>
+
+                    <!-- Infraestructura -->
+                    <div class="info-card">
+                        <h3>Infraestructura</h3>
+                        <ul class="features-list">
+                            <li>12 aulas equipadas con pizarras acrílicas</li>
+                            <li>1 dirección y 2 baterías de baño</li>
+                            <li>Mesas y sillas para estudiantes</li>
+                            <li>Sillas unipersonales para docentes</li>
+                        </ul>
+                        <p class="needs">Necesidades urgentes: <strong>Centro de cómputo, laboratorio y equipamiento moderno.</strong></p>
+                    </div>
+
+                    <!-- Recursos Humanos -->
+                    <div class="info-card">
+                        <h3>Recursos Humanos</h3>
+                        <ul class="team-list">
+                            <li>Director: 1</li>
+                            <li>Secretaria: 1</li>
+                            <li>Portero: 1</li>
+                            <li>Docentes: 13</li>
+                            <li>Estudiantes: 300</li>
+                        </ul>
+                        <p class="note">*En crecimiento constante.</p>
+                    </div>
+
+                    <!-- Contexto Comunitario -->
+                    <div class="info-card community-card">
+                        <h3>Contexto Comunitario</h3>
+                        <div class="community-content">
+                            <div class="icon-box">
+                                <img src="images/agricultura.png" alt="Ícono de agricultura" class="info-icon">
+                            </div>
+                            <div class="text-box">
+                                <h4>Capital de las Verduras</h4>
+                                <p>
+                                    La comunidad es conocida por su producción agrícola. La mayoría de los padres de familia trabajan en:
+                                    <ul>
+                                        <li>Cultivo de verduras (ej. lechugas, tomates)</li>
+                                        <li>Comercialización en mercados de Santa Cruz y Cochabamba</li>
+                                        <li>Servicio de taxi local</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vida Estudiantil -->
+                    <div class="info-card student-card">
+                        <h3>Vida Estudiantil</h3>
+                        <div class="student-story">
+                            <div class="icon-box">
+                                <img src="images/estudiante.png" alt="Ícono de estudiante" class="info-icon">
+                            </div>
+                            <div class="text-box">
+                                <h4>Trabajo y Estudio: Un Equilibrio</h4>
+                                <p>
+                                    Nuestros estudiantes colaboran en:
+                                    <ul>
+                                        <li>Actividades agrícolas ("chacos") por las mañanas</li>
+                                        <li>Asisten a clases por las tardes</li>
+                                    </ul>
+                                    <strong>Misión:</strong> Formar jóvenes con conocimientos para un futuro mejor.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- SECCIÓN PROGRAMAS -->
         <section class="section" id="programas">
-            <img src="images/eventos.jpg" 
-                 alt="Presentación cultural de danzas folklóricas en el patio de la escuela"
-                 loading="lazy">
+            <div class="imagen-destacada">
+                <img src="images/eventos.jpg" 
+                     alt="Presentación cultural de danzas folklóricas en el patio de la escuela"
+                     loading="lazy">
+            </div>
             <div class="content">
                 <h2>Eventos Académicos</h2>
                 <p>Calendario de actividades 2023-2024</p>
@@ -306,6 +463,7 @@
             </div>
         </section>
 
+        <!-- SECCIÓN CONTACTO -->
         <section class="section" id="contacto">
             <div class="imagen-destacada">
                 <iframe 
@@ -393,6 +551,14 @@
                 toggleMenu();
             }
         });
+
+        // Función para mostrar mapa
+        function showMap() {
+            window.open(
+                "https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D",
+                "_blank"
+            );
+        }
 
         // Optimizar animaciones durante resize
         let resizeTimer;
