@@ -19,6 +19,7 @@ body {
                 color var(--transicion-default);
 }
 
+/* Ajustes para la barra de inicio */
 header {
     display: flex;
     justify-content: space-between;
@@ -29,11 +30,14 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregar sombra */
 }
 
 header h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0;
+    flex: 1; /* Permitir que el título ocupe espacio */
+    text-align: center; /* Centrar el título */
 }
 
 #menuBtn, #modoOscuroBtn {
@@ -45,6 +49,14 @@ header h1 {
     padding: 0.5rem;
     border-radius: var(--border-radius-default);
     transition: transform var(--transicion-default), color var(--transicion-default);
+}
+
+#menuBtn {
+    margin-right: auto; /* Alinear el botón de menú a la izquierda */
+}
+
+#modoOscuroBtn {
+    margin-left: auto; /* Alinear el botón de modo oscuro a la derecha */
 }
 
 #menuBtn:hover, #modoOscuroBtn:hover {
@@ -391,4 +403,20 @@ body.oscuro #ubicacion h2 {
 #modoOscuroBtn:hover, #menuBtn:hover {
     transform: scale(1.2);
     color: var(--color-secundario);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        padding: 0.5rem;
+    }
+
+    #menuBtn, #modoOscuroBtn {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
 }
