@@ -305,7 +305,7 @@ body.oscuro #ubicacion h2 {
 #gapMobile {
     position: absolute;
     top: 1rem;
-    right: 4rem; /* Ajustar para que no se superponga con los botones */
+    left: 1rem; /* Mover a la esquina superior izquierda */
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
@@ -319,5 +319,15 @@ body.oscuro #ubicacion h2 {
 
     header h1 {
         display: none; /* Ocultar el título largo */
+    }
+
+    #modoOscuroBtn, #menuBtn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem; /* Alinear a la derecha */
+    }
+
+    #menuBtn {
+        right: 3rem; /* Separar el botón ☰ del botón ☀ */
     }
 }
