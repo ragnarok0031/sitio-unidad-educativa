@@ -21,13 +21,15 @@ body {
 }
 
 header {
-    background-color: var(--color-principal);
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuir los elementos */
+    padding: 1rem; /* Ajustar el padding */
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: var(--color-principal);
+    color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -205,8 +207,24 @@ body.oscuro #ubicacion h2 {
     }
 
     header {
+        flex-direction: row; /* Alinear los elementos en una fila */
         padding: 0.5rem; /* Reducir el padding */
-        font-size: 1rem; /* Reducir el tamaño de fuente */
+    }
+
+    #gapMobile {
+        display: block; /* Mostrar "G.A.P" en móviles */
+    }
+
+    h1 {
+        display: none; /* Ocultar el título largo */
+    }
+
+    #modoOscuroBtn, #menuBtn {
+        font-size: 1.2rem; /* Reducir el tamaño de los botones */
+    }
+
+    #menuBtn {
+        margin-left: 0.5rem; /* Separar los botones */
     }
 
     #modoOscuroBtn, #menuBtn {
@@ -330,4 +348,20 @@ body.oscuro #ubicacion h2 {
     #menuBtn {
         right: 3rem; /* Separar el botón ☰ del botón ☀ */
     }
+}
+
+#modoOscuroBtn, #menuBtn {
+    font-size: 1.5rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-default);
+    transition: transform var(--transicion-default), color var(--transicion-default);
+}
+
+#modoOscuroBtn:hover, #menuBtn:hover {
+    transform: scale(1.2);
+    color: var(--color-secundario);
 }
