@@ -525,14 +525,15 @@ body.oscuro #ubicacion h2 {
         padding: 0.5rem 1rem; /* Ajustar el padding */
         width: 100%; /* Asegurar que el header abarque todo el ancho */
         box-sizing: border-box; /* Incluir padding en el ancho total */
+        background-color: var(--color-principal); /* Asegurar el color de fondo */
     }
 
     #gapMobile {
-        position: relative;
         font-size: 1.2rem;
         font-weight: bold;
         color: white;
         margin-right: auto; /* Alinear a la izquierda */
+        flex-shrink: 0; /* Evitar que se reduzca */
     }
 
     h1 {
@@ -542,12 +543,14 @@ body.oscuro #ubicacion h2 {
     #menuBtn {
         font-size: 1.5rem;
         margin-left: 1rem; /* Separar del texto G.A.P */
+        flex-shrink: 0; /* Evitar que se reduzca */
     }
 
     #modoOscuroBtn {
         font-size: 1.5rem;
         margin-left: 1rem; /* Separar del menú hamburguesa */
         padding: 0.3rem;
+        flex-shrink: 0; /* Evitar que se reduzca */
     }
 
     #modoOscuroBtn img {
