@@ -56,6 +56,11 @@ nav {
     background-color: var(--color-secundario);
     padding: 1rem;
     text-align: center;
+    display: block; /* Mostrar el menú cuando no tenga la clase hidden */
+}
+
+nav.hidden {
+    display: none; /* Ocultar el menú */
 }
 
 nav ul {
@@ -291,4 +296,28 @@ body.oscuro #ubicacion h2 {
 .school-image img {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+#gapMobile {
+    position: absolute;
+    top: 1rem;
+    right: 4rem; /* Ajustar para que no se superponga con los botones */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    display: none; /* Ocultar por defecto */
+}
+
+@media (max-width: 768px) {
+    #gapMobile {
+        display: block; /* Mostrar solo en dispositivos móviles */
+    }
+
+    header h1 {
+        display: none; /* Ocultar el título largo */
+    }
 }
