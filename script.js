@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const MODO_OSCURO_KEY = 'modoOscuro';
     const ICONOS = {
-        OSCURO: '&#9790;',
-        CLARO: '&#9728;'
+        OSCURO: 'images/modo_oscuro.png', // Ruta del icono de noche
+        CLARO: 'images/modo_claro.png'   // Ruta del icono de día
     };
 
     const toggleModoOscuro = () => {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const actualizarIcono = (esOscuro) => {
-        btn.innerHTML = esOscuro ? ICONOS.OSCURO : ICONOS.CLARO;
+        btn.innerHTML = `<img src="${esOscuro ? ICONOS.OSCURO : ICONOS.CLARO}" alt="${esOscuro ? 'Modo oscuro' : 'Modo claro'}">`;
         btn.setAttribute('aria-pressed', esOscuro);
         btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
     };
