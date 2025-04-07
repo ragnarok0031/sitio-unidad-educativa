@@ -1,25 +1,16 @@
-// MENÚ HAMBURGUESA
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
-menuToggle.addEventListener('click', () => {
-    const isOpen = menu.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen);
-    menu.setAttribute('aria-hidden', !isOpen);
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('modoOscuroBtn');
+    const body = document.body;
+  
+    // Comprobar si el usuario ya eligió modo oscuro
+    const modoGuardado = localStorage.getItem('modoOscuro');
+    if (modoGuardado === 'true') {
+      body.classList.add('oscuro');
+    }
+  
+    btn.addEventListener('click', () => {
+      body.classList.toggle('oscuro');
+      localStorage.setItem('modoOscuro', body.classList.contains('oscuro'));
+    });
+  });
 
-// MODO OSCURO
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const darkIcon = darkModeToggle.querySelector('.icon');
-const updateDarkMode = () => {
-    const isDark = document.body.classList.toggle('dark-mode');
-    localStorage.setItem('dark-mode', isDark);
-    darkIcon.textContent = isDark ? '☀️' : '🌙';
-};
-if (localStorage.getItem('dark-mode') === 'true') {
-    document.body.classList.add('dark-mode');
-    darkIcon.textContent = '☀️';
-}
-darkModeToggle.addEventListener('click', updateDarkMode);
-
-// ACTUALIZAR AÑO DEL FOOTER
-document.getElementById('current-year').textContent = new Date().getFullYear();
