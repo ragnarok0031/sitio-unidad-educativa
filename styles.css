@@ -200,15 +200,19 @@ body.oscuro #ubicacion h2 {
     }
 
     header {
-        padding: 1rem;
-        font-size: 1.2rem;
-        text-align: center;
+        padding: 0.5rem; /* Reducir el padding */
+        font-size: 1rem; /* Reducir el tamaño de fuente */
     }
 
-    #modoOscuroBtn {
-        font-size: 1.2rem;
-        top: 0.5rem;
-        right: 0.5rem;
+    #modoOscuroBtn, #menuBtn {
+        font-size: 1rem; /* Reducir el tamaño de los botones */
+        top: 0.3rem; /* Ajustar la posición */
+        right: 0.3rem;
+        padding: 0.3rem; /* Reducir el padding de los botones */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* Reducir el tamaño del título */
     }
 
     nav ul {
