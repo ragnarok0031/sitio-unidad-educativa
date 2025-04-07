@@ -514,3 +514,44 @@ body.oscuro #ubicacion h2 {
         height: 24px;
     }
 }
+
+/* Ajustes para el header en móviles */
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: row; /* Alinear los elementos en una fila */
+        justify-content: space-between; /* Distribuir espacio entre los elementos */
+        align-items: center; /* Alinear verticalmente */
+        padding: 0.5rem 1rem; /* Ajustar el padding */
+        width: 100%; /* Asegurar que el header abarque todo el ancho */
+        box-sizing: border-box; /* Incluir padding en el ancho total */
+    }
+
+    #gapMobile {
+        position: relative;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        margin-right: auto; /* Alinear a la izquierda */
+    }
+
+    h1 {
+        display: none; /* Ocultar el título largo en móviles */
+    }
+
+    #menuBtn {
+        font-size: 1.5rem;
+        margin-left: 1rem; /* Separar del texto G.A.P */
+    }
+
+    #modoOscuroBtn {
+        font-size: 1.5rem;
+        margin-left: 1rem; /* Separar del menú hamburguesa */
+        padding: 0.3rem;
+    }
+
+    #modoOscuroBtn img {
+        width: 24px;
+        height: 24px;
+    }
+}
