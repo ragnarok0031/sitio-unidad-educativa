@@ -1,21 +1,24 @@
+/* Variables de color */
 :root {
     --color-fondo: #f3f8f4;
     --color-principal: #4e946a;
     --color-secundario: #a8d5ba;
     --color-texto: #2c3e50;
     --color-footer: #e0efe4;
-  }
-  
-  body {
+    --sombra: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--color-fondo);
     color: var(--color-texto);
     transition: background 0.3s, color 0.3s;
-  }
-  
-  header {
+}
+
+/* Header */
+header {
     background-color: var(--color-principal);
     color: white;
     padding: 1.5rem;
@@ -23,10 +26,62 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  #modoOscuroBtn {
+    box-shadow: var(--sombra);
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Menú desplegable */
+.menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-secundario);
+    padding-top: 80px;
+    text-align: center;
+    transition: transform 0.3s;
+    transform: translateX(100%);
+}
+
+.menu.open {
+    transform: translateX(0);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 1rem 0;
+}
+
+.menu a {
+    color: var(--color-texto);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Botón de modo oscuro */
+#modoOscuroBtn {
     background: white;
     color: var(--color-principal);
     border: none;
@@ -34,49 +89,93 @@
     margin-top: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  nav {
-    background-color: var(--color-secundario);
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav li {
-    display: inline-block;
-    margin: 0 1rem;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: var(--color-texto);
-    font-weight: bold;
-  }
-  
-  main {
+}
+
+/* Estilos generales */
+.section {
     padding: 2rem;
-  }
-  
-  section {
-    margin-bottom: 3rem;
-  }
-  
-  footer {
-    background-color: var(--color-footer);
+    margin: 1rem auto;
+    max-width: 800px;
+}
+
+.imagen-destacada {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.imagen-destacada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content {
     text-align: center;
     padding: 1rem;
+}
+
+.button {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+footer {
+    background-color: var(--color-footer);
+    padding: 1rem;
+    text-align: center;
     font-size: 0.9rem;
-  }
-  
-  body.oscuro {
+}
+
+.social {
+    margin-bottom: 1rem;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    margin: 0 0.5rem;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Modo oscuro */
+body.oscuro {
     --color-fondo: #121e16;
     --color-texto: #dceee2;
     --color-footer: #1f2e26;
-  }
-  
+}
+
+/* Estilos para móviles */
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: block;
+    }
+    header {
+        padding: 1rem;
+    }
+    .logo {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .menu {
+        background-color: var(--color-secundario);
+    }
+    .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
