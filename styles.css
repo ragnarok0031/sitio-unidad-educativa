@@ -1,68 +1,82 @@
-/* Variables de colores */
 :root {
-    --color-primario: #ff6f00;
-    --color-secundario: #2e7d32;
-    --color-fondo: #f5f5f5;
-    --color-texto: #333;
-    --color-header: #ffffff;
-    --sombra: 0 2px 5px rgba(0,0,0,0.1);
-    --borde-radius: 15px;
-}
-
-/* Modo oscuro */
-.dark-mode {
-    --color-primario: #ff8c00;
-    --color-secundario: #4caf50;
-    --color-fondo: #121212;
-    --color-texto: #ffffff;
-    --color-header: #2d2d2d;
-    --sombra: 0 2px 5px rgba(255,255,255,0.1);
-}
-
-/* Estilos generales */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--color-fondo);
-    color: var(--color-texto);
-    line-height: 1.6;
+    --color-fondo: #f3f8f4;
+    --color-principal: #4e946a;
+    --color-secundario: #a8d5ba;
+    --color-texto: #2c3e50;
+    --color-footer: #e0efe4;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    padding-top: 60px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: var(--color-header);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-    box-shadow: var(--sombra);
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-secundario);
-}
-
-/* Logo abreviado en móviles */
-@media (max-width: 767px) {
-    .logo::after {
-        content: "G.A.P.";
-    }
-}
-
-/* Footer */
-footer {
-    background: var(--color-header);
-    padding: 2rem 1.5rem;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  header {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 1.5rem;
     text-align: center;
-    box-shadow: var(--sombra);
-}
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #modoOscuroBtn {
+    background: white;
+    color: var(--color-principal);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  nav {
+    background-color: var(--color-secundario);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin: 0 1rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  section {
+    margin-bottom: 3rem;
+  }
+  
+  footer {
+    background-color: var(--color-footer);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  body.oscuro {
+    --color-fondo: #121e16;
+    --color-texto: #dceee2;
+    --color-footer: #1f2e26;
+  }
+  
