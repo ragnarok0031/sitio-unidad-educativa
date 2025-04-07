@@ -432,3 +432,7 @@ body.oscuro #ubicacion h2 {
         font-size: 1.2rem;
     }
 }
+
+/* Ajustes para el banner en móviles */
+@media (max-width: 768px) {
+    header {
