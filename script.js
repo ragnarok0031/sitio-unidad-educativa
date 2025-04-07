@@ -1,41 +1,39 @@
-// Menú hamburguesa
-function toggleMenu() {
-    const menu = document.getElementById('menu');
-    menu.classList.toggle('open');
-}
-
-// Cerrar menú al hacer clic fuera
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.menu-toggle') && !e.target.closest('.menu')) {
-        document.querySelector('.menu').classList.remove('open');
-    }
-});
-
-// Modo oscuro
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('modoOscuroBtn');
     const body = document.body;
+    const MODO_OSCURO_KEY = 'modoOscuro';
+    const ICONOS = {
+        OSCURO: '&#9790;',
+        CLARO: '&#9728;'
+    };
 
-    // Verificar modo oscuro guardado
-    const modoGuardado = localStorage.getItem('modoOscuro');
-    if (modoGuardado === 'true') {
+    const toggleModoOscuro = () => {
+        body.classList.toggle('oscuro');
+        const esOscuro = body.classList.contains('oscuro');
+        localStorage.setItem(MODO_OSCURO_KEY, esOscuro);
+        actualizarIcono(esOscuro);
+    };
+
+    const actualizarIcono = (esOscuro) => {
+        btn.innerHTML = esOscuro ? ICONOS.OSCURO : ICONOS.CLARO;
+        btn.setAttribute('aria-pressed', esOscuro);
+        btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    };
+
+    // Inicialización
+    const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
+    if (modoGuardado) {
         body.classList.add('oscuro');
     }
+    actualizarIcono(modoGuardado);
 
-    btn.addEventListener('click', () => {
-        body.classList.toggle('oscuro');
-        localStorage.setItem('modoOscuro', body.classList.contains('oscuro'));
+    // Event listeners
+    btn.addEventListener('click', toggleModoOscuro);
+    // Agregar soporte para tecla espaciadora
+    btn.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            toggleModoOscuro();
+        }
     });
 });
-
-// Función para mapa
-function showMap() {
-    window.open(
-        "https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D",
-        "_blank"
-    );
-}
-
-// Actualizar año en footer
-document.querySelector('.copyright').textContent = 
-    `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
