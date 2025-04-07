@@ -6,7 +6,6 @@
     --color-footer: #e0efe4;
     --color-enlace-hover: #3b7d5a;
     --transicion-default: 0.3s ease;
-    --box-shadow-default: 0 4px 8px rgba(0, 0, 0, 0.1);
     --border-radius-default: 8px;
 }
 
@@ -79,6 +78,9 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 nav li {
@@ -90,6 +92,7 @@ nav a {
     color: var(--color-texto);
     font-weight: bold;
     transition: color var(--transicion-default);
+    padding: 0.5rem;
 }
 
 nav a::after {
@@ -112,7 +115,7 @@ nav a:hover {
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 section {
@@ -309,6 +312,23 @@ body.oscuro #ubicacion h2 {
 
     header h1 {
         display: none; /* Ocultar el texto largo */
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #menuBtn {
+        align-self: flex-end;
+    }
+
+    nav ul {
+        width: 100%;
+    }
+
+    .mapa-contenedor iframe {
+        height: 300px;
     }
 }
 
