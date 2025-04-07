@@ -472,3 +472,45 @@ body.oscuro #ubicacion h2 {
         margin-left: 0; /* Eliminar márgenes innecesarios */
     }
 }
+
+/* Ajustes para el header en móviles */
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: row; /* Alinear los elementos en una fila */
+        justify-content: space-between; /* Distribuir espacio entre los elementos */
+        align-items: center; /* Alinear verticalmente */
+        padding: 0.5rem 1rem; /* Ajustar el padding */
+        position: relative; /* Asegurar que los elementos se posicionen correctamente */
+    }
+
+    #gapMobile {
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        display: block; /* Mostrar en móviles */
+    }
+
+    h1 {
+        display: none; /* Ocultar el título largo en móviles */
+    }
+
+    #menuBtn {
+        font-size: 1.5rem;
+        margin-left: auto; /* Alinear a la derecha */
+    }
+
+    #modoOscuroBtn {
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+        padding: 0.3rem;
+    }
+
+    #modoOscuroBtn img {
+        width: 24px;
+        height: 24px;
+    }
+}
