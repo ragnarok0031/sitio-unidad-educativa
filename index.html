@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad Educativa Guido Arce Pimentel</title>
-    <meta name="description" content="Colegio comunitario en Los Negros, Santa Cruz. Educación integral con enfoque en agricultura y valores ancestrales.">
-    <meta name="keywords" content="educación rural, proyecto socioproductivo, Santa Cruz Bolivia">
+    <meta name="description" content="Escuela rural en Los Negros, Santa Cruz. Educación con enfoque comunitario y ancestral.">
+    <meta name="keywords" content="educación rural, proyecto socioproductivo, Bolivia">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">Guido Arce Pimentel</div>
-        <button id="modoOscuroBtn">🌙 Modo Oscuro</button>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="header-controls">
+            <button id="modoOscuroBtn" class="dark-mode-toggle">🌙 Modo Oscuro</button>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
 
     <!-- Menú hamburguesa -->
     <nav class="menu" id="menu">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
@@ -34,72 +38,66 @@
         <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
-                <img src="images/unidad_educativa.png" 
-                     alt="Edificio principal de la Unidad Educativa Guido Arce Pimentel">
+                <img src="images/edificio_escuela.jpg" 
+                     alt="Edificio principal con estudiantes" 
+                     loading="lazy">
             </div>
             <div class="content">
                 <h2>Misión</h2>
-                <p>Fortalecer la formación de seres humanos responsables que valoren la conservación de la vida y la preservación del medio ambiente.</p>
-                <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
+                <p>Formar jóvenes con valores y conocimientos prácticos para mejorar su comunidad.</p>
+                <button class="button" onclick="showMap()">Ver Ubicación</button>
             </div>
         </section>
 
         <!-- SECCIÓN SOBRE NOSOTROS -->
         <section class="section" id="sobre-nosotros">
             <div class="imagen-destacada">
-                <img src="images/sobre-nosotros.jpg" 
-                     alt="Estudiantes y docentes en actividades educativas">
+                <img src="images/huerto_estudiantes.jpg" 
+                     alt="Estudiantes en el huerto escolar" 
+                     loading="lazy">
             </div>
             <div class="content">
                 <h2>Historia y Contexto</h2>
                 <p>
-                    Fundada en 2014, la U.E. Guido Arce Pimentel se ubica en el Pueblo de Los Negros, Municipio de Pampagrande, Santa Cruz. Colinda con el Coliseo Los Negros al norte y el Mercado Nuevo al sur. Cuenta con 13 docentes, 300 estudiantes y 12 aulas, pero enfrenta desafíos como la falta de un centro de cómputo y laboratorio moderno.
+                    Fundada en 2014, atendemos a ~300 estudiantes en Los Negros, Pampagrande, Santa Cruz. 
+                    <strong>Desafíos:</strong>
+                    - Falta de centro de cómputo.
+                    - Necesidad de materiales didácticos.
                 </p>
-                <h3>Proyectos Socioproductivos</h3>
-                <ul>
-                    <li>**"Un Árbol Una Vida"**: Arborización comunitaria y preservación ambiental.</li>
-                    <li>**Huerto Escolar**: Cultivo de verduras para educación nutricional y soberanía alimentaria.</li>
-                    <li>**Rescate de Saberes Ancestrales**: Uso de técnicas indígenas (ej. kayto con phusca) en matemáticas y ciencias.</li>
-                </ul>
-                <h3>Innovación Pedagógica</h3>
-                <p>
-                    Implementamos el Modelo Educativo Sociocomunitario Productivo (Ley 070) con enfoques como:
-                    <ul>
-                        <li>Investigación participativa (ej. análisis de la Chacana en matemáticas).</li>
-                        <li>Uso de TICs: Videos, diapositivas y mapas interactivos.</li>
-                        <li>Actividades prácticas: Construcción de hornos comunitarios y huertos.</li>
-                    </ul>
-                </p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>300+</h3>
+                        <p>Estudiantes</p>
+                    </div>
+                    <div class="stat">
+                        <h3>13</h3>
+                        <p>Docentes</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- SECCIÓN PROGRAMAS -->
         <section class="section" id="programas">
             <div class="imagen-destacada">
-                <img src="images/eventos.jpg" 
-                     alt="Actividades culturales y educativas">
+                <img src="images/cuadrado_magico.jpg" 
+                     alt="Estudiantes resolviendo un cuadrado mágico" 
+                     loading="lazy">
             </div>
             <div class="content">
                 <h2>Programas Destacados</h2>
                 <div class="programa-card">
-                    <h3>Proyecto Socioproductivo "Un Árbol Una Vida"</h3>
-                    <p>
-                        Objetivo: Mejorar el paisaje urbano y preservar el medio ambiente mediante arborización. 
-                        <strong>Logros:</strong> Plantación de 50 árboles en 2023 y participación de 150 familias.
-                    </p>
-                </div>
-                <div class="programa-card">
-                    <h3>Huerto Escolar</h3>
-                    <p>
-                        Actividades: Cultivo de lechugas, zanahorias y arvejas. 
-                        <strong>Impacto:</strong> Educación nutricional y reducción de desechos orgánicos.
-                    </p>
-                </div>
-                <div class="programa-card">
                     <h3>Rescate de Saberes Ancestrales</h3>
                     <p>
-                        Enfoque: Integrar conocimientos indígenas (quechua) en asignaturas como matemáticas y ciencias.
-                        <strong>Ejemplo:</strong> Uso de la "Chacana" para enseñar geometría y ecuaciones.
+                        Usamos técnicas como la <strong>yupana</strong> para enseñar matemáticas. 
+                        <em>Ejemplo:</em> Cuadrado mágico de 3x3 en 7 minutos.
+                    </p>
+                </div>
+                <div class="programa-card">
+                    <h3>Huerto Comunitario</h3>
+                    <p>
+                        Cultivo de verduras para educación nutricional. 
+                        <strong>Logro:</strong> 40% de las comidas institucionales provienen del huerto.
                     </p>
                 </div>
             </div>
@@ -116,26 +114,13 @@
                 </iframe>
             </div>
             <div class="content">
-                <h2>Contacto y Colaboración</h2>
+                <h2>Contacto</h2>
                 <p>
-                    <strong>Dirección:</strong> Pueblo de Los Negros, Pampagrande, Santa Cruz<br>
-                    <strong>Teléfono:</strong> +591 7XX XXX XXX<br>
-                    <strong>Correo:</strong> contacto@unidadeducativa.bo
+                    Dirección: Pueblo de Los Negros, Pampagrande, Santa Cruz<br>
+                    Teléfono: +591 7XX XXX XXX<br>
+                    Correo: contacto@unidadeducativa.bo
                 </p>
-                <div class="stats">
-                    <div class="stat">
-                        <h3>300+</h3>
-                        <p>Estudiantes</p>
-                    </div>
-                    <div class="stat">
-                        <h3>13</h3>
-                        <p>Docentes</p>
-                    </div>
-                    <div class="stat">
-                        <h3>2015</h3>
-                        <p>Año de inicio del proyecto socioproductivo</p>
-                    </div>
-                </div>
+                <button class="button" onclick="showMap()">Mapa</button>
             </div>
         </section>
     </main>
@@ -150,7 +135,7 @@
                 <img src="images/instagram.png" alt="Instagram" class="social-icon">
             </a>
         </div>
-        <p class="copyright">© {{year}} Unidad Educativa Guido Arce Pimentel</p>
+        <p class="copyright"></p>
     </footer>
 
     <!-- JavaScript -->
