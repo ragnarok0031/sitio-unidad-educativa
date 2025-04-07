@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const toggleMenu = () => {
-        const isHidden = menu.classList.toggle('hidden'); // Alternar la clase 'hidden'
-        menuBtn.setAttribute('aria-expanded', !isHidden); // Actualizar el atributo aria-expanded
+        const isHidden = menu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isHidden);
     };
 
     // Inicialización
