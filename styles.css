@@ -405,6 +405,18 @@ body.oscuro #ubicacion h2 {
     color: var(--color-secundario);
 }
 
+/* Estilos para los iconos de día y noche */
+#modoOscuroBtn img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    transition: transform var(--transicion-default);
+}
+
+#modoOscuroBtn:hover img {
+    transform: scale(1.2);
+}
+
 /* Ajustes responsivos */
 @media (max-width: 768px) {
     header {
