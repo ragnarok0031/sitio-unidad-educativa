@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('modoOscuroBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
     const body = document.body;
     const MODO_OSCURO_KEY = 'modoOscuro';
     const ICONOS = {
@@ -20,6 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
     };
 
+    const toggleMenu = () => {
+        const isOpen = menu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+    };
+
     // Inicialización
     const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
     if (modoGuardado) {
@@ -29,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listeners
     btn.addEventListener('click', toggleModoOscuro);
+    menuBtn.addEventListener('click', toggleMenu);
     // Agregar soporte para tecla espaciadora
     btn.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
