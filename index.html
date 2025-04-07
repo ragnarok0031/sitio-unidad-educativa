@@ -1,166 +1,45 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad Educativa Guido Arce Pimentel</title>
-    <meta name="description" content="Escuela rural en Los Negros, Santa Cruz. Educación con enfoque comunitario y ancestral.">
-    <meta name="keywords" content="educación rural, proyecto socioproductivo, Bolivia">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <title>Unidad Educativa Guido Arce Pimentel</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo-container">
-            <span id="gapMobile" class="logo-mobile">G.A.P.</span>
-            <h1 class="logo-desktop">Unidad Educativa Guido Arce Pimentel</h1>
-        </div>
-        <div class="header-controls">
-            <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-                <img src="images/menu-icon.png" alt="Menú" class="control-icon">
-            </button>
-            <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro" aria-pressed="false">
-                <img src="images/modo_claro.png" alt="Modo claro" class="control-icon">
-            </button>
-        </div>
-    </header>
-
-    <!-- Menú hamburguesa -->
-    <nav role="navigation" id="menu" class="hidden">
-        <div class="close-btn" onclick="toggleMenu()">&times;</div>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#nosotros">Sobre Nosotros</a></li>
-            <li><a href="#infraestructura">Infraestructura</a></li>
-            <li><a href="#contexto">Contexto Comunitario</a></li>
-            <li><a href="#ubicacion">Ubicación</a></li>
-        </ul>
+  <header class="header">
+    <div class="header-container">
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger">&#9776;</span>
+      </button>
+      <div class="branding">
+        <span class="logo">G.A.P</span>
+        <h1 class="school-name">Unidad Educativa Guido Arce Pimentel</h1>
+      </div>
+      <button class="theme-toggle" aria-pressed="false">
+        <img src="images/modo_claro.png" alt="Modo claro" class="theme-icon">
+      </button>
+    </div>
+    <nav class="mobile-menu hidden">
+      <ul>
+        <li><a href="#inicio" class="menu-link">Inicio</a></li>
+        <li><a href="#nosotros" class="menu-link">Sobre Nosotros</a></li>
+        <li><a href="#infraestructura" class="menu-link">Infraestructura</a></li>
+        <li><a href="#contexto" class="menu-link">Contexto Comunitario</a></li>
+      </ul>
     </nav>
+  </header>
 
+  <main>
     <!-- Contenido principal -->
-    <main role="main">
-        <!-- SECCIÓN INICIO -->
-        <section class="section" id="inicio">
-            <div class="imagen-destacada">
-                <img src="images/edificio_escuela.jpg" 
-                     alt="Edificio principal con estudiantes" 
-                     loading="lazy">
-            </div>
-            <div class="content">
-                <h2>Misión</h2>
-                <p>Formar jóvenes responsables con herramientas prácticas y conocimientos ancestrales.</p>
-                <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
-            </div>
-        </section>
+  </main>
 
-        <!-- SECCIÓN SOBRE NOSOTROS -->
-        <section class="section" id="nosotros">
-            <div class="imagen-destacada">
-                <img src="images/huerto_estudiantes.jpg" 
-                     alt="Estudiantes trabajando en el huerto escolar" 
-                     loading="lazy">
-            </div>
-            <div class="content">
-                <h2>Historia y Contexto</h2>
-                <p>
-                    Fundada en 2014, atiende a ~300 estudiantes en Los Negros, Pampagrande, Santa Cruz. 
-                    <strong>Desafíos:</strong>
-                    - Falta de centro de cómputo.
-                    - Necesidad de materiales didácticos.
-                </p>
-                <div class="stats">
-                    <div class="stat">
-                        <h3>300+</h3>
-                        <p>Estudiantes</p>
-                    </div>
-                    <div class="stat">
-                        <h3>13</h3>
-                        <p>Docentes</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <footer class="footer">
+    <p>&copy; 2025 Unidad Educativa G.A.P</p>
+  </footer>
 
-        <!-- SECCIÓN INFRAESTRUCTURA -->
-        <section class="section" id="infraestructura">
-            <div class="imagen-destacada">
-                <img src="images/aulas_escuela.jpg" 
-                     alt="Aulas equipadas con pizarras acrílicas" 
-                     loading="lazy">
-            </div>
-            <div class="content">
-                <h2>Infraestructura</h2>
-                <ul>
-                    <li>12 aulas equipadas con pizarras acrílicas</li>
-                    <li>1 dirección y 2 baterías de baño</li>
-                    <li>Canteras para actividades deportivas</li>
-                </ul>
-                <p>Necesitamos: Centro de cómputo y laboratorio moderno.</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓN CONTEXTO COMUNITARIO -->
-        <section class="section" id="contexto">
-            <div class="imagen-destacada">
-                <img src="images/chacos_comunidad.jpg" 
-                     alt="Chacos agrícolas en la comunidad" 
-                     loading="lazy">
-            </div>
-            <div class="content">
-                <h2>Contexto Comunitario</h2>
-                <p>
-                    La escuela se sitúa en un contexto agrícola, rodeada de chacos y familias trabajadoras. 
-                    <strong>Actividades clave:</strong>
-                    - Cultivo de verduras en el huerto escolar.
-                    - Rescate de saberes ancestrales (yupana, chacana).
-                </p>
-                <div class="programa-card">
-                    <h3>Proyecto Socioproductivo</h3>
-                    <p>
-                        Desde 2015, se implementa un proyecto que conecta la educación con las necesidades de la comunidad. 
-                        <em>Ejemplo:</em> Elaboración de recetarios con productos locales.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN UBICACIÓN -->
-        <section class="section" id="ubicacion">
-            <h2>Nuestra Ubicación</h2>
-            <div class="mapa-contenedor">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.5!2d-64.1212119!3d-18.0633661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s20250402.1!2sEgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D!5e0!3m2!1ses!2sbo!4v1712454789045!5m2!1ses!2sbo"
-                    style="border:0;" 
-                    allowfullscreen 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-            <div class="content">
-                <p>
-                    Dirección: Pueblo de Los Negros, Pampagrande, Santa Cruz<br>
-                    Teléfono: +591 7XX XXX XXX<br>
-                    Correo: contacto@unidadeducativa.bo
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="social">
-            <a href="https://facebook.com/unidadeducativa" target="_blank">
-                <img src="images/facebook.png" alt="Facebook" class="social-icon">
-            </a>
-            <a href="https://instagram.com/unidadeducativa" target="_blank">
-                <img src="images/instagram.png" alt="Instagram" class="social-icon">
-            </a>
-        </div>
-        <p class="copyright"></p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
