@@ -3,345 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación de calidad en Bolivia desde 2012">
-    <meta name="keywords" content="educación, escuela, colegio, Santa Cruz, Los Negros, Bolivia">
+    <title>Unidad Educativa Guido Arce Pimentel</title>
+    <meta name="description" content="Escuela rural en Los Negros, Santa Cruz. Infraestructura, programas y contacto.">
+    <meta name="keywords" content="educación rural, colegio Los Negros, Bolivia">
     <meta property="og:title" content="Unidad Educativa Guido Arce Pimentel">
     <meta property="og:image" content="images/unidad_educativa.png">
-    <title>Unidad Educativa Guido Arce Pimentel</title>
-    <style>
-        :root {
-            --color-primario: #ff6f00;
-            --color-secundario: #2e7d32;
-            --color-fondo: #f5f5f5;
-            --color-texto: #333;
-            --color-header: #ffffff;
-            --sombra: 0 2px 5px rgba(0,0,0,0.1);
-            --borde-radius: 15px;
-        }
-        .dark-mode {
-            --color-primario: #ff8c00;
-            --color-secundario: #4caf50;
-            --color-fondo: #121212;
-            --color-texto: #ffffff;
-            --color-header: #2d2d2d;
-            --sombra: 0 2px 5px rgba(255,255,255,0.1);
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--color-fondo);
-            color: var(--color-texto);
-            line-height: 1.6;
-            padding-top: 60px;
-        }
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            z-index: 1000;
-            background: var(--color-header);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem;
-            box-shadow: var(--sombra);
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-secundario);
-            transition: font-size 0.3s;
-        }
-        /* ABRIRLOGÍA A "G.A.P." EN MÓVILES */
-        @media (max-width: 767px) {
-            .logo {
-                font-size: 1.8rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                content: "G.A.P.";
-            }
-        }
-        .header-controls {
-            display: flex;
-            gap: 1.2rem;
-            align-items: center;
-        }
-        .menu-icon,
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--color-texto);
-            padding: 0.5rem;
-        }
-        .menu {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            background: var(--color-header);
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: transform 0.3s, opacity 0.3s;
-            z-index: 999;
-            max-height: 0;
-        }
-        .menu.open {
-            opacity: 1;
-            transform: translateY(0);
-            max-height: 100vh;
-        }
-        .menu ul {
-            list-style: none;
-            padding: 1rem;
-        }
-        .menu li a {
-            display: block;
-            padding: 1rem;
-            color: var(--color-texto);
-            text-decoration: none;
-            border-radius: var(--borde-radius);
-            transition: background-color 0.2s;
-        }
-        .menu li a:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
-        /* ESTILOS PARA MÓVILES */
-        @media (max-width: 767px) {
-            .header {
-                padding: 0 1rem;
-            }
-            .logo {
-                font-size: 1.8rem;
-            }
-            .menu-icon {
-                display: block !important;
-            }
-            .menu[aria-hidden="true"] {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            .menu {
-                transform: translateY(0);
-                transition: transform 0.3s, opacity 0.3s;
-            }
-        }
-        /* EL RESTO DE LOS ESTILOS */
-        .imagen-destacada {
-            width: 100%;
-            height: 250px;
-            border-radius: var(--borde-radius);
-            overflow: hidden;
-            box-shadow: var(--sombra);
-            margin-bottom: 1.5rem;
-        }
-        .imagen-destacada img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .section {
-            padding: 1.5rem;
-            margin: 1.5rem auto;
-            max-width: 800px;
-        }
-        .content {
-            text-align: center;
-            padding: 1.5rem;
-        }
-        .content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--color-secundario);
-        }
-        .button {
-            display: inline-block;
-            background: var(--color-primario);
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--borde-radius);
-            text-decoration: none;
-            font-weight: 500;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: var(--sombra);
-        }
-        .button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        }
-        footer {
-            background: var(--color-header);
-            padding: 2rem 1.5rem;
-            margin-top: 3rem;
-            box-shadow: var(--sombra);
-            text-align: center;
-        }
-        .social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            transition: transform 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-        /* SECCIÓN "Sobre Nosotros" */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
-        }
-        .info-card {
-            background: var(--color-fondo);
-            border-radius: var(--borde-radius);
-            padding: 1.5rem;
-            box-shadow: var(--sombra);
-            transition: transform 0.2s;
-        }
-        .info-card:hover {
-            transform: translateY(-3px);
-        }
-        .info-card h3 {
-            color: var(--color-secundario);
-            margin-bottom: 1rem;
-        }
-        .features-list,
-        .team-list {
-            list-style: none;
-            padding-left: 1rem;
-        }
-        .features-list li::before {
-            content: "🌱";
-            margin-right: 0.5rem;
-        }
-        .team-list li::before {
-            content: "👨🏫";
-            margin-right: 0.5rem;
-        }
-        .needs {
-            color: var(--color-primario);
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-        .community-card .icon-box {
-            width: 60px;
-            height: 60px;
-            background: var(--color-primario);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-        }
-        .community-card .text-box {
-            flex: 1;
-        }
-        .student-card .student-story {
-            display: flex;
-            gap: 1rem;
-        }
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            filter: invert(1);
-        }
-        @media (min-width: 768px) {
-            .menu {
-                transform: translateX(-100%);
-            }
-            .menu.open {
-                transform: translateX(0);
-            }
-            .menu-icon {
-                display: none;
-            }
-            .menu {
-                position: static;
-                display: flex;
-                background: transparent;
-                box-shadow: none;
-            }
-            .menu ul {
-                display: flex;
-                gap: 2rem;
-                padding: 0;
-                margin-left: auto;
-            }
-            .section {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-                padding: 3rem 2rem;
-            }
-            .imagen-destacada {
-                height: 400px;
-            }
-            .content {
-                text-align: left;
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                transition: none !important;
-            }
-        }
-    </style>
+    <!-- Enlaces a CSS y JS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
+    <!-- Header con botón de modo oscuro -->
+    <header>
         <div class="logo">Guido Arce Pimentel</div>
-        <div class="header-controls">
-            <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Cambiar modo de color">
-                <span class="icon">🌙</span>
-            </button>
-            <button id="menu-toggle" class="menu-icon" aria-label="Abrir menú" aria-expanded="false">
-                <span class="icon">&#9776;</span>
-            </button>
-        </div>
+        <button id="modoOscuroBtn">Modo Oscuro</button>
     </header>
-    <nav class="menu" id="menu" aria-hidden="true" aria-label="Menú principal">
+
+    <!-- Menú hamburguesa -->
+    <nav class="menu" id="menu">
         <ul>
-            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#inicio">Inicio</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
             <li><a href="#programas">Programas</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
+
+    <!-- Botón hamburguesa -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <!-- Contenido principal -->
     <main>
         <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
-                     alt="Entrada principal de la Unidad Educativa Guido Arce Pimentel con estudiantes y personal educativo"
+                     alt="Edificio principal de la Unidad Educativa" 
                      loading="lazy">
             </div>
             <div class="content">
                 <h2>Nuestra Escuela</h2>
-                <p>Educando para el futuro desde 2012</p>
+                <p>Educando para el futuro desde 2014</p>
                 <a href="sobre-nosotros.html" class="button">Conoce más</a>
             </div>
         </section>
+
         <!-- SECCIÓN SOBRE NOSOTROS -->
         <section class="section" id="sobre-nosotros">
             <div class="imagen-destacada">
                 <img src="images/sobre-nosotros.jpg" 
-                     alt="Foto de la comunidad de Los Negros con estudiantes y docentes"
+                     alt="Estudiantes y docentes en actividades educativas" 
                      loading="lazy">
             </div>
             <div class="content">
@@ -357,11 +71,11 @@
                                 Colinda con:<br>
                                 - Al norte: Coliseo Los Negros<br>
                                 - Al sur: Mercado Nuevo Los Negros<br>
-                                - Al este: Avenida 6 de Agosto (Carretera Antigua Cochabamba-Santa Cruz)<br>
+                                - Al este: Avenida 6 de Agosto<br>
                                 - Al oeste: Cerro Natural
                             </small>
                         </p>
-                        <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
+                        <button class="button" onclick="showMap()">Ver Ubicación</button>
                     </div>
                     <!-- INFRAESTRUCTURA -->
                     <div class="info-card">
@@ -370,70 +84,18 @@
                             <li>12 aulas equipadas con pizarras acrílicas</li>
                             <li>1 dirección y 2 baterías de baño</li>
                             <li>Mesas y sillas para estudiantes</li>
-                            <li>Sillas unipersonales para docentes</li>
                         </ul>
-                        <p class="needs">Necesidades urgentes: <strong>Centro de cómputo, laboratorio y equipamiento moderno.</strong></p>
-                    </div>
-                    <!-- RECURSOS HUMANOS -->
-                    <div class="info-card">
-                        <h3>Recursos Humanos</h3>
-                        <ul class="team-list">
-                            <li>Director: 1</li>
-                            <li>Secretaria: 1</li>
-                            <li>Portero: 1</li>
-                            <li>Docentes: 13</li>
-                            <li>Estudiantes: 300</li>
-                        </ul>
-                        <p class="note">*En crecimiento constante.</p>
-                    </div>
-                    <!-- CONTEXTO COMUNITARIO -->
-                    <div class="info-card community-card">
-                        <h3>Contexto Comunitario</h3>
-                        <div class="community-content">
-                            <div class="icon-box">
-                                <img src="images/agricultura.png" alt="Ícono de agricultura" class="info-icon">
-                            </div>
-                            <div class="text-box">
-                                <h4>Capital de las Verduras</h4>
-                                <p>
-                                    La comunidad es conocida por su producción agrícola. La mayoría de los padres de familia trabajan en:
-                                    <ul>
-                                        <li>Cultivo de verduras (ej. lechugas, tomates)</li>
-                                        <li>Comercialización en mercados de Santa Cruz y Cochabamba</li>
-                                        <li>Servicio de taxi local</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- VIDA ESTUDIANTIL -->
-                    <div class="info-card student-card">
-                        <h3>Vida Estudiantil</h3>
-                        <div class="student-story">
-                            <div class="icon-box">
-                                <img src="images/estudiante.png" alt="Ícono de estudiante" class="info-icon">
-                            </div>
-                            <div class="text-box">
-                                <h4>Trabajo y Estudio: Un Equilibrio</h4>
-                                <p>
-                                    Nuestros estudiantes colaboran en:
-                                    <ul>
-                                        <li>Actividades agrícolas ("chacos") por las mañanas</li>
-                                        <li>Asisten a clases por las tardes</li>
-                                    </ul>
-                                    <strong>Misión:</strong> Formar jóvenes con conocimientos para un futuro mejor.
-                                </p>
-                            </div>
-                        </div>
+                        <p class="needs">Necesitamos: Centro de cómputo y laboratorio.</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <!-- SECCIÓN PROGRAMAS -->
         <section class="section" id="programas">
             <div class="imagen-destacada">
                 <img src="images/eventos.jpg" 
-                     alt="Presentación cultural de danzas folklóricas en el patio de la escuela"
+                     alt="Actividades culturales en el patio de la escuela" 
                      loading="lazy">
             </div>
             <div class="content">
@@ -442,106 +104,44 @@
                 <a href="eventos.html" class="button">Ver calendario</a>
             </div>
         </section>
+
         <!-- SECCIÓN CONTACTO -->
         <section class="section" id="contacto">
             <div class="imagen-destacada">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.5!2d-64.1212119!3d-18.0633661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s20250402.1!2sEgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D!5e0!3m2!1ses!2sbo!4v1718520000!5m2!1ses!2sbo" 
-                    width="100%" 
-                    height="250" 
                     style="border:0;" 
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    alt="Mapa de ubicación de la Unidad Educativa">
+                    allowfullscreen 
+                    loading="lazy">
                 </iframe>
             </div>
             <div class="content">
                 <h2>Contáctanos</h2>
                 <p>
-                    Dirección: Pueblo de Los Negros, <br>
-                    Municipio de Pampagrande, <br>
-                    Provincia Florida, Santa Cruz, Bolivia
+                    Dirección: Pueblo de Los Negros, Santa Cruz<br>
+                    Teléfono: +591 7XX XXX XXX
                 </p>
                 <a href="https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D" 
-                   class="button" target="_blank">Ver en Google Maps</a>
+                   class="button" target="_blank">Mapa</a>
                 <a href="contacto.html" class="button">Enviar mensaje</a>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
     <footer>
         <div class="social">
-            <a href="https://facebook.com/unidadeducativa" aria-label="Visita nuestra página de Facebook">
-                <img src="images/facebook.png" alt="Ícono Facebook" class="social-icon">
+            <a href="https://facebook.com/unidadeducativa" target="_blank">
+                <img src="images/facebook.png" alt="Facebook" class="social-icon">
             </a>
-            <a href="https://instagram.com/unidadeducativa" aria-label="Síguenos en Instagram">
-                <img src="images/instagram.png" alt="Ícono Instagram" class="social-icon">
+            <a href="https://instagram.com/unidadeducativa" target="_blank">
+                <img src="images/instagram.png" alt="Instagram" class="social-icon">
             </a>
         </div>
         <p class="copyright"></p>
     </footer>
-    <script>
-        // MENÚ HAMBURGUESA
-        const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        const toggleMenu = () => {
-            const isOpen = menu.classList.toggle('open');
-            menuToggle.setAttribute('aria-expanded', isOpen);
-            menu.setAttribute('aria-hidden', !isOpen);
-        };
-        menuToggle.addEventListener('click', toggleMenu);
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-                menu.classList.remove('open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menu.setAttribute('aria-hidden', 'true');
-            }
-        });
-        // MODO OSCURO
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        const darkIcon = darkModeToggle.querySelector('.icon');
-        const updateDarkMode = () => {
-            const isDark = document.body.classList.toggle('dark-mode');
-            localStorage.setItem('dark-mode', isDark);
-            darkIcon.textContent = isDark ? '☀️' : '🌙';
-        };
-        if (localStorage.getItem('dark-mode') === 'true') {
-            document.body.classList.add('dark-mode');
-            darkIcon.textContent = '☀️';
-        }
-        darkModeToggle.addEventListener('click', updateDarkMode);
-        // AÑADIR ABRIRLOGÍA "G.A.P." EN MÓVILES
-        document.querySelector('.logo').textContent = 
-            window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
-        // ACTUALIZAR AÑO DEL FOOTER
-        document.querySelector('.copyright').textContent = 
-            `© ${new Date().getFullYear()} Unidad Educativa Guido Arce Pimentel`;
-        // Cerrar menú con ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && menu.classList.contains('open')) {
-                toggleMenu();
-            }
-        });
-        // FUNCIÓN PARA MOSTRAR MAPA
-        function showMap() {
-            window.open(
-                "https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D",
-                "_blank"
-            );
-        }
-        // OPTIMIZACIÓN DE RESIZE
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            document.body.classList.add('resize-animation-stopper');
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                document.body.classList.remove('resize-animation-stopper');
-                // Actualizar abreviatura del logo al cambiar el tamaño
-                document.querySelector('.logo').textContent = 
-                    window.innerWidth <= 767 ? 'G.A.P.' : 'Guido Arce Pimentel';
-            }, 400);
-        });
-    </script>
+
+    <!-- Script externo -->
+    <script src="script.js"></script>
 </body>
 </html>
