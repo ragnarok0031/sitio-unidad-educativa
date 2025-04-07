@@ -1,45 +1,47 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const themeToggle = document.querySelector('.theme-toggle');
-  const body = document.body;
+    const btn = document.getElementById('modoOscuroBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    const body = document.body;
+    const MODO_OSCURO_KEY = 'modoOscuro';
+    const ICONOS = {
+        OSCURO: 'images/modo_oscuro.png', // Ruta del icono de noche
+        CLARO: 'images/modo_claro.png'   // Ruta del icono de día
+    };
 
-  // GESTIÓN DE MENÚ MÓVIL
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', 
-      mobileMenu.classList.contains('active').toString());
-  });
+    const toggleModoOscuro = () => {
+        body.classList.toggle('oscuro');
+        const esOscuro = body.classList.contains('oscuro');
+        localStorage.setItem(MODO_OSCURO_KEY, esOscuro);
+        actualizarIcono(esOscuro);
+    };
 
-  // Cerrar menú al hacer clic fuera
-  window.addEventListener('click', (e) => {
-    if (e.target === mobileMenu) {
-      mobileMenu.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+    const actualizarIcono = (esOscuro) => {
+        btn.innerHTML = `<img src="${esOscuro ? ICONOS.OSCURO : ICONOS.CLARO}" alt="${esOscuro ? 'Modo oscuro' : 'Modo claro'}">`;
+        btn.setAttribute('aria-pressed', esOscuro);
+        btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    };
+
+    const toggleMenu = () => {
+        const isHidden = menu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isHidden);
+    };
+
+    // Inicialización
+    const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
+    if (modoGuardado) {
+        body.classList.add('oscuro');
     }
-  });
+    actualizarIcono(modoGuardado);
 
-  // GESTIÓN DE TEMA
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('oscuro');
-    themeToggle.querySelector('img').src = 
-      body.classList.contains('oscuro') 
-        ? 'images/modo_oscuro.png' 
-        : 'images/modo_claro.png';
-    
-    themeToggle.setAttribute('aria-pressed', 
-      body.classList.contains('oscuro').toString());
-    
-    // Almacenar preferencia
-    localStorage.setItem('theme', body.classList.contains('oscuro') ? 'dark' : 'light');
-  });
-
-  // Recuperar tema guardado
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    body.classList.add('oscuro');
-    themeToggle.querySelector('img').src = 'images/modo_oscuro.png';
-    themeToggle.setAttribute('aria-pressed', 'true');
-  }
+    // Event listeners
+    btn.addEventListener('click', toggleModoOscuro);
+    menuBtn.addEventListener('click', toggleMenu);
+    // Agregar soporte para tecla espaciadora
+    btn.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            toggleModoOscuro();
+        }
+    });
 });
