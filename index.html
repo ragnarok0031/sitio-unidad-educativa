@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad Educativa Guido Arce Pimentel</title>
-    <meta name="description" content="Escuela rural en Los Negros, Santa Cruz. Infraestructura, programas y contacto.">
-    <meta name="keywords" content="educación rural, colegio Los Negros, Bolivia">
-    <meta property="og:title" content="Unidad Educativa Guido Arce Pimentel">
-    <meta property="og:image" content="images/unidad_educativa.png">
-    <!-- Enlaces a CSS y JS -->
+    <meta name="description" content="Colegio comunitario en Los Negros, Santa Cruz. Educación integral con enfoque en agricultura y valores ancestrales.">
+    <meta name="keywords" content="educación rural, proyecto socioproductivo, Santa Cruz Bolivia">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header con botón de modo oscuro -->
     <header>
         <div class="logo">Guido Arce Pimentel</div>
-        <button id="modoOscuroBtn">Modo Oscuro</button>
+        <button id="modoOscuroBtn">🌙 Modo Oscuro</button>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </header>
 
     <!-- Menú hamburguesa -->
@@ -28,26 +29,18 @@
         </ul>
     </nav>
 
-    <!-- Botón hamburguesa -->
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
-
     <!-- Contenido principal -->
     <main>
         <!-- SECCIÓN INICIO -->
         <section class="section" id="inicio">
             <div class="imagen-destacada">
                 <img src="images/unidad_educativa.png" 
-                     alt="Edificio principal de la Unidad Educativa" 
-                     loading="lazy">
+                     alt="Edificio principal de la Unidad Educativa Guido Arce Pimentel">
             </div>
             <div class="content">
-                <h2>Nuestra Escuela</h2>
-                <p>Educando para el futuro desde 2014</p>
-                <a href="sobre-nosotros.html" class="button">Conoce más</a>
+                <h2>Misión</h2>
+                <p>Fortalecer la formación de seres humanos responsables que valoren la conservación de la vida y la preservación del medio ambiente.</p>
+                <button class="button" onclick="showMap()">Ver Ubicación en Mapa</button>
             </div>
         </section>
 
@@ -55,39 +48,28 @@
         <section class="section" id="sobre-nosotros">
             <div class="imagen-destacada">
                 <img src="images/sobre-nosotros.jpg" 
-                     alt="Estudiantes y docentes en actividades educativas" 
-                     loading="lazy">
+                     alt="Estudiantes y docentes en actividades educativas">
             </div>
             <div class="content">
-                <h2>Quiénes Somos</h2>
-                <div class="info-grid">
-                    <!-- UBICACIÓN -->
-                    <div class="info-card">
-                        <h3>Ubicación</h3>
-                        <p>
-                            <strong>UNIDAD EDUCATIVA "GUIDO ARCE PIMENTEL"</strong><br>
-                            <small>
-                                Dirección: Pueblo de Los Negros, Municipio de Pampagrande<br>
-                                Colinda con:<br>
-                                - Al norte: Coliseo Los Negros<br>
-                                - Al sur: Mercado Nuevo Los Negros<br>
-                                - Al este: Avenida 6 de Agosto<br>
-                                - Al oeste: Cerro Natural
-                            </small>
-                        </p>
-                        <button class="button" onclick="showMap()">Ver Ubicación</button>
-                    </div>
-                    <!-- INFRAESTRUCTURA -->
-                    <div class="info-card">
-                        <h3>Infraestructura</h3>
-                        <ul class="features-list">
-                            <li>12 aulas equipadas con pizarras acrílicas</li>
-                            <li>1 dirección y 2 baterías de baño</li>
-                            <li>Mesas y sillas para estudiantes</li>
-                        </ul>
-                        <p class="needs">Necesitamos: Centro de cómputo y laboratorio.</p>
-                    </div>
-                </div>
+                <h2>Historia y Contexto</h2>
+                <p>
+                    Fundada en 2014, la U.E. Guido Arce Pimentel se ubica en el Pueblo de Los Negros, Municipio de Pampagrande, Santa Cruz. Colinda con el Coliseo Los Negros al norte y el Mercado Nuevo al sur. Cuenta con 13 docentes, 300 estudiantes y 12 aulas, pero enfrenta desafíos como la falta de un centro de cómputo y laboratorio moderno.
+                </p>
+                <h3>Proyectos Socioproductivos</h3>
+                <ul>
+                    <li>**"Un Árbol Una Vida"**: Arborización comunitaria y preservación ambiental.</li>
+                    <li>**Huerto Escolar**: Cultivo de verduras para educación nutricional y soberanía alimentaria.</li>
+                    <li>**Rescate de Saberes Ancestrales**: Uso de técnicas indígenas (ej. kayto con phusca) en matemáticas y ciencias.</li>
+                </ul>
+                <h3>Innovación Pedagógica</h3>
+                <p>
+                    Implementamos el Modelo Educativo Sociocomunitario Productivo (Ley 070) con enfoques como:
+                    <ul>
+                        <li>Investigación participativa (ej. análisis de la Chacana en matemáticas).</li>
+                        <li>Uso de TICs: Videos, diapositivas y mapas interactivos.</li>
+                        <li>Actividades prácticas: Construcción de hornos comunitarios y huertos.</li>
+                    </ul>
+                </p>
             </div>
         </section>
 
@@ -95,13 +77,31 @@
         <section class="section" id="programas">
             <div class="imagen-destacada">
                 <img src="images/eventos.jpg" 
-                     alt="Actividades culturales en el patio de la escuela" 
-                     loading="lazy">
+                     alt="Actividades culturales y educativas">
             </div>
             <div class="content">
-                <h2>Eventos Académicos</h2>
-                <p>Calendario de actividades 2023-2024</p>
-                <a href="eventos.html" class="button">Ver calendario</a>
+                <h2>Programas Destacados</h2>
+                <div class="programa-card">
+                    <h3>Proyecto Socioproductivo "Un Árbol Una Vida"</h3>
+                    <p>
+                        Objetivo: Mejorar el paisaje urbano y preservar el medio ambiente mediante arborización. 
+                        <strong>Logros:</strong> Plantación de 50 árboles en 2023 y participación de 150 familias.
+                    </p>
+                </div>
+                <div class="programa-card">
+                    <h3>Huerto Escolar</h3>
+                    <p>
+                        Actividades: Cultivo de lechugas, zanahorias y arvejas. 
+                        <strong>Impacto:</strong> Educación nutricional y reducción de desechos orgánicos.
+                    </p>
+                </div>
+                <div class="programa-card">
+                    <h3>Rescate de Saberes Ancestrales</h3>
+                    <p>
+                        Enfoque: Integrar conocimientos indígenas (quechua) en asignaturas como matemáticas y ciencias.
+                        <strong>Ejemplo:</strong> Uso de la "Chacana" para enseñar geometría y ecuaciones.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -116,14 +116,26 @@
                 </iframe>
             </div>
             <div class="content">
-                <h2>Contáctanos</h2>
+                <h2>Contacto y Colaboración</h2>
                 <p>
-                    Dirección: Pueblo de Los Negros, Santa Cruz<br>
-                    Teléfono: +591 7XX XXX XXX
+                    <strong>Dirección:</strong> Pueblo de Los Negros, Pampagrande, Santa Cruz<br>
+                    <strong>Teléfono:</strong> +591 7XX XXX XXX<br>
+                    <strong>Correo:</strong> contacto@unidadeducativa.bo
                 </p>
-                <a href="https://www.google.com/maps/place/UE+%22Guido+Arce+Pimentel%22/@-18.0653553,-64.1226254,1683m/data=!3m1!1e3!4m6!3m5!1s0x93f013006e9e0c51:0x5d3dfe25282e64aa!8m2!3d-18.0633661!4d-64.1212119!16s%2Fg%2F11ldr0xj4m?entry=ttu&g_ep=EgoyMDI1MDQwMi4xIKXMDSoASAFQAw%3D%3D" 
-                   class="button" target="_blank">Mapa</a>
-                <a href="contacto.html" class="button">Enviar mensaje</a>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>300+</h3>
+                        <p>Estudiantes</p>
+                    </div>
+                    <div class="stat">
+                        <h3>13</h3>
+                        <p>Docentes</p>
+                    </div>
+                    <div class="stat">
+                        <h3>2015</h3>
+                        <p>Año de inicio del proyecto socioproductivo</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -138,10 +150,10 @@
                 <img src="images/instagram.png" alt="Instagram" class="social-icon">
             </a>
         </div>
-        <p class="copyright"></p>
+        <p class="copyright">© {{year}} Unidad Educativa Guido Arce Pimentel</p>
     </footer>
 
-    <!-- Script externo -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
