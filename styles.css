@@ -1,281 +1,208 @@
-/* VARIABLES Y CONFIGURACIÓN GENERAL */
+/* VARIABLES */
 :root {
-  --color-fondo: #f3f8f4;
-  --color-principal: #4e946a;
-  --color-secundario: #a8d5ba;
-  --color-texto: #2c3e50;
-  --color-footer: #e0efe4;
-  --color-enlace-hover: #3b7d5a;
-  --transicion-default: 0.3s ease;
-  --border-radius-default: 8px;
+    --color-fondo: #f3f8f4;
+    --color-principal: #4e946a;
+    --color-secundario: #a8d5ba;
+    --color-texto: #2c3e50;
+    --color-footer: #e0efe4;
+    --color-enlace-hover: #3b7d5a;
+    --transicion: 0.3s ease;
+    --border-radius: 8px;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  transition: background-color var(--transicion-default), color var(--transicion-default);
-  font-size: 16px;
-}
-
-/* CABECERA PRINCIPAL */
+/* CABECERA */
 header {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--color-principal);
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background: var(--color-principal);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 header h1 {
-  font-size: 1.5rem;
-  margin: 0;
-  flex: 1;
-  text-align: center;
+    font-size: 1.5rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
 }
 
-/* ELEMENTOS MÓVILES */
+/* íCONOS DE MÓVIL */
 #gapMobile {
-  display: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  position: absolute;
-  top: 0.5rem;
-  left: 1rem;
+    display: none;
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
 }
 
-/* BOTONES DE MENÚ Y TEMA */
+/* BOTONES */
 #menuBtn, #modoOscuroBtn {
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: transform var(--transicion-default), color var(--transicion-default);
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 0.5rem;
 }
 
 #menuBtn {
-  margin-left: auto;
-  margin-right: 3rem;
+    right: 5rem;
 }
 
 #modoOscuroBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #modoOscuroBtn img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s;
 }
 
-/* MENÚ DE NAVEGACIÓN */
+/* MENÚ */
 nav {
-  background-color: var(--color-secundario);
-  padding: 1rem;
-  display: none;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  transition: left 0.3s ease;
+    background: var(--color-secundario);
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 9999;
 }
 
 nav.active {
-  left: 0;
+    left: 0;
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 nav a {
-  text-decoration: none;
-  color: var(--color-texto);
-  font-weight: bold;
-  padding: 0.8rem;
-  transition: color var(--transicion-default);
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: bold;
+    padding: 0.8rem;
+    transition: color var(--transicion);
 }
 
 nav a:hover {
-  color: var(--color-enlace-hover);
+    color: var(--color-enlace-hover);
 }
 
-/* SECCIONES PRINCIPALES */
+/* SECCIONES */
 main {
-  padding: 1.5rem;
+    padding: 1.5rem;
 }
 
 section {
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 
 footer {
-  background-color: var(--color-footer);
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
+    background: var(--color-footer);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
 }
 
 /* MODO OSCURO */
 body.oscuro {
-  --color-fondo: #1a2820;
-  --color-principal: #2d553e;
-  --color-secundario: #385d47;
-  --color-texto: #e0efe4;
-  --color-footer: #233329;
-  --color-enlace-hover: #4e946a;
+    --color-fondo: #1a2820;
+    --color-principal: #2d553e;
+    --color-secundario: #385d47;
+    --color-texto: #e0efe4;
 }
 
 body.oscuro header {
-  background-color: var(--color-principal);
+    background: var(--color-principal);
 }
 
 body.oscuro nav {
-  background-color: var(--color-secundario);
+    background: var(--color-secundario);
 }
 
 body.oscuro #modoOscuroBtn {
-  color: var(--color-texto);
+    color: var(--color-texto);
 }
 
-/* ESTILOS RESPONSIVOS */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  /* Ajustes generales */
-  body {
-      font-size: 14px;
-  }
+    header {
+        padding: 0.5rem 1rem;
+        flex-direction: row;
+    }
 
-  /* Cabecera móvil */
-  header {
-      padding: 0.5rem 1rem;
-      flex-direction: row;
-      justify-content: space-between;
-  }
+    header h1 {
+        display: none;
+    }
 
-  #gapMobile {
-      display: block;
-  }
+    #gapMobile {
+        display: block;
+    }
 
-  header h1 {
-      display: none;
-  }
+    /* ALINENACIÓN DE íCONOS */
+    #menuBtn, #modoOscuroBtn {
+        font-size: 1.2rem;
+        padding: 0.3rem;
+    }
 
-  #menuBtn {
-      margin-right: 2rem;
-  }
+    #menuBtn {
+        right: 4rem;
+    }
 
-  #menuBtn, #modoOscuroBtn {
-      font-size: 1.2rem;
-      padding: 0.3rem;
-  }
+    #modoOscuroBtn {
+        right: 1rem;
+        width: 28px;
+        height: 28px;
+    }
 
-  /* Menú móvil */
-  nav {
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      width: 100%;
-  }
+    /* MENÚ MÓVIL */
+    nav {
+        padding: 1rem;
+    }
 
-  nav li {
-      margin: 0.5rem 0;
-  }
-
-  nav a {
-      font-size: 1rem;
-  }
-
-  /* Contenido principal */
-  main {
-      padding: 1rem;
-  }
-
-  section {
-      margin-bottom: 2rem;
-  }
-
-  footer {
-      font-size: 0.8rem;
-      padding: 0.8rem;
-  }
-
-  /* Mapa y elementos */
-  .mapa-contenedor {
-      height: 250px;
-  }
-
-  .mapa-contenedor iframe {
-      height: 250px;
-  }
-
-  .school-image img {
-      max-width: 90%;
-      margin: 1rem auto;
-  }
-
-  /* Texto */
-  #sobre-la-escuela h2,
-  #ubicacion h2 {
-      font-size: 1.5rem;
-  }
-
-  #sobre-la-escuela p,
-  #ubicacion p {
-      font-size: 0.9rem;
-  }
+    nav a {
+        font-size: 1rem;
+    }
 }
 
-/* ACCESIBILIDAD [[5]][[7]][[10]] */
+/* ACCESIBILIDAD */
 button, a {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 button:hover, a:hover {
-  outline-color: var(--color-enlace-hover);
+    outline-color: var(--color-enlace-hover);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ERRORES CORREGIDOS */
-#menuBtn, #modoOscuroBtn {
-  position: relative; /* Solución [[1]] */
-  flex-shrink: 0; /* Evitar que se comprima */
-}
-
-header {
-  box-sizing: border-box; /* Asegurar padding [[3]] */
-}
-
+/* ANIMACIÓN */
 nav.active {
-  z-index: 1000; /* Prioridad sobre otros elementos */
-}
-
-/* ANIMACIONES [[8]][[9]] */
-nav.active {
-  animation: slideIn 0.3s ease;
+    animation: slideIn 0.3s ease;
 }
 
 @keyframes slideIn {
-  from { left: -100%; }
-  to { left: 0; }
+    from { left: -100%; }
+    to { left: 0; }
 }
