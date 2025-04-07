@@ -22,18 +22,22 @@ body {
 
 header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between; /* Distribuir los elementos */
-    padding: 1rem; /* Ajustar el padding */
+    padding: 0.5rem 1rem;
+    background-color: var(--color-principal);
+    color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: var(--color-principal);
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#modoOscuroBtn {
+header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#menuBtn, #modoOscuroBtn {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -41,9 +45,15 @@ header {
     cursor: pointer;
     padding: 0.5rem;
     border-radius: var(--border-radius-default);
-    transition: transform var(--transicion-default),
-                color var(--transicion-default),
-                background-color var(--transicion-default);
+    transition: transform var(--transicion-default), color var(--transicion-default);
+}
+
+#menuBtn:hover, #modoOscuroBtn:hover {
+    transform: scale(1.2);
+    color: var(--color-secundario);
+}
+
+#modoOscuroBtn {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -72,17 +82,14 @@ nav ul {
 }
 
 nav li {
-    display: inline-block;
-    margin: 0 1rem;
+    margin: 0.5rem 0;
 }
 
 nav a {
     text-decoration: none;
     color: var(--color-texto);
     font-weight: bold;
-    transition: color 0.3s ease;
-    position: relative;
-    padding-bottom: 2px;
+    transition: color var(--transicion-default);
 }
 
 nav a::after {
