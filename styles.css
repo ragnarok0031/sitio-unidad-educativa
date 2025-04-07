@@ -19,18 +19,19 @@ body {
                 color var(--transicion-default);
 }
 
-/* Ajustes para la barra de inicio */
+/* Estilos generales para el header */
 header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-principal);
-    color: white;
-    position: sticky;
+    justify-content: space-between; /* Distribuir los elementos */
+    align-items: center; /* Alinear verticalmente */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    background-color: var(--color-principal); /* Fondo verde */
+    color: white; /* Texto blanco */
+    position: sticky; /* Fijar en la parte superior */
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+    z-index: 1000; /* Asegurar que esté encima de otros elementos */
+    box-sizing: border-box; /* Incluir padding en el ancho total */
+    width: 100%; /* Asegurar que abarque todo el ancho */
 }
 
 header h1 {
@@ -40,19 +41,23 @@ header h1 {
     text-align: center; /* Centrar el título */
 }
 
-#menuBtn, #modoOscuroBtn {
+/* Estilo para G.A.P en móviles */
+#gapMobile {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    margin-right: auto; /* Alinear a la izquierda */
+}
+
+/* Estilo para el botón de menú */
+#menuBtn {
+    font-size: 1.5rem;
     background: none;
     border: none;
-    font-size: 1.5rem;
     color: white;
     cursor: pointer;
     padding: 0.5rem;
-    border-radius: var(--border-radius-default);
-    transition: transform var(--transicion-default), color var(--transicion-default);
-}
-
-#menuBtn {
-    margin-right: auto; /* Alinear el botón de menú a la izquierda */
+    margin-left: 1rem; /* Separar del texto G.A.P */
 }
 
 #modoOscuroBtn {
@@ -68,6 +73,22 @@ header h1 {
     position: absolute;
     top: 1rem;
     right: 1rem;
+}
+
+/* Estilo para el botón de modo oscuro */
+#modoOscuroBtn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem; /* Separar del menú hamburguesa */
+}
+
+#modoOscuroBtn img {
+    width: 24px;
+    height: 24px;
 }
 
 #modoOscuroBtn:hover {
