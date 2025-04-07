@@ -1,4 +1,4 @@
-/* Variables de color */
+/* Variables globales */
 :root {
     --color-fondo: #f3f8f4;
     --color-principal: #4e946a;
@@ -20,7 +20,6 @@ body {
 /* Header */
 header {
     background-color: var(--color-principal);
-    color: white;
     padding: 1.5rem;
     text-align: center;
     position: sticky;
@@ -65,91 +64,54 @@ header {
     transform: translateX(0);
 }
 
-.menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.menu li {
-    margin: 1rem 0;
-}
-
 .menu a {
     color: var(--color-texto);
     font-weight: bold;
     text-decoration: none;
+    padding: 1rem;
+    display: block;
 }
 
-/* Botón de modo oscuro */
-#modoOscuroBtn {
-    background: white;
-    color: var(--color-principal);
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Estilos generales */
+/* Contenido principal */
 .section {
     padding: 2rem;
     margin: 1rem auto;
     max-width: 800px;
 }
 
-.imagen-destacada {
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
 .imagen-destacada img {
     width: 100%;
-    height: 100%;
+    height: 300px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .content {
-    text-align: center;
+    text-align: justify;
     padding: 1rem;
 }
 
-.button {
-    background-color: var(--color-principal);
-    color: white;
-    padding: 0.8rem 1.5rem;
+/* Estadísticas */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.stat {
+    text-align: center;
+    padding: 1rem;
     border-radius: 5px;
-    margin: 0.5rem;
-    cursor: pointer;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.button:hover {
-    opacity: 0.9;
-}
-
+/* Footer */
 footer {
     background-color: var(--color-footer);
     padding: 1rem;
     text-align: center;
     font-size: 0.9rem;
-}
-
-.social {
-    margin-bottom: 1rem;
-}
-
-.social-icon {
-    width: 35px;
-    height: 35px;
-    margin: 0 0.5rem;
-    transition: transform 0.3s;
-}
-
-.social-icon:hover {
-    transform: scale(1.1);
 }
 
 /* Modo oscuro */
@@ -159,7 +121,7 @@ body.oscuro {
     --color-footer: #1f2e26;
 }
 
-/* Estilos para móviles */
+/* Responsive */
 @media (max-width: 767px) {
     .menu-toggle {
         display: block;
@@ -167,15 +129,12 @@ body.oscuro {
     header {
         padding: 1rem;
     }
-    .logo {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-    }
-    .menu {
-        background-color: var(--color-secundario);
-    }
     .social-icon {
         width: 30px;
         height: 30px;
+    }
+    .stats {
+        flex-direction: column;
+        align-items: center;
     }
 }
