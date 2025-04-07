@@ -369,6 +369,17 @@ body.oscuro #ubicacion h2 {
     display: none; /* Ocultar por defecto */
 }
 
+/* Mostrar G.A.P solo en móviles */
+@media (max-width: 768px) {
+    #gapMobile {
+        display: block; /* Mostrar en dispositivos móviles */
+    }
+
+    header h1 {
+        display: none; /* Ocultar el título largo */
+    }
+}
+
 @media (max-width: 768px) {
     #gapMobile {
         display: block; /* Mostrar solo en dispositivos móviles */
@@ -436,3 +447,28 @@ body.oscuro #ubicacion h2 {
 /* Ajustes para el banner en móviles */
 @media (max-width: 768px) {
     header {
+        flex-direction: row; /* Mantener los elementos en fila */
+        justify-content: space-between; /* Distribuir espacio entre los elementos */
+        align-items: center; /* Alinear verticalmente */
+        padding: 0.5rem 1rem; /* Ajustar el padding */
+    }
+
+    #menuBtn, #modoOscuroBtn {
+        font-size: 1.2rem; /* Reducir el tamaño de los botones */
+        padding: 0.3rem; /* Reducir el padding */
+    }
+
+    h1 {
+        font-size: 1rem; /* Reducir el tamaño del título */
+        text-align: center; /* Centrar el título */
+        flex: 1; /* Permitir que ocupe espacio */
+    }
+
+    #menuBtn {
+        margin-right: 0; /* Eliminar márgenes innecesarios */
+    }
+
+    #modoOscuroBtn {
+        margin-left: 0; /* Eliminar márgenes innecesarios */
+    }
+}
