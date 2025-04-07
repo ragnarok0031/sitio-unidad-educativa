@@ -31,6 +31,7 @@ header {
   top: 0;
   z-index: 1000;
   transition: all 0.3s ease;
+  position: relative; /* Agregado para contener elementos absolutos */
 }
 
 header h1 {
@@ -60,17 +61,16 @@ header h1 {
   cursor: pointer;
   padding: 0.5rem;
   transition: transform var(--transicion-default), color var(--transicion-default);
+  position: absolute; /* Usar posición absoluta para ambos */
+  top: 1rem; /* Alineación vertical */
 }
 
 #menuBtn {
-  margin-left: auto;
-  margin-right: 3rem;
+  right: 5rem; /* Espacio para el ícono de modo oscuro */
 }
 
 #modoOscuroBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  right: 1rem; /* Pegado al borde derecho */
 }
 
 #modoOscuroBtn img {
@@ -156,92 +156,96 @@ body.oscuro #modoOscuroBtn {
 
 /* ESTILOS RESPONSIVOS */
 @media (max-width: 768px) {
-  /* Ajustes generales */
   body {
-      font-size: 14px;
+    font-size: 14px;
   }
 
   /* Cabecera móvil */
   header {
-      padding: 0.5rem 1rem;
-      flex-direction: row;
-      justify-content: space-between;
+    padding: 0.5rem 1rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   #gapMobile {
-      display: block;
+    display: block;
   }
 
   header h1 {
-      display: none;
+    display: none;
+  }
+
+  /* ALINEACIÓN DE íCONOS */
+  #menuBtn, #modoOscuroBtn {
+    font-size: 1.2rem;
+    padding: 0.3rem;
   }
 
   #menuBtn {
-      margin-right: 2rem;
+    right: 4rem; /* Espacio para el ícono de modo oscuro en móvil */
   }
 
-  #menuBtn, #modoOscuroBtn {
-      font-size: 1.2rem;
-      padding: 0.3rem;
+  #modoOscuroBtn {
+    right: 1rem;
   }
 
   /* Menú móvil */
   nav {
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
   }
 
   nav li {
-      margin: 0.5rem 0;
+    margin: 0.5rem 0;
   }
 
   nav a {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   /* Contenido principal */
   main {
-      padding: 1rem;
+    padding: 1rem;
   }
 
   section {
-      margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   footer {
-      font-size: 0.8rem;
-      padding: 0.8rem;
+    font-size: 0.8rem;
+    padding: 0.8rem;
   }
 
   /* Mapa y elementos */
   .mapa-contenedor {
-      height: 250px;
+    height: 250px;
   }
 
   .mapa-contenedor iframe {
-      height: 250px;
+    height: 250px;
   }
 
   .school-image img {
-      max-width: 90%;
-      margin: 1rem auto;
+    max-width: 90%;
+    margin: 1rem auto;
   }
 
   /* Texto */
   #sobre-la-escuela h2,
   #ubicacion h2 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   #sobre-la-escuela p,
   #ubicacion p {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 }
 
-/* ACCESIBILIDAD [[5]][[7]][[10]] */
+/* ACCESIBILIDAD */
 button, a {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -258,19 +262,19 @@ img {
 
 /* ERRORES CORREGIDOS */
 #menuBtn, #modoOscuroBtn {
-  position: relative; /* Solución [[1]] */
-  flex-shrink: 0; /* Evitar que se comprima */
+  position: absolute;
+  flex-shrink: 0;
 }
 
 header {
-  box-sizing: border-box; /* Asegurar padding [[3]] */
+  box-sizing: border-box;
 }
 
 nav.active {
-  z-index: 1000; /* Prioridad sobre otros elementos */
+  z-index: 1000;
 }
 
-/* ANIMACIONES [[8]][[9]] */
+/* ANIMACIONES */
 nav.active {
   animation: slideIn 0.3s ease;
 }
