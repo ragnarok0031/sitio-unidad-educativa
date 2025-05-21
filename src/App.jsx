@@ -1,47 +1,54 @@
 "use client";
-import React, { useState, useEffect, useCallback } from 'react';
-import { useTranslations } from './hooks/useTranslations';
-import { useTheme } from './hooks/useTheme';
-import { useForm } from './hooks/useForm';
+import React, { useState, useEffect, useRef } from "react";
 
 function App() {
-  const { language, setLanguage, t } = useTranslations();
-  const { darkMode, toggleDarkMode } = useTheme();
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("darkMode") === "true";
+    }
+    return false;
+  });
   const [menuOpen, setMenuOpen] = useState(false);
-  const { formData, formStatus, handleSubmit } = useForm();
+  const menuRef = useRef(null);
 
-  // Download functionality
-  const downloadSourceCode = useCallback(() => {
-    // ...existing download code...
-  }, []);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("darkMode", darkMode);
+      document.documentElement.classList.toggle("dark", darkMode);
+    }
+  }, [darkMode]);
 
   return (
-    <div className={`min-h-screen ${darkMode ? "dark" : "light"}`} data-theme={darkMode ? "dark" : "light"}>
+    <div className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-800"} transition-colors duration-300`}>
       {/* Header */}
-      <header className="fixed w-full z-50 bg-surface border-b border-border">
-        <nav className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold">U.E. Guido Arce Pimentel</h1>
-            
-            <button
-              onClick={toggleDarkMode}
-              className="theme-toggle"
-              aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
-            >
-              <i className={`fas ${darkMode ? "fa-sun" : "fa-moon"}`}></i>
-            </button>
-          </div>
+      <header className="sticky top-0 z-50 bg-[#2C5530] text-white p-4 shadow-lg">
+        {/* Header content */}
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-xl font-bold">U.E. Guido Arce Pimentel</h1>
+          
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="theme-toggle"
+            aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
+          >
+            <i className={`fas ${darkMode ? "fa-sun" : "fa-moon"}`}></i>
+          </button>
+        </div>
+        <nav ref={menuRef} className={`${menuOpen ? "block" : "hidden"} md:block mt-4 md:mt-0 transition-all duration-300`}>
+          {/* Navigation content */}
         </nav>
       </header>
 
-      {/* Main content */}
-      <main className="pt-20">
-        // ...existing main content...
-      </main>
+      {/* Sections */}
+      <section id="inicio" className="bg-[#4A7856] text-white py-20">
+        {/* Existing inicio section content */}
+      </section>
+
+      {/* Remaining sections */}
 
       {/* Footer */}
-      <footer className={`${darkMode ? "bg-[#111111] border-t border-[#333333]" : "bg-[#f5f5f5] border-t border-[#dddddd]"} py-6 md:py-8`}>
-        // ...existing footer code...
+      <footer className="bg-[#2C5530] text-white py-8">
+        {/* Existing footer content */}
       </footer>
     </div>
   );
