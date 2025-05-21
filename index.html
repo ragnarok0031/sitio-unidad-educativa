@@ -1,183 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unidad Educativa Guido Arce Pimentel</title>
-  <!-- Agregar meta tags para SEO -->
-  <meta name="description" content="Unidad Educativa Guido Arce Pimentel en Los Negros, Bolivia. Educación integral en un entorno natural.">
-  <meta name="keywords" content="escuela, educación, Los Negros, Bolivia, Guido Arce Pimentel">
-  
-  <!-- Agregar favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
-  <!-- Optimizar carga de recursos -->
-  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-  <!-- APIs externos -->
-  <script src="https://api.openweathermap.org/javascript/weather.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.E. Guido Arce Pimentel</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header role="banner" class="main-header">
-    <div class="header-top">
-      <div class="logo">
-        <img src="images/logo.png" alt="Logo GAP">
-        <span id="gapMobile">G.A.P</span>
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Logo GAP" class="logo">
+        <div class="school-name">
+          <h1>U.E. Guido Arce Pimentel</h1>
+          <span class="subtitle">Excelencia en Educación</span>
+        </div>
       </div>
       
-      <div class="header-controls">
-        <div class="weather-widget" id="weatherWidget"></div>
-        <select id="languageSelect" aria-label="Seleccionar idioma">
-          <option value="es">ES</option>
-          <option value="en">EN</option>
-        </select>
-        <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro">
-          <img src="images/modo_claro.png" alt="Modo claro">
+      <nav class="main-nav">
+        <button class="menu-toggle" aria-label="Menú">
+          <span class="hamburger"></span>
         </button>
-      </div>
-      
-      <button id="menuBtn" aria-label="Abrir menú">&#9776;</button>
-    </div>
-
-    <div class="header-bottom">
-      <nav role="navigation" id="menu">
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
+        <ul class="nav-links">
+          <li><a href="#inicio" class="active">Inicio</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#academico">Académico</a></li>
+          <li><a href="#noticias">Noticias</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
-      <div class="search-bar">
-        <input type="search" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit" aria-label="Realizar búsqueda">🔍</button>
-      </div>
     </div>
   </header>
 
-  <main role="main">
+  <main>
     <section id="hero" class="hero-section">
       <div class="hero-content">
-        <h1>Formando Líderes del Mañana</h1>
-        <p>Comprometidos con la excelencia académica y el desarrollo integral</p>
-        <button class="cta-button">Conoce más</button>
+        <h2>Formando el Futuro</h2>
+        <p>Educación integral con valores y excelencia académica</p>
+        <a href="#inscripcion" class="cta-button">Inscripciones Abiertas</a>
       </div>
     </section>
 
-    <section id="inicio">
-      <h2>Bienvenidos</h2>
-      <p>Explora información de nuestra unidad educativa desde Los Neggggros, Bolivia.</p>
-    </section>
-
-    <section id="nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>La Unidad Educativa Guido Arce Pimentel ofrece una educación integral en un entorno natural y acogedor.</p>
-    </section>
-
-    <section id="infraestructura">
-      <h2>Infraestructura</h2>
-      <p>Contamos con aulas equipadas, canchas deportivas y espacios verdes.</p>
-    </section>
-
-    <section id="contexto">
-      <h2>Contexto Comunitario</h2>
-      <p>La escuela se sitúa en un contexto agrícola, rodeada por chacos y familias trabajadoras.</p>
-    </section>
-
-    <section id="sobre-la-escuela">
-      <h2>Sobre la Unidad Educativa "Guido Arce Pimentel"</h2>
-      <p>
-        Ubicada en la comunidad de <strong>Los Negros</strong>, municipio de Pampagrande, esta institución educativa se encuentra en un entorno natural rodeado de chacos y familias trabajadoras. 
-        Forma parte del distrito educativo de Pampagrande, a 172 km de Santa Cruz de la Sierra.
-      </p>
-      <div class="school-image">
-        <img src="images/unidad_educativa.png" alt="Unidad Educativa" class="img-fluid">
-      </div>
-      <h3>Infraestructura y Recursos</h3>
-      <p>
-        Aunque cuenta con recursos limitados y una infraestructura que no cumple con los estándares de la Ley Educativa 070, la escuela se esfuerza por brindar una educación integral y significativa.
-      </p>
-      <h3>Proyecto Socioproductivo</h3>
-      <p>
-        Desde 2015, la escuela implementa un <strong>Proyecto Socioproductivo</strong> que conecta la educación con las necesidades de la comunidad. Actividades como el cultivo de hortalizas y la elaboración de recetarios con productos locales fortalecen el vínculo entre estudiantes y su entorno.
-      </p>
-      <h3>Prácticas Pedagógicas</h3>
-      <p>
-        Los docentes integran materiales del contexto, como arcilla y elementos naturales, en actividades prácticas. Además, se promueven valores culturales mediante saludos en quechua y la recopilación de tradiciones locales.
-      </p>
-      <h3>Logros</h3>
-      <p>
-        La escuela ha logrado un aprendizaje significativo al conectar contenidos teóricos con prácticas comunitarias, fortaleciendo valores como el trabajo en equipo y el respeto por la naturaleza.
-      </p>
-    </section>
-
-    <section id="ubicacion">
-      <h2>Nuestra Ubicación</h2>
-      <div class="mapa-contenedor">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3794.8657657559477!2d-64.1237868!3d-18.0633661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f013006e9e0c51%3A0x5d3dfe25282e64aa!2sUE%20%22Guido%20Arce%20Pimentel%22!5e0!3m2!1ses!2sbo!4v1712454789045!5m2!1ses!2sbo"
-          width="100%" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </section>
-
-    <section id="academico" class="academic-section">
-      <h2>Oferta Académica</h2>
-      <div class="academic-grid">
-        <div class="academic-level">
-          <h3>Educación Básica</h3>
-          <ul>
-            <li>Desarrollo temprano</li>
-            <li>Fundamentos sólidos</li>
-            <li>Aprendizaje lúdico</li>
-          </ul>
+    <section id="caracteristicas" class="features-section">
+      <div class="features-grid">
+        <div class="feature-card">
+          <img src="images/icons/education.svg" alt="">
+          <h3>Educación Integral</h3>
+          <p>Desarrollo académico y personal completo</p>
         </div>
-        <div class="academic-level">
-          <h3>Educación Media</h3>
-          <ul>
-            <li>Preparación universitaria</li>
-            <li>Proyectos prácticos</li>
-            <li>Orientación vocacional</li>
-          </ul>
+        <div class="feature-card">
+          <img src="images/icons/values.svg" alt="">
+          <h3>Valores</h3>
+          <p>Formación basada en principios sólidos</p>
+        </div>
+        <div class="feature-card">
+          <img src="images/icons/community.svg" alt="">
+          <h3>Comunidad</h3>
+          <p>Ambiente familiar y acogedor</p>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="contact-section">
-      <h2>Contáctanos</h2>
-      <form id="contactForm">
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar mensaje</button>
-      </form>
+    <section id="noticias" class="news-section">
+      <h2>Últimas Noticias</h2>
+      <div class="news-grid">
+        <!-- Contenido dinámico de noticias -->
+      </div>
     </section>
   </main>
 
-  <footer role="contentinfo">
+  <footer class="main-footer">
     <div class="footer-content">
-      <div class="contact-info">
-        <h3>Contacto</h3>
-        <p>Los Negros, Pampagrande, Bolivia</p>
+      <div class="footer-info">
+        <img src="images/logo.png" alt="Logo GAP" class="footer-logo">
+        <p>Los Negros, Pampagrande<br>Santa Cruz - Bolivia</p>
+      </div>
+      <div class="footer-links">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#calendario">Calendario Académico</a></li>
+          <li><a href="#documentos">Documentos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contáctanos</h4>
         <p>Tel: (591) 123-4567</p>
+        <p>Email: info@gap.edu.bo</p>
       </div>
-      <div class="social-media">
-        <h3>Síguenos</h3>
-        <a href="#" aria-label="Facebook">📱</a>
-        <a href="#" aria-label="Twitter">🐦</a>
-        <a href="#" aria-label="Instagram">📸</a>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel</p>
-      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 U.E. Guido Arce Pimentel. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- Cargar script al final y con defer -->
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
