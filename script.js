@@ -44,4 +44,40 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleModoOscuro();
         }
     });
+
+    // Clima
+    async function getWeather() {
+        const WEATHER_API_KEY = 'YOUR_API_KEY';
+        const city = 'Pampagrande';
+        try {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}`);
+            const data = await response.json();
+            document.getElementById('weatherWidget').innerHTML = `${data.main.temp}°C ${data.weather[0].main}`;
+        } catch (error) {
+            console.error('Error fetching weather:', error);
+        }
+    }
+
+    // Traductor
+    const languageSelect = document.getElementById('languageSelect');
+    languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        // Implementar lógica de traducción
+    });
+
+    // Formulario de contacto
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        // Implementar lógica de envío de formulario
+    });
+
+    // Menú móvil
+    document.getElementById('menuBtn').addEventListener('click', () => {
+        document.getElementById('menu').classList.toggle('show');
+    });
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+        getWeather();
+    });
 });

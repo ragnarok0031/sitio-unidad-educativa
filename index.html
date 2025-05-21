@@ -13,30 +13,56 @@
   
   <!-- Optimizar carga de recursos -->
   <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <!-- APIs externos -->
+  <script src="https://api.openweathermap.org/javascript/weather.js" defer></script>
 </head>
 <body>
-  <!-- Agregar roles ARIA para mejor accesibilidad -->
-  <header role="banner">
-    <span id="gapMobile">G.A.P</span> <!-- Texto corto para móviles -->
-    <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-      &#9776; <!-- Ícono de menú -->
-    </button>
-    <h1>Unidad Educativa G.A.P</h1>
-    <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro" aria-pressed="false">
-      <img src="images/modo_claro.png" alt="Modo claro">
-    </button>
+  <header role="banner" class="main-header">
+    <div class="header-top">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo GAP">
+        <span id="gapMobile">G.A.P</span>
+      </div>
+      
+      <div class="header-controls">
+        <div class="weather-widget" id="weatherWidget"></div>
+        <select id="languageSelect" aria-label="Seleccionar idioma">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+        </select>
+        <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro">
+          <img src="images/modo_claro.png" alt="Modo claro">
+        </button>
+      </div>
+      
+      <button id="menuBtn" aria-label="Abrir menú">&#9776;</button>
+    </div>
+
+    <div class="header-bottom">
+      <nav role="navigation" id="menu">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#academico">Académico</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="search" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit" aria-label="Realizar búsqueda">🔍</button>
+      </div>
+    </div>
   </header>
 
-  <nav role="navigation" id="menu" class="hidden">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Sobre Nosotros</a></li>
-      <li><a href="#infraestructura">Infraestructura</a></li>
-      <li><a href="#contexto">Contexto Comunitario</a></li>
-    </ul>
-  </nav>
-
   <main role="main">
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1>Formando Líderes del Mañana</h1>
+        <p>Comprometidos con la excelencia académica y el desarrollo integral</p>
+        <button class="cta-button">Conoce más</button>
+      </div>
+    </section>
+
     <section id="inicio">
       <h2>Bienvenidos</h2>
       <p>Explora información de nuestra unidad educativa desde Los Neggggros, Bolivia.</p>
@@ -98,10 +124,57 @@
         </iframe>
       </div>
     </section>
+
+    <section id="academico" class="academic-section">
+      <h2>Oferta Académica</h2>
+      <div class="academic-grid">
+        <div class="academic-level">
+          <h3>Educación Básica</h3>
+          <ul>
+            <li>Desarrollo temprano</li>
+            <li>Fundamentos sólidos</li>
+            <li>Aprendizaje lúdico</li>
+          </ul>
+        </div>
+        <div class="academic-level">
+          <h3>Educación Media</h3>
+          <ul>
+            <li>Preparación universitaria</li>
+            <li>Proyectos prácticos</li>
+            <li>Orientación vocacional</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <h2>Contáctanos</h2>
+      <form id="contactForm">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
   </main>
 
   <footer role="contentinfo">
-    <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel. Todos los derechos reservados.</p>
+    <div class="footer-content">
+      <div class="contact-info">
+        <h3>Contacto</h3>
+        <p>Los Negros, Pampagrande, Bolivia</p>
+        <p>Tel: (591) 123-4567</p>
+      </div>
+      <div class="social-media">
+        <h3>Síguenos</h3>
+        <a href="#" aria-label="Facebook">📱</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Instagram">📸</a>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Cargar script al final y con defer -->
