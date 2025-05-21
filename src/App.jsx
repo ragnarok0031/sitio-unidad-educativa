@@ -16,10 +16,22 @@ function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${darkMode ? "bg-[#000000] text-[#ffffff]" : "bg-[#ffffff] text-[#000000]"}`}>
+    <div className={`min-h-screen ${darkMode ? "dark" : "light"}`} data-theme={darkMode ? "dark" : "light"}>
       {/* Header */}
-      <header className="fixed w-full bg-white shadow-sm z-50">
-        // ...existing header code...
+      <header className="fixed w-full z-50 bg-surface border-b border-border">
+        <nav className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-xl font-bold">U.E. Guido Arce Pimentel</h1>
+            
+            <button
+              onClick={toggleDarkMode}
+              className="theme-toggle"
+              aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
+            >
+              <i className={`fas ${darkMode ? "fa-sun" : "fa-moon"}`}></i>
+            </button>
+          </div>
+        </nav>
       </header>
 
       {/* Main content */}
