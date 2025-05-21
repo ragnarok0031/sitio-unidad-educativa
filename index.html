@@ -6,15 +6,18 @@
   <title>Unidad Educativa Guido Arce Pimentel</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="font-inter">
   <!-- Header -->
-  <header role="banner">
+  <header class="fixed w-full bg-[#4e946a] text-white">
     <div class="header-container">
-      <!-- Logo y nombre -->
       <div class="logo-container">
         <img src="images/logo.png" alt="Logo UEGAP" class="logo">
-        <h1 class="school-name">Unidad Educativa G.A.P</h1>
+        <h1 class="school-name lg:block hidden">Unidad Educativa G.A.P</h1>
+        <span class="lg:hidden block" id="gapMobile">G.A.P</span>
       </div>
 
       <!-- Navegación principal -->
@@ -68,7 +71,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section" id="inicio">
+  <section class="hero-section" style="background-image: url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg')">
     <div class="hero-content">
       <h2 class="hero-title">Formando Líderes del Mañana</h2>
       <p class="hero-subtitle">Excelencia académica en un entorno natural y comunitario</p>

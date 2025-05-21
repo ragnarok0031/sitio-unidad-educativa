@@ -1,3 +1,17 @@
+:root {
+  --color-primary: #4e946a;
+  --color-secondary: #3a7050;
+  --color-text: #333333;
+  --color-background: #ffffff;
+}
+
+[data-theme="dark"] {
+  --color-primary: #2d5540;
+  --color-secondary: #1e3a2b;
+  --color-text: #ffffff;
+  --color-background: #1a1a1a;
+}
+
 /* Estilos para el header */
 .header-container {
     display: flex;
@@ -5,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    background-color: var(--color-principal);
+    background-color: var(--color-primary);
 }
 
 .logo-container {
@@ -44,7 +58,7 @@
 }
 
 .desktop-nav a:hover {
-    color: var(--color-secundario);
+    color: var(--color-secondary);
 }
 
 .header-controls {
@@ -90,18 +104,15 @@
 
 .language-selector button.active {
     background-color: white;
-    color: var(--color-principal);
+    color: var(--color-primary);
 }
 
 /* Estilos para la sección hero */
 .hero-section {
-    background: url('../images/hero-students.jpg') no-repeat center center/cover;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    text-align: center;
+  @apply min-h-screen bg-cover bg-center flex items-center justify-center text-white relative;
+  &::before {
+    @apply content-[''] absolute inset-0 bg-black bg-opacity-50;
+  }
 }
 
 .hero-content {
@@ -124,7 +135,7 @@
 }
 
 .btn-conoce-mas {
-    background-color: var(--color-secundario);
+    background-color: var(--color-secondary);
     color: white;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -150,7 +161,7 @@
 }
 
 .section-title h2 {
-    color: var(--color-principal);
+    color: var(--color-primary);
     margin-bottom: 1rem;
 }
 
@@ -185,7 +196,7 @@
 }
 
 .card h3 {
-    color: var(--color-principal);
+    color: var(--color-primary);
     margin-bottom: 1rem;
 }
 
@@ -196,7 +207,7 @@
 
 .btn-descargar {
     display: inline-block;
-    background-color: var(--color-secundario);
+    background-color: var(--color-secondary);
     color: white;
     padding: 0.8rem 1.5rem;
     border-radius: var(--border-radius-default);
@@ -211,7 +222,7 @@
 /* Estilos para la sección Académica */
 .academic-section {
     padding: 3rem 1rem;
-    background-color: var(--color-secundario);
+    background-color: var(--color-secondary);
 }
 
 .academic-columns {
@@ -231,7 +242,7 @@
 }
 
 .column h3 {
-    color: var(--color-principal);
+    color: var(--color-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -250,7 +261,7 @@
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--color-principal);
+    color: var(--color-primary);
 }
 
 /* Estilos para la sección Contacto */
@@ -288,7 +299,7 @@
 }
 
 .btn-enviar {
-    background-color: var(--color-principal);
+    background-color: var(--color-primary);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -318,7 +329,7 @@
 }
 
 .footer-column h3 {
-    color: var(--color-principal);
+    color: var(--color-primary);
     margin-bottom: 1rem;
 }
 
@@ -341,7 +352,7 @@
 }
 
 .footer-bottom {
-    background-color: var(--color-principal);
+    background-color: var(--color-primary);
     color: white;
     padding: 1rem;
     text-align: center;
@@ -359,5 +370,5 @@
 }
 
 .footer-links a:hover {
-    color: var(--color-secundario);
+    color: var(--color-secondary);
 }
