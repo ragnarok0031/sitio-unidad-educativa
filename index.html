@@ -1,62 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Unidad Educativa Guido Arce Pimentel</title>
-  <!-- Vinculación al archivo CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
 </head>
 <body>
-  <!-- Encabezado -->
-  <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo de la Unidad Educativa Guido Arce Pimentel">
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-container">
+      <!-- Logo y nombre -->
+      <div class="logo-container">
+        <img src="images/logo.png" alt="Logo UEGAP" class="logo">
+        <h1 class="school-name">Unidad Educativa G.A.P</h1>
+      </div>
+
+      <!-- Navegación principal -->
+      <nav role="navigation" class="desktop-nav">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#academico">Académico</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Controles adicionales -->
+      <div class="header-controls">
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Buscar..." aria-label="Buscar en el sitio">
+        </div>
+        
+        <div class="weather-widget" id="weatherWidget">
+          <!-- Aquí se cargará la información del clima dinámicamente -->
+          <div class="weather-info">
+            <span id="weather-temp">--°C</span>
+            <img id="weather-icon" src="" alt="Clima">
+          </div>
+        </div>
+
+        <div class="language-selector">
+          <button id="lang-es" class="active">Español</button>
+          <button id="lang-en">English</button>
+        </div>
+
+        <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro" aria-pressed="false">
+          <img src="images/modo_claro.png" alt="Modo claro">
+        </button>
+
+        <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" class="menu-btn">
+          &#9776;
+        </button>
+      </div>
     </div>
-    <button id="menuBtn" aria-label="Abrir menú">☰</button>
-    <h1>Unidad Educativa Guido Arce Pimentel</h1>
-    <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro">🌙</button>
+
+    <!-- Menú móvil -->
+    <nav role="navigation" id="menu" class="hidden">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#academico">Académico</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Menú de navegación -->
-  <nav id="menu" class="hidden">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- Sección Hero -->
-  <section id="inicio" class="hero">
-    <h2>Bienvenidos</h2>
-    <p>Formando líderes del mañana en un entorno educativo de calidad.</p>
+  <!-- Hero Section -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-content">
+      <h2 class="hero-title">Formando Líderes del Mañana</h2>
+      <p class="hero-subtitle">Excelencia académica en un entorno natural y comunitario</p>
+      <button class="btn-conoce-mas">Conoce más</button>
+    </div>
   </section>
 
   <!-- Sección Nosotros -->
-  <section id="nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>Somos una institución comprometida con la excelencia educativa.</p>
+  <section id="nosotros" class="nosotros-section">
+    <div class="section-title">
+      <h2>Sobre Nosotros</h2>
+      <p>Descubre lo que nos hace únicos</p>
+    </div>
+    
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-icon">
+          <img src="images/excelencia.png" alt="Excelencia Académica">
+        </div>
+        <h3>Excelencia Académica</h3>
+        <p>Programas educativos innovadores y adaptados al contexto local.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">
+          <img src="images/comunidad.png" alt="Comunidad">
+        </div>
+        <h3>Comunidad</h3>
+        <p>Fomentamos la participación activa de estudiantes, padres y la comunidad.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">
+          <img src="images/valores.png" alt="Valores">
+        </div>
+        <h3>Valores</h3>
+        <p>Educación basada en principios de respeto, solidaridad y responsabilidad ambiental.</p>
+      </div>
+    </div>
+    
+    <div class="brochure-download">
+      <a href="brochure.pdf" download class="btn-descargar">Descargar Brochure (PDF)</a>
+    </div>
+  </section>
+
+  <!-- Sección Académica -->
+  <section id="academico" class="academic-section">
+    <div class="section-title">
+      <h2>Oferta Académica</h2>
+      <p>Formación integral en diferentes niveles educativos</p>
+    </div>
+    
+    <div class="academic-columns">
+      <div class="column">
+        <h3>Educación Básica</h3>
+        <ul>
+          <li>Inicial, primaria y secundaria</li>
+          <li>Enfoque intercultural bilingüe</li>
+          <li>Actividades prácticas con recursos locales</li>
+          <li>Proyectos productivos integrados</li>
+        </ul>
+      </div>
+      
+      <div class="column">
+        <h3>Educación Media</h3>
+        <ul>
+          <li>Ciencias naturales y exactas</li>
+          <li>Educación técnico productiva</li>
+          <li>Formación en emprendimiento</li>
+          <li>Preparación para educación superior</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Ubicación -->
+  <section id="ubicacion" class="location-section">
+    <div class="section-title">
+      <h2>Nuestra Ubicación</h2>
+      <p>En el corazón de Los Negros, Pampagrande</p>
+    </div>
+    
+    <div class="mapa-contenedor">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb= !1m14!1m8!1m3!1d3794.8657657559477!2d-64.1237868!3d-18.0633661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f013006e9e0c51%3A0x5d3dfe25282e64aa!2sUE%20%22Guido%20Arce%20Pimentel%22!5e0!3m2!1ses!2sbo!4v1712454789045!5m2!1ses!2sbo"
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    
+    <div class="location-description">
+      <p>La Unidad Educativa Guido Arce Pimentel se encuentra ubicada en la comunidad de Los Negros, municipio de Pampagrande, provincia Cordillera del departamento de Santa Cruz, Bolivia. Rodeada de chacos y familias trabajadoras, a 172 km de la ciudad de Santa Cruz de la Sierra.</p>
+    </div>
   </section>
 
   <!-- Sección Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form id="contactForm">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <button type="submit">Enviar</button>
+  <section id="contacto" class="contact-section">
+    <div class="section-title">
+      <h2>Contacto</h2>
+      <p>¡Contáctanos para más información!</p>
+    </div>
+    
+    <form id="contactForm" class="contact-form">
+      <div class="form-group">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+      </div>
+      
+      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
     </form>
   </section>
 
-  <!-- Pie de página -->
-  <footer>
-    <p>© 2025 Unidad Educativa Guido Arce Pimentel</p>
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Contacto</h3>
+        <p><strong>Dirección:</strong> Los Negros, Pampagrande<br>Santa Cruz, Bolivia</p>
+        <p><strong>Teléfono:</strong> +591 777 888 99</p>
+        <p><strong>Email:</strong> contacto@uegap.edu.bo</p>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Redes Sociales</h3>
+        <div class="social-icons">
+          <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#academico">Académico</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos de Uso</a>
+        <a href="#">Mapa del Sitio</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Vinculación al archivo JavaScript -->
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+  <!-- Librerías adicionales -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie @3.0.1/dist/js.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
 </body>
 </html>
