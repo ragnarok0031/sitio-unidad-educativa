@@ -1,47 +1,32 @@
+// Esperar a que el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('modoOscuroBtn');
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
-    const body = document.body;
-    const MODO_OSCURO_KEY = 'modoOscuro';
-    const ICONOS = {
-        OSCURO: 'images/modo_oscuro.png', // Ruta del icono de noche
-        CLARO: 'images/modo_claro.png'   // Ruta del icono de día
-    };
+  // Elementos del DOM
+  const modoOscuroBtn = document.getElementById('modoOscuroBtn');
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  const body = document.body;
 
-    const toggleModoOscuro = () => {
-        body.classList.toggle('oscuro');
-        const esOscuro = body.classList.contains('oscuro');
-        localStorage.setItem(MODO_OSCURO_KEY, esOscuro);
-        actualizarIcono(esOscuro);
-    };
+  // Función para alternar modo oscuro
+  modoOscuroBtn.addEventListener('click', () => {
+    body.classList.toggle('oscuro');
+    // Guardar preferencia en localStorage
+    localStorage.setItem('modoOscuro', body.classList.contains('oscuro'));
+  });
 
-    const actualizarIcono = (esOscuro) => {
-        btn.innerHTML = `<img src="${esOscuro ? ICONOS.OSCURO : ICONOS.CLARO}" alt="${esOscuro ? 'Modo oscuro' : 'Modo claro'}">`;
-        btn.setAttribute('aria-pressed', esOscuro);
-        btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    };
+  // Cargar preferencia de modo oscuro al iniciar
+  if (localStorage.getItem('modoOscuro') === 'true') {
+    body.classList.add('oscuro');
+  }
 
-    const toggleMenu = () => {
-        const isHidden = menu.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', !isHidden);
-    };
+  // Función para alternar menú hamburguesa
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
 
-    // Inicialización
-    const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
-    if (modoGuardado) {
-        body.classList.add('oscuro');
-    }
-    actualizarIcono(modoGuardado);
-
-    // Event listeners
-    btn.addEventListener('click', toggleModoOscuro);
-    menuBtn.addEventListener('click', toggleMenu);
-    // Agregar soporte para tecla espaciadora
-    btn.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') {
-            e.preventDefault();
-            toggleModoOscuro();
-        }
-    });
+  // Manejo del formulario (ejemplo básico)
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Formulario enviado');
+  });
 });

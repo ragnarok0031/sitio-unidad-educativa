@@ -1,110 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unidad Educativa Guido Arce Pimentel</title>
-  <!-- Agregar meta tags para SEO -->
-  <meta name="description" content="Unidad Educativa Guido Arce Pimentel en Los Negros, Bolivia. Educación integral en un entorno natural.">
-  <meta name="keywords" content="escuela, educación, Los Negros, Bolivia, Guido Arce Pimentel">
-  
-  <!-- Agregar favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
-  <!-- Optimizar carga de recursos -->
-  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <!-- Vinculación al archivo CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Agregar roles ARIA para mejor accesibilidad -->
-  <header role="banner">
-    <span id="gapMobile">G.A.P</span> <!-- Texto corto para móviles -->
-    <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
-      &#9776; <!-- Ícono de menú -->
-    </button>
-    <h1>Unidad Educativa G.A.P</h1>
-    <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro" aria-pressed="false">
-      <img src="images/modo_claro.png" alt="Modo claro">
-    </button>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo de la Unidad Educativa Guido Arce Pimentel">
+    </div>
+    <button id="menuBtn" aria-label="Abrir menú">☰</button>
+    <h1>Unidad Educativa Guido Arce Pimentel</h1>
+    <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro">🌙</button>
   </header>
 
-  <nav role="navigation" id="menu" class="hidden">
+  <!-- Menú de navegación -->
+  <nav id="menu" class="hidden">
     <ul>
       <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Sobre Nosotros</a></li>
-      <li><a href="#infraestructura">Infraestructura</a></li>
-      <li><a href="#contexto">Contexto Comunitario</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
-  <main role="main">
-    <section id="inicio">
-      <h2>Bienvenidos</h2>
-      <p>Explora información de nuestra unidad educativa desde Los Negros, Bolivia.</p>
-    </section>
+  <!-- Sección Hero -->
+  <section id="inicio" class="hero">
+    <h2>Bienvenidos</h2>
+    <p>Formando líderes del mañana en un entorno educativo de calidad.</p>
+  </section>
 
-    <section id="nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>La Unidad Educativa Guido Arce Pimentel ofrece una educación integral en un entorno natural y acogedor.</p>
-    </section>
+  <!-- Sección Nosotros -->
+  <section id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una institución comprometida con la excelencia educativa.</p>
+  </section>
 
-    <section id="infraestructura">
-      <h2>Infraestructura</h2>
-      <p>Contamos con aulas equipadas, canchas deportivas y espacios verdes.</p>
-    </section>
+  <!-- Sección Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form id="contactForm">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
-    <section id="contexto">
-      <h2>Contexto Comunitario</h2>
-      <p>La escuela se sitúa en un contexto agrícola, rodeada por chacos y familias trabajadoras.</p>
-    </section>
-
-    <section id="sobre-la-escuela">
-      <h2>Sobre la Unidad Educativa "Guido Arce Pimentel"</h2>
-      <p>
-        Ubicada en la comunidad de <strong>Los Negros</strong>, municipio de Pampagrande, esta institución educativa se encuentra en un entorno natural rodeado de chacos y familias trabajadoras. 
-        Forma parte del distrito educativo de Pampagrande, a 172 km de Santa Cruz de la Sierra.
-      </p>
-      <div class="school-image">
-        <img src="images/unidad_educativa.png" alt="Unidad Educativa" class="img-fluid">
-      </div>
-      <h3>Infraestructura y Recursos</h3>
-      <p>
-        Aunque cuenta con recursos limitados y una infraestructura que no cumple con los estándares de la Ley Educativa 070, la escuela se esfuerza por brindar una educación integral y significativa.
-      </p>
-      <h3>Proyecto Socioproductivo</h3>
-      <p>
-        Desde 2015, la escuela implementa un <strong>Proyecto Socioproductivo</strong> que conecta la educación con las necesidades de la comunidad. Actividades como el cultivo de hortalizas y la elaboración de recetarios con productos locales fortalecen el vínculo entre estudiantes y su entorno.
-      </p>
-      <h3>Prácticas Pedagógicas</h3>
-      <p>
-        Los docentes integran materiales del contexto, como arcilla y elementos naturales, en actividades prácticas. Además, se promueven valores culturales mediante saludos en quechua y la recopilación de tradiciones locales.
-      </p>
-      <h3>Logros</h3>
-      <p>
-        La escuela ha logrado un aprendizaje significativo al conectar contenidos teóricos con prácticas comunitarias, fortaleciendo valores como el trabajo en equipo y el respeto por la naturaleza.
-      </p>
-    </section>
-
-    <section id="ubicacion">
-      <h2>Nuestra Ubicación</h2>
-      <div class="mapa-contenedor">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3794.8657657559477!2d-64.1237868!3d-18.0633661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f013006e9e0c51%3A0x5d3dfe25282e64aa!2sUE%20%22Guido%20Arce%20Pimentel%22!5e0!3m2!1ses!2sbo!4v1712454789045!5m2!1ses!2sbo"
-          width="100%" 
-          height="450" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </section>
-  </main>
-
-  <footer role="contentinfo">
-    <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel. Todos los derechos reservados.</p>
+  <!-- Pie de página -->
+  <footer>
+    <p>© 2025 Unidad Educativa Guido Arce Pimentel</p>
   </footer>
 
-  <!-- Cargar script al final y con defer -->
-  <script src="script.js" defer></script>
+  <!-- Vinculación al archivo JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
