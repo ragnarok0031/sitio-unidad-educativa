@@ -1,248 +1,562 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unidad Educativa Guido Arce Pimentel</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.E. Guido Arce Pimentel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+    </style>
 </head>
-<body class="font-inter">
-  <!-- Header -->
-  <header class="fixed w-full bg-[#4e946a] text-white">
-    <div class="header-container">
-      <div class="logo-container">
-        <img src="images/logo.png" alt="Logo UEGAP" class="logo">
-        <h1 class="school-name lg:block hidden">Unidad Educativa G.A.P</h1>
-        <span class="lg:hidden block" id="gapMobile">G.A.P</span>
-      </div>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script>
+        function MainComponent() {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [currentLanguage, setCurrentLanguage] = useState("es");
+    const [weatherData, setWeatherData] = useState(null);
+    const [pdfLoading, setPdfLoading] = useState(false);
+    const [pdfError, setPdfError] = useState(null);
+    const translations = {
+        es: {
+            inicio: "Inicio",
+            nosotros: "Nosotros",
+            academico: "Académico",
+            contacto: "Contacto",
+            formandoLideres: "Formando Líderes del Mañana",
+            excelenciaAcademica: "Excelencia académica y valores humanos",
+            buscar: "Buscar",
+            descargarBrochure: "Descargar Brochure",
+            generandoPDF: "Generando PDF...",
+            nombreCompleto: "Nombre completo",
+            correoElectronico: "Correo electrónico",
+            mensaje: "Mensaje",
+            enviar: "Enviar",
+            derechosReservados: "© 2025 U.E. Guido Arce Pimentel. Todos los derechos reservados."
+        },
+        en: {
+            inicio: "Home",
+            nosotros: "About Us",
+            academico: "Academic",
+            contacto: "Contact",
+            formandoLideres: "Forming Tomorrow's Leaders",
+            excelenciaAcademica: "Academic excellence and human values",
+            buscar: "Search",
+            descargarBrochure: "Download Brochure",
+            generandoPDF: "Generating PDF...",
+            nombreCompleto: "Full name",
+            correoElectronico: "Email",
+            mensaje: "Message",
+            enviar: "Send",
+            derechosReservados: "© 2025 U.E. Guido Arce Pimentel. All rights reserved."
+        }
+    };
+    useEffect(()=>{
+        fetch("/integrations/weather-by-city/weather/Pampagrande").then((response)=>response.json()).then((data)=>setWeatherData(data)).catch((err)=>console.error("Error fetching weather:", err));
+    }, []);
+    const t = (key)=>translations[currentLanguage][key] || translations.es[key];
+    const toggleDarkMode = ()=>{
+        setIsDarkMode(!isDarkMode);
+        document.body.classList.toggle("dark-mode");
+    };
+    const generatePDF = async ()=>{
+        setPdfLoading(true);
+        setPdfError(null);
+        try {
+            const response = await fetch("/api/generate-pdf", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    content: `
+            <h1>U.E. Guido Arce Pimentel</h1>
+            <p>${t("formandoLideres")}</p>
+            <p>${t("excelenciaAcademica")}</p>
+          `,
+                    format: "html"
+                })
+            });
+            if (!response.ok) throw new Error("Error al generar el PDF");
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "brochure-gap.pdf";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        } catch (err) {
+            console.error(err);
+            setPdfError("Error al generar el PDF");
+        } finally{
+            setPdfLoading(false);
+        }
+    };
+    const downloadSourceCode = ()=>{
+        const htmlContent = `
+<!DOCTYPE html>
+<html lang="${currentLanguage}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.E. Guido Arce Pimentel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script>
+        ${MainComponent.toString()}
 
-      <!-- Navegación principal -->
-      <nav role="navigation" class="desktop-nav">
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#academico">Académico</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
+        // Render logic
+        const root = document.getElementById('root');
+        ReactDOM.render(React.createElement(MainComponent), root);
+    </script>
+</body>
+</html>`;
+        const blob = new Blob([
+            htmlContent
+        ], {
+            type: "text/html"
+        });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "guido-arce-pimentel.html";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    };
+    return /*#__PURE__*/ React.createElement("div", {
+        className: `min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`,
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 140,
+            columnNumber: 5
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("header", {
+        className: "bg-[#4e946a] text-white",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 143,
+            columnNumber: 7
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        className: "container mx-auto px-4 py-4",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 144,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("nav", {
+        className: "flex items-center justify-between",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 145,
+            columnNumber: 11
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        className: "flex items-center",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 146,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("img", {
+        src: "/logo.png",
+        alt: "Logo",
+        className: "h-12 w-auto mr-4",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 147,
+            columnNumber: 15
+        },
+        __self: this
+    }), /*#__PURE__*/ React.createElement("h1", {
+        className: "text-2xl font-inter font-bold",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 148,
+            columnNumber: 15
+        },
+        __self: this
+    }, "U.E. Guido Arce Pimentel")), /*#__PURE__*/ React.createElement("div", {
+        className: "flex items-center space-x-6",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 153,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("a", {
+        href: "#inicio",
+        className: "font-inter",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 154,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("inicio")), /*#__PURE__*/ React.createElement("a", {
+        href: "#nosotros",
+        className: "font-inter",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 157,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("nosotros")), /*#__PURE__*/ React.createElement("a", {
+        href: "#academico",
+        className: "font-inter",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 160,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("academico")), /*#__PURE__*/ React.createElement("a", {
+        href: "#contacto",
+        className: "font-inter",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 163,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("contacto")), /*#__PURE__*/ React.createElement("select", {
+        value: currentLanguage,
+        onChange: (e)=>setCurrentLanguage(e.target.value),
+        className: "bg-[#4e946a] border border-white rounded px-2 py-1",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 167,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("option", {
+        value: "es",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 172,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Español"), /*#__PURE__*/ React.createElement("option", {
+        value: "en",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 173,
+            columnNumber: 17
+        },
+        __self: this
+    }, "English")), /*#__PURE__*/ React.createElement("button", {
+        onClick: toggleDarkMode,
+        className: "p-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 176,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("i", {
+        className: `fas ${isDarkMode ? "fa-sun" : "fa-moon"}`,
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 177,
+            columnNumber: 17
+        },
+        __self: this
+    })), weatherData && /*#__PURE__*/ React.createElement("div", {
+        className: "flex items-center",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 181,
+            columnNumber: 17
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("i", {
+        className: "fas fa-cloud mr-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 182,
+            columnNumber: 19
+        },
+        __self: this
+    }), /*#__PURE__*/ React.createElement("span", {
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 183,
+            columnNumber: 19
+        },
+        __self: this
+    }, weatherData.temp, "°C")))))), /*#__PURE__*/ React.createElement("main", {
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 191,
+            columnNumber: 7
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("section", {
+        id: "inicio",
+        className: "relative h-[600px]",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 192,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("img", {
+        src: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg",
+        alt: "Estudiantes en el campus",
+        className: "w-full h-full object-cover",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 193,
+            columnNumber: 11
+        },
+        __self: this
+    }), /*#__PURE__*/ React.createElement("div", {
+        className: "absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 198,
+            columnNumber: 11
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        className: "text-center text-white",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 199,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("h2", {
+        className: "text-4xl md:text-6xl font-inter font-bold mb-4",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 200,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("formandoLideres")), /*#__PURE__*/ React.createElement("p", {
+        className: "text-xl md:text-2xl font-inter mb-8",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 203,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("excelenciaAcademica")), /*#__PURE__*/ React.createElement("div", {
+        className: "space-x-4",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 206,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("button", {
+        onClick: generatePDF,
+        disabled: pdfLoading,
+        className: "bg-[#4e946a] hover:bg-[#3d7554] text-white font-inter px-8 py-3 rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 207,
+            columnNumber: 17
+        },
+        __self: this
+    }, pdfLoading ? /*#__PURE__*/ React.createElement(React.Fragment, null, /*#__PURE__*/ React.createElement("i", {
+        className: "fas fa-spinner fa-spin mr-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 214,
+            columnNumber: 23
+        },
+        __self: this
+    }), t("generandoPDF")) : /*#__PURE__*/ React.createElement(React.Fragment, null, /*#__PURE__*/ React.createElement("i", {
+        className: "fas fa-file-pdf mr-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 219,
+            columnNumber: 23
+        },
+        __self: this
+    }), t("descargarBrochure"))), /*#__PURE__*/ React.createElement("button", {
+        onClick: downloadSourceCode,
+        className: "bg-[#4e946a] hover:bg-[#3d7554] text-white font-inter px-8 py-3 rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 224,
+            columnNumber: 17
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("i", {
+        className: "fas fa-code mr-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 228,
+            columnNumber: 19
+        },
+        __self: this
+    }), "Descargar Código Fuente")), pdfError && /*#__PURE__*/ React.createElement("p", {
+        className: "text-red-500 mt-2",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 232,
+            columnNumber: 28
+        },
+        __self: this
+    }, pdfError)))), /*#__PURE__*/ React.createElement("section", {
+        id: "contacto",
+        className: "py-16 px-4",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 237,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        className: "container mx-auto max-w-2xl",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 238,
+            columnNumber: 11
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("h2", {
+        className: "text-3xl font-inter font-bold mb-8 text-center",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 239,
+            columnNumber: 13
+        },
+        __self: this
+    }, t("contacto")), /*#__PURE__*/ React.createElement("form", {
+        className: "space-y-6",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 242,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 243,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("input", {
+        type: "text",
+        name: "nombre",
+        placeholder: t("nombreCompleto"),
+        className: "w-full p-3 border rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 244,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement("div", {
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 251,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("input", {
+        type: "email",
+        name: "email",
+        placeholder: t("correoElectronico"),
+        className: "w-full p-3 border rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 252,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement("div", {
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 259,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("textarea", {
+        name: "mensaje",
+        placeholder: t("mensaje"),
+        rows: "4",
+        className: "w-full p-3 border rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 260,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement("button", {
+        type: "submit",
+        className: "w-full bg-[#4e946a] hover:bg-[#3d7554] text-white font-inter py-3 px-6 rounded-md",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 267,
+            columnNumber: 15
+        },
+        __self: this
+    }, t("enviar")))))), /*#__PURE__*/ React.createElement("footer", {
+        className: "bg-[#4e946a] text-white py-6",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 278,
+            columnNumber: 7
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("div", {
+        className: "container mx-auto px-4 text-center",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 279,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement("p", {
+        className: "font-inter",
+        __source: {
+            fileName: "<anon>",
+            lineNumber: 280,
+            columnNumber: 11
+        },
+        __self: this
+    }, t("derechosReservados")))));
+}
 
-      <!-- Controles adicionales -->
-      <div class="header-controls">
-        <div class="search-container">
-          <input type="text" id="search" placeholder="Buscar..." aria-label="Buscar en el sitio">
-        </div>
-        
-        <div class="weather-widget" id="weatherWidget">
-          <!-- Aquí se cargará la información del clima dinámicamente -->
-          <div class="weather-info">
-            <span id="weather-temp">--°C</span>
-            <img id="weather-icon" src="" alt="Clima">
-          </div>
-        </div>
-
-        <div class="language-selector">
-          <button id="lang-es" class="active">Español</button>
-          <button id="lang-en">English</button>
-        </div>
-
-        <button id="modoOscuroBtn" aria-label="Cambiar modo oscuro" aria-pressed="false">
-          <img src="images/modo_claro.png" alt="Modo claro">
-        </button>
-
-        <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" class="menu-btn">
-          &#9776;
-        </button>
-      </div>
-    </div>
-
-    <!-- Menú móvil -->
-    <nav role="navigation" id="menu" class="hidden">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#academico">Académico</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero-section" style="background-image: url('https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg')">
-    <div class="hero-content">
-      <h2 class="hero-title">Formando Líderes del Mañana</h2>
-      <p class="hero-subtitle">Excelencia académica en un entorno natural y comunitario</p>
-      <button class="btn-conoce-mas">Conoce más</button>
-    </div>
-  </section>
-
-  <!-- Sección Nosotros -->
-  <section id="nosotros" class="nosotros-section">
-    <div class="section-title">
-      <h2>Sobre Nosotros</h2>
-      <p>Descubre lo que nos hace únicos</p>
-    </div>
-    
-    <div class="cards-container">
-      <div class="card">
-        <div class="card-icon">
-          <img src="images/excelencia.png" alt="Excelencia Académica">
-        </div>
-        <h3>Excelencia Académica</h3>
-        <p>Programas educativos innovadores y adaptados al contexto local.</p>
-      </div>
-      
-      <div class="card">
-        <div class="card-icon">
-          <img src="images/comunidad.png" alt="Comunidad">
-        </div>
-        <h3>Comunidad</h3>
-        <p>Fomentamos la participación activa de estudiantes, padres y la comunidad.</p>
-      </div>
-      
-      <div class="card">
-        <div class="card-icon">
-          <img src="images/valores.png" alt="Valores">
-        </div>
-        <h3>Valores</h3>
-        <p>Educación basada en principios de respeto, solidaridad y responsabilidad ambiental.</p>
-      </div>
-    </div>
-    
-    <div class="brochure-download">
-      <a href="brochure.pdf" download class="btn-descargar">Descargar Brochure (PDF)</a>
-    </div>
-  </section>
-
-  <!-- Sección Académica -->
-  <section id="academico" class="academic-section">
-    <div class="section-title">
-      <h2>Oferta Académica</h2>
-      <p>Formación integral en diferentes niveles educativos</p>
-    </div>
-    
-    <div class="academic-columns">
-      <div class="column">
-        <h3>Educación Básica</h3>
-        <ul>
-          <li>Inicial, primaria y secundaria</li>
-          <li>Enfoque intercultural bilingüe</li>
-          <li>Actividades prácticas con recursos locales</li>
-          <li>Proyectos productivos integrados</li>
-        </ul>
-      </div>
-      
-      <div class="column">
-        <h3>Educación Media</h3>
-        <ul>
-          <li>Ciencias naturales y exactas</li>
-          <li>Educación técnico productiva</li>
-          <li>Formación en emprendimiento</li>
-          <li>Preparación para educación superior</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Ubicación -->
-  <section id="ubicacion" class="location-section">
-    <div class="section-title">
-      <h2>Nuestra Ubicación</h2>
-      <p>En el corazón de Los Negros, Pampagrande</p>
-    </div>
-    
-    <div class="mapa-contenedor">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb= !1m14!1m8!1m3!1d3794.8657657559477!2d-64.1237868!3d-18.0633661!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f013006e9e0c51%3A0x5d3dfe25282e64aa!2sUE%20%22Guido%20Arce%20Pimentel%22!5e0!3m2!1ses!2sbo!4v1712454789045!5m2!1ses!2sbo"
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    
-    <div class="location-description">
-      <p>La Unidad Educativa Guido Arce Pimentel se encuentra ubicada en la comunidad de Los Negros, municipio de Pampagrande, provincia Cordillera del departamento de Santa Cruz, Bolivia. Rodeada de chacos y familias trabajadoras, a 172 km de la ciudad de Santa Cruz de la Sierra.</p>
-    </div>
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contacto" class="contact-section">
-    <div class="section-title">
-      <h2>Contacto</h2>
-      <p>¡Contáctanos para más información!</p>
-    </div>
-    
-    <form id="contactForm" class="contact-form">
-      <div class="form-group">
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-      </div>
-      
-      <button type="submit" class="btn-enviar">Enviar Mensaje</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>Contacto</h3>
-        <p><strong>Dirección:</strong> Los Negros, Pampagrande<br>Santa Cruz, Bolivia</p>
-        <p><strong>Teléfono:</strong> +591 777 888 99</p>
-        <p><strong>Email:</strong> contacto@uegap.edu.bo</p>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Redes Sociales</h3>
-        <div class="social-icons">
-          <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-          <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-          <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-          <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Enlaces Rápidos</h3>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#academico">Académico</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2025 Unidad Educativa Guido Arce Pimentel. Todos los derechos reservados.</p>
-      <div class="footer-links">
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Términos de Uso</a>
-        <a href="#">Mapa del Sitio</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
-  <!-- Librerías adicionales -->
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie @3.0.1/dist/js.cookie.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+        // Render logic
+        const root = document.getElementById('root');
+        ReactDOM.render(React.createElement(MainComponent), root);
+    </script>
 </body>
 </html>
