@@ -1,16 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U.E. Guido Arce Pimentel</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="root"></div>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="main.js"></script>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="/logo.png" alt="Logo" class="logo">
+                <h1>U.E. Guido Arce Pimentel</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#academico">Académico</a>
+                <a href="#contacto">Contacto</a>
+                <button id="darkModeToggle">🌙</button>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <button class="hamburger-menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg" 
+                 alt="Estudiantes en el campus" 
+                 class="hero-image">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h2 data-translate="formandoLideres">Formando Líderes del Mañana</h2>
+                    <p data-translate="excelenciaAcademica">Excelencia académica y valores humanos</p>
+                    <button class="button animate-pulse" id="pdfButton" data-translate="descargarBrochure">
+                        Descargar Brochure
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="contact-container">
+                <h2 class="section-title" data-translate="contacto">Contacto</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" 
+                               class="form-control" 
+                               placeholder="Nombre completo" 
+                               data-translate-placeholder="nombreCompleto"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" 
+                               class="form-control" 
+                               placeholder="Correo electrónico" 
+                               data-translate-placeholder="correoElectronico"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" 
+                                 placeholder="Mensaje" 
+                                 data-translate-placeholder="mensaje"
+                                 rows="4" 
+                                 required></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="button w-full" 
+                            data-translate="enviar">
+                        Enviar
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-translate="derechosReservados">
+            © 2025 U.E. Guido Arce Pimentel. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
