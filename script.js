@@ -321,4 +321,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
   showCookieBanner();
   loadUserPreferences();
+
+  // Manejo del menú mejorado
+  const menuItems = document.querySelectorAll('.has-dropdown, .has-mega');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mainMenu = document.querySelector('.main-menu');
+
+  // Toggle menú móvil
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    mainMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Manejo de dropdowns en móvil
+  menuItems.forEach(item => {
+    const link = item.querySelector('.menu-link');
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1023) {
+        e.preventDefault();
+        item.classList.toggle('active');
+      }
+    });
+  });
+
+  // Cerrar menú al cambiar tamaño de ventana
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1023) {
+      menuToggle.classList.remove('active');
+      mainMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
+
+  // Cerrar menú al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuToggle.classList.remove('active');
+      mainMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
 });
