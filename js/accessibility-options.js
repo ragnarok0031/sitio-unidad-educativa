@@ -1,49 +1,75 @@
 class AccessibilityOptions {
   constructor() {
-    this.initializeSettings();
-    this.setupPanel();
-    this.setupControls();
+    this.init();
+  }
+
+  init() {
+    this.createControls();
+    this.setupListeners();
     this.loadSavedPreferences();
   }
 
-  initializeSettings() {
-    this.settings = {
-      fontSize: 1,
-      highContrast: false,
-      dyslexicMode: false,
-      darkMode: false
-    };
-  }
-
-  setupPanel() {
-    const panel = `
-      <button class="a11y-trigger" aria-label="Opciones de accesibilidad">
+  createControls() {
+    const controls = `
+      <button class="accessibility-toggle" aria-label="Opciones de accesibilidad">
         <i class="fas fa-universal-access"></i>
       </button>
-      <div class="a11y-panel" hidden>
-        <div class="panel-header">
-          <h2>Opciones de accesibilidad</h2>
-          <button class="close-panel" aria-label="Cerrar">×</button>
+      <div class="accessibility-panel" hidden>
+        <h2>Accesibilidad</h2>
+        <div class="font-controls">
+          <button id="disminuirTexto">A-</button>
+          <button id="restaurarTexto">A</button>
+          <button id="aumentarTexto">A+</button>
         </div>
-        <div class="panel-content">
-          <div class="font-controls">
-            <h3>Tamaño del texto</h3>
-            <button data-size="decrease">A-</button>
-            <button data-size="reset">A</button>
-            <button data-size="increase">A+</button>
-          </div>
-          <div class="mode-toggles">
-            <button class="mode-toggle" data-mode="contrast">Alto contraste</button>
-            <button class="mode-toggle" data-mode="dyslexic">Modo dislexia</button>
-            <button class="mode-toggle" data-mode="dark">Modo oscuro</button>
-          </div>
+        <div class="mode-controls">
+          <button id="altoContraste">Alto contraste</button>
+          <button id="modoDislexia">Modo dislexia</button>
+          <button id="modoOscuro">Modo oscuro</button>
         </div>
       </div>
     `;
-    document.body.insertAdjacentHTML('beforeend', panel);
+    document.body.insertAdjacentHTML('beforeend', controls);
   }
 
-  setupControls() {
-    // ... resto del código de inicialización ...
+  setupListeners() {
+    // Font size controls
+    document.getElementById('aumentarTexto').onclick = () => this.setFontSize(1.2);
+    document.getElementById('disminuirTexto').onclick = () => this.setFontSize(0.9);
+    document.getElementById('restaurarTexto').onclick = () => this.setFontSize(1);
+
+    // Mode toggles
+    document.getElementById('altoContraste').onclick = () => this.toggleMode('alto-contraste');
+    document.getElementById('modoDislexia').onclick = () => this.toggleMode('modo-dislexia');
+    document.getElementById('modoOscuro').onclick = () => this.toggleMode('modo-oscuro');
   }
+
+  setFontSize(size) {
+    document.documentElement.style.setProperty('--texto-base', size + 'rem');
+    localStorage.setItem('fontSize', size);
+  }
+
+  toggleMode(mode) {
+    document.body.classList.toggle(mode);
+    localStorage.setItem(mode, document.body.classList.contains(mode));
+  }
+
+  loadSavedPreferences() {
+    // Load font size
+    const fontSize = localStorage.getItem('fontSize');
+    if (fontSize) this.setFontSize(Number(fontSize));
+
+    // Load modes
+    ['alto-contraste', 'modo-dislexia', 'modo-oscuro'].forEach(mode => {
+      if (localStorage.getItem(mode) === 'true') {
+        document.body.classList.add(mode);
+      }
+    });
+  }
+}
+
+// Initialize
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', () => {
+    new AccessibilityOptions();
+  });
 }

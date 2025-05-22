@@ -1,4 +1,43 @@
-.a11y-trigger {
+:root {
+  --texto-base: 1rem;
+  --font-dyslexic: 'OpenDyslexic', Arial, sans-serif;
+}
+
+body {
+  font-size: var(--texto-base);
+}
+
+/* Modos de accesibilidad */
+body.alto-contraste {
+  background: #000 !important;
+  color: #FFD700 !important;
+}
+
+body.modo-dislexia {
+  font-family: var(--font-dyslexic) !important;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+body.modo-oscuro {
+  background: #181818 !important;
+  color: #f0f0f0 !important;
+}
+
+/* Panel de accesibilidad */
+.accessibility-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  padding: 1rem;
+  z-index: 1000;
+  width: 280px;
+}
+
+.accessibility-toggle {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -9,17 +48,6 @@
   color: white;
   border: none;
   cursor: pointer;
-  z-index: 1000;
-}
-
-.a11y-panel {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background: var(--color-surface);
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   z-index: 1000;
 }
 
