@@ -238,15 +238,40 @@
                 <div class="schedule-grid">
                     <div class="turno-manana">
                         <h3>Turno Mañana</h3>
-                        <table class="schedule-table">
-                            <!-- Contenido de horarios mañana -->
-                        </table>
+                        <div class="schedule-img-container">
+                            <picture>
+                                <source srcset="images/horario-manana-dark.png" media="(prefers-color-scheme: dark)">
+                                <source srcset="images/horario-manana.png" media="(prefers-color-scheme: light)">
+                                <img src="images/horario-manana.png" 
+                                     alt="Horario turno mañana" 
+                                     class="schedule-img"
+                                     loading="lazy"
+                                     width="800"
+                                     height="600">
+                            </picture>
+                            <a href="images/horario-manana.png" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar Horario
+                            </a>
+                        </div>
                     </div>
+                    
                     <div class="turno-tarde">
                         <h3>Turno Tarde</h3>
-                        <table class="schedule-table">
-                            <!-- Contenido de horarios tarde -->
-                        </table>
+                        <div class="schedule-img-container">
+                            <picture>
+                                <source srcset="images/horario-tarde-dark.png" media="(prefers-color-scheme: dark)">
+                                <source srcset="images/horario-tarde.png" media="(prefers-color-scheme: light)">
+                                <img src="images/horario-tarde.png" 
+                                     alt="Horario turno tarde" 
+                                     class="schedule-img"
+                                     loading="lazy"
+                                     width="800"
+                                     height="600">
+                            </picture>
+                            <a href="images/horario-tarde.png" class="download-btn" download>
+                                <i class="fas fa-download"></i> Descargar Horario
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

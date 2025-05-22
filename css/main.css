@@ -69,6 +69,69 @@
     background: rgba(255,255,255,0.05);
 }
 
+/* Sección de Horarios */
+.schedule-section {
+    padding: var(--section-spacing) 0;
+    background: var(--color-surface);
+}
+
+.schedule-grid {
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+}
+
+.schedule-img-container {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s var(--animation-bounce);
+}
+
+.schedule-img-container:hover {
+    transform: translateY(-5px);
+}
+
+.schedule-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.schedule-img:hover {
+    transform: scale(1.02);
+}
+
+.download-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.schedule-img-container:hover .download-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.download-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .teachers-table {
@@ -77,5 +140,17 @@
     
     .timeline-item {
         padding-left: var(--space-md);
+    }
+    
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-btn {
+        opacity: 1;
+        transform: none;
+        position: static;
+        margin-top: 1rem;
+        justify-content: center;
     }
 }
