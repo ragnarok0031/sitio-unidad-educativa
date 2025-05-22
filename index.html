@@ -113,18 +113,30 @@
             
             <!-- Barra de accesibilidad -->
             <div class="accessibility-bar" role="toolbar" aria-label="Opciones de accesibilidad">
-                <button class="font-size-toggle" aria-pressed="false">
-                    <i class="fas fa-text-height"></i>
-                    <span>Tamaño de texto</span>
-                </button>
-                <button class="contrast-toggle" aria-pressed="false">
-                    <i class="fas fa-adjust"></i>
-                    <span>Contraste</span>
-                </button>
-                <button class="dyslexic-toggle" aria-pressed="false">
-                    <i class="fas fa-font"></i>
-                    <span>Modo dislexia</span>
-                </button>
+                <div class="accessibility-controls">
+                  <div class="font-size-controls">
+                    <button class="decrease-font" aria-label="Reducir tamaño de texto">A-</button>
+                    <button class="reset-font" aria-label="Restablecer tamaño de texto">A</button>
+                    <button class="increase-font" aria-label="Aumentar tamaño de texto">A+</button>
+                  </div>
+                  
+                  <div class="mode-toggles">
+                    <button class="toggle-contrast" aria-pressed="false">
+                      <i class="fas fa-adjust"></i>
+                      <span>Alto contraste</span>
+                    </button>
+                    <button class="toggle-dyslexic" aria-pressed="false">
+                      <i class="fas fa-font"></i>
+                      <span>Modo dislexia</span>
+                    </button>
+                    <button class="toggle-dark-mode" aria-pressed="false">
+                      <i class="fas fa-moon"></i>
+                      <span>Modo oscuro</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
             </div>
 
             <section id="inicio" class="hero-section">
@@ -248,5 +260,6 @@
         </main>
     </div>
     <script src="js/cookies.js"></script>
+    <script src="js/accessibility.js"></script>
   </body>
 </html>
