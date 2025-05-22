@@ -1660,114 +1660,192 @@ p { font-size: var(--font-size-fluid); }
   --color-background-high-contrast: #000000;
 }
 
-/* Controles de accesibilidad */
-.accessibility-controls {
+/* Mejoras en el sistema de accesibilidad */
+.accessibility-toolbar {
   position: fixed;
   right: 1rem;
   top: calc(var(--header-height) + 1rem);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  z-index: calc(var(--menu-z-index) - 1);
   background: var(--color-surface);
-  padding: 0.5rem;
   border-radius: var(--border-radius);
+  padding: var(--space-md);
   box-shadow: var(--box-shadow);
+  transition: var(--transition-smooth);
+  max-width: 320px;
+  width: calc(100% - 2rem);
 }
 
+/* Contenedor de controles mejorado */
+.accessibility-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Grupos de controles */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.control-group-title {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: var(--space-xs);
+}
+
+/* Tamaño de texto */
 .font-size-controls {
   display: flex;
-  gap: 0.25rem;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
 }
 
-.font-size-controls button {
-  min-width: 2.5rem;
-  height: 2.5rem;
-  border: none;
-  border-radius: var(--border-radius);
-  background: var(--color-surface-light);
+.font-control-button {
+  flex: 1;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-primary);
+  background: transparent;
   color: var(--color-text);
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition-smooth);
+  
+  &:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  &.active {
+    background: var(--color-primary);
+    color: white;
+  }
 }
 
+/* Toggles de modo */
 .mode-toggles {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-sm);
 }
 
-.mode-toggles button {
+.mode-toggle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border: none;
-  border-radius: var(--border-radius);
-  background: var(--color-surface-light);
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-primary);
+  background: transparent;
   color: var(--color-text);
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition-smooth);
+  
+  &:hover {
+    background: rgba(var(--color-primary-rgb), 0.1);
+  }
+  
+  &[aria-pressed="true"] {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  i {
+    font-size: 1.2rem;
+  }
 }
 
-/* Modo dislexia */
-.dyslexic-mode {
-  font-family: 'OpenDyslexic', var(--font-main);
-  letter-spacing: var(--text-spacing);
-  word-spacing: 0.16em;
-  line-height: var(--line-height-relaxed);
+/* Estilos para los diferentes modos */
+body.large-text {
+  --font-size-base: 18px;
+  --font-size-h1: 2.8rem;
+  --font-size-h2: 2.3rem;
+  --font-size-h3: 1.8rem;
 }
 
-/* Alto contraste */
-.high-contrast {
-  --color-text: var(--color-text-high-contrast);
-  --color-background: var(--color-background-high-contrast);
+body.high-contrast {
+  --color-text: #ffffff;
+  --color-background: #000000;
   --color-primary: #ffff00;
   --color-accent: #00ffff;
-}
-
-/* Modo oscuro */
-.dark-mode {
-  --color-background: #000000;
   --color-surface: #1a1a1a;
-  --color-text: #ffffff;
+  
+  * {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
 }
 
-/* Utilidades de accesibilidad */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+body.dyslexic-mode {
+  --font-main: var(--font-dyslexic);
+  --text-spacing: 0.16em;
+  --line-height-base: 1.8;
+  
+  p, li {
+    max-width: 60ch;
+    letter-spacing: var(--text-spacing);
+    word-spacing: 0.32em;
+  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .accessibility-controls {
-    bottom: 1rem;
+  .accessibility-toolbar {
     top: auto;
+    bottom: 1rem;
     right: 1rem;
-    flex-direction: row;
-    align-items: center;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+    padding: var(--space-sm);
   }
-  
+
   .mode-toggles {
-    flex-direction: row;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .mode-toggles span {
+
+  .mode-toggle span {
     display: none;
+  }
+
+  .font-size-controls {
+    justify-content: center;
   }
 }
 
-/* Ajustes para reducción de movimiento */
+/* Soporte para reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  .accessibility-toolbar {
+    transition: none;
   }
+
+  .mode-toggle,
+  .font-control-button {
+    transition: none;
+  }
+}
+
+/* Utilidades de accesibilidad */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Anunciador de cambios */
+.a11y-announcer {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

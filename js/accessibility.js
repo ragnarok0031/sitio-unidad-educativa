@@ -1,127 +1,124 @@
 class AccessibilityManager {
   constructor() {
     this.init();
-    this.loadPreferences();
   }
 
   init() {
-    // Tamaño de texto
-    this.fontSizeControls = {
-      increase: document.querySelector('.increase-font'),
-      decrease: document.querySelector('.decrease-font'),
-      reset: document.querySelector('.reset-font')
-    };
-
-    // Controles de modo
-    this.toggles = {
+    this.controls = {
+      fontSize: document.querySelectorAll('.font-control-button'),
       contrast: document.querySelector('.toggle-contrast'),
       dyslexic: document.querySelector('.toggle-dyslexic'),
       darkMode: document.querySelector('.toggle-dark-mode')
     };
 
+    this.announcer = document.getElementById('a11y-announcer');
     this.setupEventListeners();
+    this.loadPreferences();
   }
 
   setupEventListeners() {
-    // Tamaño de texto
-    this.fontSizeControls.increase?.addEventListener('click', () => this.changeFontSize(1));
-    this.fontSizeControls.decrease?.addEventListener('click', () => this.changeFontSize(-1));
-    this.fontSizeControls.reset?.addEventListener('click', () => this.resetFontSize());
+    // Control de tamaño de fuente
+    this.controls.fontSize.forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.action;
+        this.changeFontSize(action);
+      });
+    });
 
-    // Modos
-    this.toggles.contrast?.addEventListener('click', () => this.toggleHighContrast());
-    this.toggles.dyslexic?.addEventListener('click', () => this.toggleDyslexicMode());
-    this.toggles.darkMode?.addEventListener('click', () => this.toggleDarkMode());
+    // Toggles de modo
+    this.controls.contrast?.addEventListener('click', () => this.toggleMode('high-contrast'));
+    this.controls.dyslexic?.addEventListener('click', () => this.toggleMode('dyslexic-mode'));
+    this.controls.darkMode?.addEventListener('click', () => this.toggleMode('dark-mode'));
+  }
 
-    // Detectar preferencia del sistema
-    this.checkSystemPreferences();
+  changeFontSize(action) {
+    const html = document.documentElement;
+    const currentSize = parseFloat(getComputedStyle(html).fontSize);
+    
+    let newSize;
+    switch(action) {
+      case 'increase':
+        newSize = Math.min(currentSize * 1.1, 24);
+        break;
+      case 'decrease':
+        newSize = Math.max(currentSize * 0.9, 14);
+        break;
+      default:
+        newSize = 16;
+    }
+
+    html.style.fontSize = `${newSize}px`;
+    this.savePreference('fontSize', newSize);
+    this.announce(`Tamaño de texto ${action === 'reset' ? 'restaurado' : action === 'increase' ? 'aumentado' : 'reducido'}`);
+  }
+
+  toggleMode(mode) {
+    const isEnabled = document.body.classList.toggle(mode);
+    const button = this.controls[this.getControlKey(mode)];
+    
+    if (button) {
+      button.setAttribute('aria-pressed', isEnabled);
+    }
+
+    this.savePreference(mode, isEnabled);
+    this.announce(`${this.getModeLabel(mode)} ${isEnabled ? 'activado' : 'desactivado'}`);
+  }
+
+  getControlKey(mode) {
+    const map = {
+      'high-contrast': 'contrast',
+      'dyslexic-mode': 'dyslexic',
+      'dark-mode': 'darkMode'
+    };
+    return map[mode];
+  }
+
+  getModeLabel(mode) {
+    const labels = {
+      'high-contrast': 'Alto contraste',
+      'dyslexic-mode': 'Modo dislexia',
+      'dark-mode': 'Modo oscuro'
+    };
+    return labels[mode];
+  }
+
+  announce(message) {
+    if (this.announcer) {
+      this.announcer.textContent = message;
+    }
+  }
+
+  savePreference(key, value) {
+    try {
+      const preferences = JSON.parse(localStorage.getItem('a11y-preferences') || '{}');
+      preferences[key] = value;
+      localStorage.setItem('a11y-preferences', JSON.stringify(preferences));
+    } catch (e) {
+      console.warn('Error saving accessibility preference:', e);
+    }
   }
 
   loadPreferences() {
-    const prefs = JSON.parse(localStorage.getItem('accessibility')) || {};
-    
-    if (prefs.fontSize) document.documentElement.style.setProperty('--base-font-size', prefs.fontSize);
-    if (prefs.highContrast) this.toggleHighContrast(true);
-    if (prefs.dyslexicMode) this.toggleDyslexicMode(true);
-    if (prefs.darkMode) this.toggleDarkMode(true);
-  }
-
-  savePreferences() {
-    const prefs = {
-      fontSize: document.documentElement.style.getPropertyValue('--base-font-size'),
-      highContrast: document.body.classList.contains('high-contrast'),
-      dyslexicMode: document.body.classList.contains('dyslexic-mode'),
-      darkMode: document.body.classList.contains('dark-mode')
-    };
-    
-    localStorage.setItem('accessibility', JSON.stringify(prefs));
-  }
-
-  changeFontSize(step) {
-    const root = document.documentElement;
-    const currentSize = parseFloat(getComputedStyle(root).fontSize);
-    const newSize = currentSize + (step * 2);
-    
-    if (newSize >= 12 && newSize <= 24) {
-      root.style.setProperty('--base-font-size', `${newSize}px`);
-      this.savePreferences();
-      this.announceChange(`Tamaño de texto ${step > 0 ? 'aumentado' : 'reducido'}`);
-    }
-  }
-
-  resetFontSize() {
-    document.documentElement.style.setProperty('--base-font-size', '16px');
-    this.savePreferences();
-    this.announceChange('Tamaño de texto restaurado');
-  }
-
-  toggleHighContrast(init = false) {
-    document.body.classList.toggle('high-contrast');
-    if (!init) {
-      this.savePreferences();
-      this.announceChange('Modo alto contraste ' + 
-        (document.body.classList.contains('high-contrast') ? 'activado' : 'desactivado'));
-    }
-  }
-
-  toggleDyslexicMode(init = false) {
-    document.body.classList.toggle('dyslexic-mode');
-    if (!init) {
-      this.savePreferences();
-      this.announceChange('Modo dislexia ' +
-        (document.body.classList.contains('dyslexic-mode') ? 'activado' : 'desactivado'));
-    }
-  }
-
-  toggleDarkMode(init = false) {
-    const isDark = document.body.classList.toggle('dark-mode');
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    if (!init) {
-      this.savePreferences();
-      this.announceChange('Modo ' + (isDark ? 'oscuro' : 'claro') + ' activado');
-    }
-  }
-
-  checkSystemPreferences() {
-    // Detectar preferencia de tema del sistema
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    prefersDark.addEventListener('change', (e) => {
-      if (!localStorage.getItem('accessibility')) {
-        this.toggleDarkMode(e.matches);
+    try {
+      const preferences = JSON.parse(localStorage.getItem('a11y-preferences') || '{}');
+      
+      // Restaurar tamaño de fuente
+      if (preferences.fontSize) {
+        document.documentElement.style.fontSize = `${preferences.fontSize}px`;
       }
-    });
 
-    // Detectar preferencia de movimiento reducido
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReducedMotion.matches) {
-      document.documentElement.classList.add('reduce-motion');
-    }
-  }
-
-  announceChange(message) {
-    const announcer = document.getElementById('a11y-announcer');
-    if (announcer) {
-      announcer.textContent = message;
+      // Restaurar modos
+      ['high-contrast', 'dyslexic-mode', 'dark-mode'].forEach(mode => {
+        if (preferences[mode]) {
+          document.body.classList.add(mode);
+          const button = this.controls[this.getControlKey(mode)];
+          if (button) {
+            button.setAttribute('aria-pressed', 'true');
+          }
+        }
+      });
+    } catch (e) {
+      console.warn('Error loading accessibility preferences:', e);
     }
   }
 }
