@@ -387,3 +387,54 @@
         font-size: 14px;
     }
 }
+
+/* Estilos para el botón flotante de WhatsApp */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-float {
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.whatsapp-float i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.whatsapp-float .whatsapp-text {
+    font-size: 16px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        padding: 12px 20px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 20px;
+    }
+    
+    .whatsapp-float .whatsapp-text {
+        font-size: 14px;
+    }
+}
