@@ -42,24 +42,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   sections.forEach(section => observer.observe(section));
 
+  // Animaciones suaves al scroll
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.area-card, .activity-card');
+    elements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementBottom = element.getBoundingClientRect().bottom;
+      
+      if (elementTop < window.innerHeight && elementBottom > 0) {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }
+    });
+  };
+
+  // Inicializar elementos con opacity 0
+  document.querySelectorAll('.area-card, .activity-card').forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  });
+
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Llamar una vez al inicio
+
   // Menú móvil con animaciones suaves
-  function toggleMenu() {
+  const toggleMenu = () => {
     menu.classList.toggle("menu-open");
-    const menuItems = menu.querySelectorAll('li');
+    const icon = document.getElementById("menuIcon");
     
-    if (menu.classList.contains('menu-open')) {
-      menuItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(-20px)';
-      });
-      setTimeout(() => {
-        menuItems.forEach(item => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateX(0)';
-        });
-      }, 100);
+    if (menu.classList.contains("menu-open")) {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+      icon.className = "fas fa-times";
+    } else {
+      menu.style.maxHeight = "0";
+      icon.className = "fas fa-bars";
     }
-  }
+  };
 
   darkModeButton.addEventListener("click", toggleDarkMode);
   menuToggleButton.addEventListener("click", toggleMenu);
