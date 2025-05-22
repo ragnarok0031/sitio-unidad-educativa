@@ -21,43 +21,32 @@
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <header class="site-header">
-        <div class="accessibility-bar">
+        <div class="top-bar">
             <div class="container">
-                <nav class="a11y-controls" aria-label="Controles de accesibilidad">
-                    <div class="font-controls" role="group" aria-label="Control de tamaño de texto">
-                        <button class="a11y-btn decrease-font" aria-label="Reducir tamaño de texto">
-                            <i class="fas fa-minus" aria-hidden="true"></i>
-                            <span class="sr-only">Reducir texto</span>
-                        </button>
-                        <button class="a11y-btn reset-font" aria-label="Restablecer tamaño de texto">
-                            <span aria-hidden="true">A</span>
-                            <span class="sr-only">Tamaño normal</span>
-                        </button>
-                        <button class="a11y-btn increase-font" aria-label="Aumentar tamaño de texto">
-                            <i class="fas fa-plus" aria-hidden="true"></i>
-                            <span class="sr-only">Aumentar texto</span>
-                        </button>
-                    </div>
-
-                    <div class="view-modes" role="group" aria-label="Modos de visualización">
-                        <button class="a11y-btn toggle-contrast" aria-pressed="false">
-                            <i class="fas fa-adjust" aria-hidden="true"></i>
-                            <span>Alto contraste</span>
-                        </button>
-                        <button class="a11y-btn toggle-dyslexic" aria-pressed="false">
-                            <i class="fas fa-font" aria-hidden="true"></i>
-                            <span>Modo dislexia</span>
-                        </button>
-                        <button class="a11y-btn toggle-dark" aria-pressed="false">
-                            <i class="fas fa-moon" aria-hidden="true"></i>
-                            <span>Modo oscuro</span>
-                        </button>
-                    </div>
-
-                    <button class="help-toggle" aria-expanded="false" aria-controls="help-panel">
-                        <i class="fas fa-question-circle" aria-hidden="true"></i>
-                        <span>Ayuda</span>
-                    </button>
+                <button class="control-btn a11y-toggle" aria-label="Opciones de accesibilidad">
+                    <i class="fas fa-universal-access"></i>
+                </button>
+                <button class="control-btn theme-toggle" aria-label="Cambiar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <nav class="social-links" aria-label="Redes sociales">
+                    <ul>
+                        <li>
+                            <a href="#" class="social-link" aria-label="Síguenos en Facebook">
+                                <i class="fab fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="social-link" aria-label="Síguenos en Instagram">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="social-link" aria-label="Síguenos en Twitter">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </div>
@@ -65,81 +54,67 @@
         <div class="main-header">
             <div class="container">
                 <div class="logo-container">
-                    <img src="/logo.png" alt="Logo">
-                    <h1 class="main-title">U.E. Guido Arce Pimentel</h1>
+                    <img src="/logo.png" alt="Logo de U.E. Guido Arce Pimentel">
+                    <div class="brand-text">
+                        <h1 class="site-title">U.E. Guido Arce Pimentel</h1>
+                        <span class="site-tagline">Educación Secundaria de Excelencia</span>
+                    </div>
                 </div>
-                
-                <nav class="main-menu">
-                  <ul class="menu-items">
-                    <li class="menu-item">
-                      <a href="#inicio" class="menu-link">Inicio</a>
-                    </li>
-                    <li class="menu-item has-dropdown">
-                      <a href="#recursos" class="menu-link">
-                        Recursos
-                        <i class="fas fa-chevron-down"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li class="dropdown-item">
-                          <a href="#biblioteca">Biblioteca Digital</a>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="menu-item">
+                            <a href="#inicio" class="menu-link">Inicio</a>
                         </li>
-                        <li class="dropdown-item">
-                          <a href="#horarios">Horarios de Clases</a>
+                        <li class="menu-item has-dropdown">
+                            <a href="#recursos" class="menu-link">
+                                Recursos
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">
+                                    <a href="#biblioteca">Biblioteca Digital</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#horarios">Horarios de Clases</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#reglamento">Reglamento UE</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="dropdown-item">
-                          <a href="#reglamento">Reglamento UE</a>
+                        <li class="menu-item">
+                            <a href="#directivo" class="menu-link">Directivo y Docentes</a>
                         </li>
-                      </ul>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#directivo" class="menu-link">Directivo y Docentes</a>
-                    </li>
-                    <li class="menu-item has-dropdown">
-                      <a href="#sobre-gap" class="menu-link">
-                        Sobre GAP
-                        <i class="fas fa-chevron-down"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li class="dropdown-item">
-                          <a href="#historia">Historia</a>
+                        <li class="menu-item has-dropdown">
+                            <a href="#sobre-gap" class="menu-link">
+                                Sobre GAP
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">
+                                    <a href="#historia">Historia</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#mision-vision">Misión y Visión</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#infraestructura">Infraestructura</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="dropdown-item">
-                          <a href="#mision-vision">Misión y Visión</a>
+                        <li class="menu-item">
+                            <a href="#carreras" class="menu-link">Nuestras Carreras</a>
                         </li>
-                        <li class="dropdown-item">
-                          <a href="#infraestructura">Infraestructura</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="menu-item">
-                      <a href="#carreras" class="menu-link">Nuestras Carreras</a>
-                    </li>
-                  </ul>
+                    </ul>
                 </nav>
-                
-                <div class="controls-container">
-                    <nav class="social-links" aria-label="Redes sociales">
-                        <ul>
-                            <li>
-                                <a href="#" class="social-link" aria-label="Síguenos en Facebook">
-                                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="social-link" aria-label="Síguenos en Instagram">
-                                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="social-link" aria-label="Síguenos en Twitter">
-                                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
-                        <span class="visually-hidden">Menú principal</span>
-                        <span class="hamburger"></span>
+
+                <div class="header-controls">
+                    <button class="control-btn search-toggle" aria-label="Buscar">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
