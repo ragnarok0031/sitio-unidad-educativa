@@ -22,6 +22,9 @@
   --content-width-desktop: 1200px;
   --section-padding-desktop: 4rem;
   --card-max-width: 340px;
+  --parallax-speed: 0.5;
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animation-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Animaciones globales */
@@ -41,16 +44,22 @@
   100% { transform: scale(1); }
 }
 
-body.light-mode {
-  --color-background: #f9f9f9;
-  --color-text: #333;
-  --color-surface: #fff;
+/* Animaciones modernas */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-body.dark-mode {
-  --color-background: #000000;
-  --color-text: #ffffff;
-  --color-surface: #1a1a1a;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Correcciones globales */
@@ -236,8 +245,26 @@ nav.menu li a:hover::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/images/pattern.png') repeat;
+  background: radial-gradient(circle at center, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  transform: translateZ(0);
+  z-index: -1;
+}
+
+.geometric-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, var(--color-primary) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-primary) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-primary) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-primary) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
   opacity: 0.1;
+  animation: slideBackground 20s linear infinite;
 }
 
 .hero-section .container {
@@ -283,17 +310,16 @@ nav.menu li a:hover::after {
 }
 
 .area-card {
-  background: linear-gradient(145deg, #ff0000, #cc0000);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, rgba(255,0,0,0.1), rgba(255,0,0,0.2));
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s var(--animation-bounce);
   padding: calc(var(--spacing-unit) * 2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
 }
 
 .area-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .area-card h3 {
@@ -314,6 +340,7 @@ nav.menu li a:hover::after {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-unit);
   color: rgba(255, 255, 255, 0.9);
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Grid system mejorado */
@@ -434,6 +461,8 @@ footer .container {
 }
 
 .cta-button {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(145deg, #ff0000, #cc0000);
   padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
   border-radius: calc(var(--border-radius) * 2);
@@ -444,9 +473,25 @@ footer .container {
   white-space: nowrap;
 }
 
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%) rotate(35deg);
+  transition: transform 0.5s var(--animation-smooth);
+}
+
 .cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover::after {
+  transform: translate(-50%, -50%) rotate(35deg) translateX(100%);
 }
 
 /* Menú móvil mejorado */
@@ -804,4 +849,39 @@ nav.menu.menu-open {
   .areas-grid {
     grid-template-columns: var(--grid-columns);
   }
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s var(--animation-smooth);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading animation */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }

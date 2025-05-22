@@ -278,6 +278,47 @@ document.addEventListener("DOMContentLoaded", function () {
   // Llamar al ajuste inicial
   adjustLayoutForScreen();
 
+  // Parallax effect
+  const parallaxElements = document.querySelectorAll('[data-parallax]');
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    parallaxElements.forEach(element => {
+      const speed = element.dataset.parallax || 0.5;
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translateY(${yPos}px)`;
+    });
+  });
+
+  // Scroll animations
+  const scrollElements = document.querySelectorAll('.scroll-animate');
+  const scrollObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  scrollElements.forEach(element => {
+    scrollObserver.observe(element);
+  });
+
+  // Loading animation
+  const loader = document.createElement('div');
+  loader.className = 'loading-overlay';
+  loader.innerHTML = '<div class="loading-spinner"></div>';
+  document.body.appendChild(loader);
+
+  window.addEventListener('load', () => {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.remove(), 500);
+  });
+
   showCookieBanner();
   loadUserPreferences();
 });
