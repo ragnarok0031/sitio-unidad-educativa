@@ -343,30 +343,39 @@
 
 /* Estilos para el botón de WhatsApp */
 .whatsapp-community {
-    margin-top: 1rem;
+    margin-top: 2rem;
     width: 100%;
+    text-align: center;
 }
 
-.whatsapp-link {
-    display: flex !important;
+.whatsapp-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #25D366 !important;
-    color: white !important;
-    padding: 10px 20px !important;
-    border-radius: 25px;
+    background-color: #25D366;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-.whatsapp-link:hover {
-    background-color: #128C7E !important;
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
 }
 
-.whatsapp-link i {
-    font-size: 24px;
+.whatsapp-button i {
+    font-size: 1.5rem;
     margin-right: 10px;
+}
+
+.whatsapp-button span {
+    white-space: nowrap;
 }
 
 .whatsapp-text {
