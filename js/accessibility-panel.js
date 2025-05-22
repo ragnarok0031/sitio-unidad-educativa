@@ -39,10 +39,6 @@ class AccessibilityPanel {
                 <i class="fas fa-font" aria-hidden="true"></i>
                 Modo dislexia
               </button>
-              <button class="mode-btn" data-mode="dark" aria-pressed="false">
-                <i class="fas fa-moon" aria-hidden="true"></i>
-                Modo oscuro
-              </button>
             </div>
           </div>
         </div>
@@ -138,3 +134,8 @@ class AccessibilityPanel {
     });
   }
 }
+
+// Asegurar que se inicializa cuando el DOM esté listo
+window.addEventListener('DOMContentLoaded', () => {
+  new AccessibilityPanel();
+});
