@@ -5,6 +5,24 @@
   --color-surface: #1a1a1a;
   --color-text: #ffffff;
   --color-accent: #ff3333;
+  --animation-speed: 0.3s;
+}
+
+/* Animaciones globales */
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseButton {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 body.light-mode {
@@ -85,6 +103,14 @@ nav.menu.menu-open {
 
 .section {
   padding: 60px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--animation-speed) ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .container {
@@ -131,4 +157,91 @@ nav.menu.menu-open {
 
 .social-links a:hover {
   color: var(--color-primary);
+}
+
+/* Mejoras en el header y navegación */
+header {
+  position: fixed;
+  width: 100%;
+  transition: all var(--animation-speed) ease;
+}
+
+header.scrolled {
+  padding: 0.5rem;
+  background: rgba(255, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.menu-toggle, .toggle-dark-mode {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: all var(--animation-speed) ease;
+}
+
+.menu-toggle:hover, .toggle-dark-mode:hover {
+  background: rgba(255, 255, 255, 0.2);
+  animation: pulseButton 1s infinite;
+}
+
+/* Menú móvil mejorado */
+nav.menu {
+  transition: all var(--animation-speed) ease;
+}
+
+nav.menu.menu-open {
+  animation: slideIn var(--animation-speed) ease;
+}
+
+.menu-list li {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn var(--animation-speed) ease forwards;
+}
+
+.menu-list li:nth-child(1) { animation-delay: 0.1s; }
+.menu-list li:nth-child(2) { animation-delay: 0.2s; }
+.menu-list li:nth-child(3) { animation-delay: 0.3s; }
+.menu-list li:nth-child(4) { animation-delay: 0.4s; }
+.menu-list li:nth-child(5) { animation-delay: 0.5s; }
+.menu-list li:nth-child(6) { animation-delay: 0.6s; }
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .menu-toggle, .toggle-dark-mode {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  nav.menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--color-primary);
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-list {
+    gap: 1rem;
+  }
+
+  .menu-list li a {
+    display: block;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-list li a:active {
+    transform: scale(0.98);
+  }
 }
