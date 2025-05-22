@@ -235,42 +235,213 @@
         <section id="horarios" class="schedule-section">
             <div class="container">
                 <h2>Horarios</h2>
-                <div class="schedule-grid">
-                    <div class="turno-manana">
-                        <h3>Turno Mañana</h3>
-                        <div class="schedule-img-container">
-                            <picture>
-                                <source srcset="images/horario-manana-dark.png" media="(prefers-color-scheme: dark)">
-                                <source srcset="images/horario-manana.png" media="(prefers-color-scheme: light)">
-                                <img src="images/horario-manana.png" 
-                                     alt="Horario turno mañana" 
-                                     class="schedule-img"
-                                     loading="lazy"
-                                     width="800"
-                                     height="600">
-                            </picture>
-                            <a href="images/horario-manana.png" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar Horario
-                            </a>
+                <div class="schedule-navigation">
+                    <div class="grade-selector">
+                        <button class="grade-btn active" data-grade="1">1° Secundaria</button>
+                        <button class="grade-btn" data-grade="2">2° Secundaria</button>
+                        <button class="grade-btn" data-grade="3">3° Secundaria</button>
+                        <button class="grade-btn" data-grade="4">4° Secundaria</button>
+                        <button class="grade-btn" data-grade="5">5° Secundaria</button>
+                        <button class="grade-btn" data-grade="6">6° Secundaria</button>
+                    </div>
+                    <div class="parallel-selector">
+                        <button class="parallel-btn active" data-parallel="A">Paralelo A</button>
+                        <button class="parallel-btn" data-parallel="B">Paralelo B</button>
+                    </div>
+                </div>
+
+                <div class="schedules-container">
+                    <!-- 1° Secundaria -->
+                    <div class="schedule-grid active" data-grade="1" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>1° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/1A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/1A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/1A.png" alt="Horario 1° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/1A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="turno-tarde">
-                        <h3>Turno Tarde</h3>
-                        <div class="schedule-img-container">
-                            <picture>
-                                <source srcset="images/horario-tarde-dark.png" media="(prefers-color-scheme: dark)">
-                                <source srcset="images/horario-tarde.png" media="(prefers-color-scheme: light)">
-                                <img src="images/horario-tarde.png" 
-                                     alt="Horario turno tarde" 
-                                     class="schedule-img"
-                                     loading="lazy"
-                                     width="800"
-                                     height="600">
-                            </picture>
-                            <a href="images/horario-tarde.png" class="download-btn" download>
-                                <i class="fas fa-download"></i> Descargar Horario
-                            </a>
+
+                    <!-- Repetir para cada curso y paralelo -->
+                    <div class="schedule-grid" data-grade="1" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>1° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/1B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/1B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/1B.png" alt="Horario 1° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/1B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="2" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>2° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/2A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/2A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/2A.png" alt="Horario 2° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/2A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="2" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>2° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/2B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/2B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/2B.png" alt="Horario 2° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/2B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="3" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>3° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/3A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/3A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/3A.png" alt="Horario 3° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/3A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="3" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>3° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/3B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/3B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/3B.png" alt="Horario 3° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/3B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="4" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>4° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/4A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/4A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/4A.png" alt="Horario 4° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/4A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="4" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>4° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/4B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/4B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/4B.png" alt="Horario 4° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/4B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="5" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>5° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/5A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/5A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/5A.png" alt="Horario 5° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/5A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="5" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>5° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/5B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/5B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/5B.png" alt="Horario 5° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/5B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="6" data-parallel="A">
+                        <div class="schedule-card">
+                            <h3>6° A - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/6A-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/6A.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/6A.png" alt="Horario 6° A" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/6A.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-grid" data-grade="6" data-parallel="B">
+                        <div class="schedule-card">
+                            <h3>6° B - Secundaria</h3>
+                            <div class="schedule-img-container">
+                                <picture>
+                                    <source srcset="images/horarios/6B-dark.png" media="(prefers-color-scheme: dark)">
+                                    <source srcset="images/horarios/6B.png" media="(prefers-color-scheme: light)">
+                                    <img src="images/horarios/6B.png" alt="Horario 6° B" class="schedule-img" loading="lazy">
+                                </picture>
+                                <a href="images/horarios/6B.png" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Descargar Horario
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
