@@ -1,13 +1,13 @@
 /* Sistema de breakpoints optimizado */
 :root {
-  --color-primary: #ff0000;
-  --color-primary-dark: #cc0000;
-  --color-background: #000000;
-  --color-surface: #1a1a1a;
-  --color-text: #ffffff;
+  --color-primary: #E63946;
+  --color-primary-dark: #8B0000;
+  --color-background: #121212;
+  --color-surface: #1E1E1E;
+  --color-text: #E0E0E0;
   --color-accent: #ff3333;
   --color-highlight: #ff3333;
-  --gradient-primary: linear-gradient(135deg, var(--color-primary), #990000);
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   --animation-speed: 0.3s;
   --font-main: 'Roboto', sans-serif;
   --font-headings: 'Roboto', sans-serif;
@@ -133,9 +133,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
 }
 
 ul {
