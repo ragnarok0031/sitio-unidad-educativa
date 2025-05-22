@@ -1663,304 +1663,168 @@ p { font-size: var(--font-size-fluid); }
 /* Mejoras en el sistema de accesibilidad */
 .accessibility-toolbar {
   position: fixed;
+  top: var(--header-height);
   right: 1rem;
-  top: calc(var(--header-height) + 1rem);
   z-index: calc(var(--menu-z-index) - 1);
   background: var(--color-surface);
   border-radius: var(--border-radius);
-  padding: var(--space-md);
+  padding: var(--space-sm);
   box-shadow: var(--box-shadow);
   transition: var(--transition-smooth);
-  max-width: 320px;
-  width: calc(100% - 2rem);
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
-/* Contenedor de controles mejorado */
-.accessibility-controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
-/* Grupos de controles */
+/* Controles de accesibilidad */
 .control-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
-.control-group-title {
-  font-size: var(--font-size-small);
-  font-weight: 500;
-  color: var(--color-text);
-  opacity: 0.8;
-  margin-bottom: var(--space-xs);
-}
-
-/* Tamaño de texto */
 .font-size-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  width: 100%;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--border-radius);
 }
 
 .font-control-button {
-  flex: 1;
-  padding: var(--space-sm);
-  border: 1px solid var(--color-primary);
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-accent);
   background: transparent;
   color: var(--color-text);
   border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: var(--transition-smooth);
-  
-  &:hover {
-    background: var(--color-primary);
-    color: white;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-accent);
+    color: var(--color-surface);
   }
-  
-  &.active {
-    background: var(--color-primary);
-    color: white;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }
 
-/* Toggles de modo */
 .mode-toggles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-sm);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-xs);
 }
 
 .mode-toggle {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm);
-  border: 1px solid var(--color-primary);
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
   background: transparent;
+  border: 1px solid var(--color-accent);
   color: var(--color-text);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition-smooth);
-  
-  &:hover {
-    background: rgba(var(--color-primary-rgb), 0.1);
-  }
-  
+
   &[aria-pressed="true"] {
-    background: var(--color-primary);
-    color: white;
+    background: var(--color-accent);
+    color: var(--color-surface);
   }
-  
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(255,255,255,0.1);
+  }
+
   i {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 
-/* Estilos para los diferentes modos */
-body.large-text {
-  --font-size-base: 18px;
-  --font-size-h1: 2.8rem;
-  --font-size-h2: 2.3rem;
-  --font-size-h3: 1.8rem;
+/* Redes sociales */
+.social-links {
+  margin-right: var(--space-md);
 }
 
-body.high-contrast {
-  --color-text: #ffffff;
-  --color-background: #000000;
-  --color-primary: #ffff00;
-  --color-accent: #00ffff;
-  --color-surface: #1a1a1a;
-  
-  * {
-    text-shadow: none !important;
-    box-shadow: none !important;
+.social-links ul {
+  display: flex;
+  gap: var(--space-sm);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  transition: var(--transition-smooth);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }
 
-body.dyslexic-mode {
-  --font-main: var(--font-dyslexic);
-  --text-spacing: 0.16em;
-  --line-height-base: 1.8;
-  
-  p, li {
-    max-width: 60ch;
-    letter-spacing: var(--text-spacing);
-    word-spacing: 0.32em;
-  }
-}
-
-/* Responsive */
+/* Media queries */
 @media (max-width: 768px) {
   .accessibility-toolbar {
     top: auto;
-    bottom: 1rem;
-    right: 1rem;
-    left: 1rem;
-    width: auto;
+    bottom: var(--space-lg);
+    left: var(--space-sm);
+    right: var(--space-sm);
     max-width: none;
-    padding: var(--space-sm);
+    
+    .mode-toggles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mode-toggle span {
+      display: none;
+    }
   }
 
-  .mode-toggles {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .mode-toggle span {
-    display: none;
-  }
-
-  .font-size-controls {
-    justify-content: center;
+  .social-links {
+    margin-right: var(--space-sm);
+    
+    ul {
+      gap: var(--space-xs);
+    }
   }
 }
 
-/* Soporte para reducción de movimiento */
+/* Soporte reducción de movimiento */
 @media (prefers-reduced-motion: reduce) {
-  .accessibility-toolbar {
-    transition: none;
-  }
-
+  .accessibility-toolbar,
+  .font-control-button,
   .mode-toggle,
-  .font-control-button {
+  .social-link {
     transition: none;
   }
-}
-
-/* Utilidades de accesibilidad */
-.visually-hidden:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-/* Anunciador de cambios */
-.a11y-announcer {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/* Mejoras de accesibilidad para navegación por teclado */
-.keyboard-user :focus {
-  outline: 3px solid var(--color-accent) !important;
-  outline-offset: 2px !important;
-  text-decoration: underline;
-}
-
-.skip-link {
-  position: fixed;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-primary);
-  color: white;
-  padding: 1rem;
-  z-index: calc(var(--menu-z-index) + 1);
-  transition: top 0.3s;
-  text-decoration: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Mensajes de error accesibles */
-.form-error {
-  color: #ff3333;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.form-error::before {
-  content: '⚠️';
-}
-
-.error-summary {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-surface);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  z-index: var(--menu-z-index);
-  max-width: 90%;
-  width: 400px;
-}
-
-/* Mejoras para contenido multimedia */
-.media-container {
-  position: relative;
-  width: 100%;
-}
-
-.media-container video,
-.media-container audio {
-  width: 100%;
-}
-
-.media-container .transcript {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: var(--color-surface);
-  border-radius: var(--border-radius);
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-/* Evitar contenido parpadeante */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* Mejoras para lectores de pantalla */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-/* Mejoras para formularios accesibles */
-input:invalid,
-select:invalid,
-textarea:invalid {
-  border-color: #ff3333;
-}
-
-[aria-invalid="true"] {
-  border-color: #ff3333;
 }

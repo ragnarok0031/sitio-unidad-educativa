@@ -19,6 +19,36 @@
 <body>
     <div class="min-h-screen">
         <header>
+            <div class="accessibility-toolbar" role="toolbar" aria-label="Opciones de accesibilidad">
+                <div class="control-group">
+                    <div class="font-size-controls" role="group" aria-label="Control de tamaño de texto">
+                        <button class="font-control-button" data-action="decrease" aria-label="Reducir texto">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="font-control-button" data-action="reset" aria-label="Restablecer texto">
+                            A
+                        </button>
+                        <button class="font-control-button" data-action="increase" aria-label="Aumentar texto">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="mode-toggles" role="group" aria-label="Modos de visualización">
+                        <button class="mode-toggle toggle-contrast" aria-pressed="false">
+                            <i class="fas fa-adjust" aria-hidden="true"></i>
+                            <span>Alto contraste</span>
+                        </button>
+                        <button class="mode-toggle toggle-dyslexic" aria-pressed="false">
+                            <i class="fas fa-font" aria-hidden="true"></i>
+                            <span>Modo dislexia</span>
+                        </button>
+                        <button class="mode-toggle toggle-dark-mode" aria-pressed="false">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                            <span>Modo oscuro</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="container">
                 <div class="logo-container">
                     <img src="/logo.png" alt="Logo">
@@ -74,15 +104,27 @@
                 </nav>
                 
                 <div class="controls-container">
-                    <div class="social-links-header">
-                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                    <button class="toggle-dark-mode">
-                        <i id="darkModeIcon" class="fas fa-moon"></i>
-                    </button>
-                    <button class="menu-toggle" aria-label="Menú principal">
+                    <nav class="social-links" aria-label="Redes sociales">
+                        <ul>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Síguenos en Facebook">
+                                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Síguenos en Instagram">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Síguenos en Twitter">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+                        <span class="visually-hidden">Menú principal</span>
                         <span class="hamburger"></span>
                     </button>
                 </div>
