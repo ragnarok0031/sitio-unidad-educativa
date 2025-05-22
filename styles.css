@@ -65,6 +65,16 @@
   --menu-z-index: 1000;
   --menu-backdrop-z-index: 999;
   --menu-width-mobile: min(300px, 80vw);
+
+  /* Contraste y legibilidad */
+  --contrast-ratio: 4.5;
+  --text-spacing: 0.12em;
+  --line-height-relaxed: 1.8;
+  
+  /* Fuentes accesibles */
+  --font-dyslexic: 'OpenDyslexic', var(--font-main);
+  --focus-outline: 3px solid var(--color-accent);
+  --focus-ring-offset: 3px;
 }
 
 /* Animaciones globales */
@@ -1631,5 +1641,175 @@ p { font-size: var(--font-size-fluid); }
 
   .cookie-actions button {
     width: 100%;
+  }
+}
+
+/* Variables de accesibilidad */
+:root {
+  /* Contraste y legibilidad */
+  --contrast-ratio: 4.5;
+  --text-spacing: 0.12em;
+  --line-height-relaxed: 1.8;
+  
+  /* Fuentes accesibles */
+  --font-dyslexic: 'OpenDyslexic', var(--font-main);
+  --focus-outline: 3px solid var(--color-accent);
+  --focus-ring-offset: 3px;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: var(--menu-z-index);
+  padding: 1rem;
+  background: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Lectores de pantalla */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.screen-reader-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Barra de accesibilidad */
+.accessibility-bar {
+  position: fixed;
+  top: var(--header-height);
+  right: 1rem;
+  z-index: calc(var(--menu-z-index) - 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.accessibility-bar button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accessibility-bar button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.accessibility-bar button[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Mejoras de focus */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Modo dislexia */
+body.dyslexic-mode {
+  font-family: var(--font-dyslexic);
+  letter-spacing: var(--text-spacing);
+  line-height: var(--line-height-relaxed);
+  word-spacing: 0.16em;
+}
+
+/* Alto contraste */
+body.high-contrast {
+  --color-text: #ffffff;
+  --color-background: #000000;
+  --color-primary: #ffff00;
+  --color-accent: #00ffff;
+}
+
+/* Texto grande */
+body.large-text {
+  font-size: 120%;
+}
+
+/* Sistema de ayuda */
+.help-system {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: calc(var(--menu-z-index) - 1);
+}
+
+.help-toggle {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.help-content {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 300px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Mejoras de contraste y legibilidad */
+.text-content {
+  max-width: 65ch;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Media queries de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --contrast-ratio: 7;
   }
 }

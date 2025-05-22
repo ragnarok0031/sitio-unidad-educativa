@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1">
+    <meta name="description" content="Unidad Educativa Guido Arce Pimentel - Educación Secundaria de Excelencia">
+    <meta name="theme-color" content="#ff0000">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="manifest" href="/manifest.json">
+    <!-- Mejoras de accesibilidad -->
+    <script src="js/a11y.js" defer></script>
     <title>U.E. Guido Arce Pimentel</title>
 </head>
 <body>
@@ -106,6 +111,43 @@
         </header>
 
         <main>
+            <!-- Mejoras de accesibilidad -->
+            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+            
+            <div role="status" aria-live="polite" class="screen-reader-only" id="announcer"></div>
+            
+            <!-- Sistema de ayuda contextual -->
+            <div class="help-system">
+                <button class="help-toggle" aria-expanded="false">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="visually-hidden">Ayuda</span>
+                </button>
+                <div class="help-content" hidden>
+                    <h2>Ayuda y Soporte</h2>
+                    <ul>
+                        <li><a href="#guia">Guía de navegación</a></li>
+                        <li><a href="#faq">Preguntas frecuentes</a></li>
+                        <li><a href="#soporte">Contactar soporte</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Barra de accesibilidad -->
+            <div class="accessibility-bar" role="toolbar" aria-label="Opciones de accesibilidad">
+                <button class="font-size-toggle" aria-pressed="false">
+                    <i class="fas fa-text-height"></i>
+                    <span>Tamaño de texto</span>
+                </button>
+                <button class="contrast-toggle" aria-pressed="false">
+                    <i class="fas fa-adjust"></i>
+                    <span>Contraste</span>
+                </button>
+                <button class="dyslexic-toggle" aria-pressed="false">
+                    <i class="fas fa-font"></i>
+                    <span>Modo dislexia</span>
+                </button>
+            </div>
+
             <section id="inicio" class="hero-section">
                 <div class="container">
                     <div class="hero-content">
