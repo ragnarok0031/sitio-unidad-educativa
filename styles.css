@@ -937,6 +937,81 @@ nav.menu.menu-open {
   }
 }
 
+/* Sección Visión y Misión */
+.vision-mision-section {
+  background: linear-gradient(135deg, var(--color-surface), rgba(26, 26, 26, 0.95));
+  padding: var(--section-spacing) 0;
+}
+
+.vision-mision-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+  align-items: start;
+}
+
+.vision-card,
+.mision-card {
+  background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  height: 100%;
+  transition: transform 0.3s var(--animation-bounce);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.vision-card:hover,
+.mision-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.card-header i {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.card-header h2 {
+  font-size: var(--font-size-h2);
+  margin: 0;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vision-text,
+.mision-text {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  text-align: justify;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+/* Media queries para Visión y Misión */
+@media (max-width: 768px) {
+  .vision-mision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-card,
+  .mision-card {
+    padding: var(--space-md);
+  }
+
+  .card-header {
+    margin-bottom: var(--space-md);
+  }
+}
+
 /* Correcciones para el menú anclado */
 :root {
   --header-height: 60px;
