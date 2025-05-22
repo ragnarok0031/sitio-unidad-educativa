@@ -1,4 +1,28 @@
-# sitio-unidad-educativa
-Página web desarrollada como proyecto de Sistemas Informáticos para la Unidad Educativa Guido Arce Pimentel
-Un aporte realizado con mucho cariño por Daryl Johans , con el objetivo de apoyar a los estudiantes en el proyecto de creación de la página web del Bachillerato Técnico Humanístico en Sistemas Informáticos de la institución.
-Este trabajo también tiene un propósito especial: contribuir a la comunidad en la que me crié, crecí y estudié, brindando una herramienta útil que fortalece la educación y fomenta el desarrollo tecnológico de todos sus miembros.
+This project was generated from [create.xyz](https://create.xyz/).
+
+It is a [Next.js](https://nextjs.org/) project built on React and TailwindCSS.
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the code in `src`. The page auto-updates as you edit the file.
+
+To learn more, take a look at the following resources:
+
+- [React Documentation](https://react.dev/) - learn about React
+- [TailwindCSS Documentation](https://tailwindcss.com/) - learn about TailwindCSS
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
