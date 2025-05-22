@@ -1,12 +1,12 @@
 class ScheduleManager {
     constructor() {
         this.schedules = {
-            '1': { A: '1A.png', B: '1B.png' },
-            '2': { A: '2A.png', B: '2B.png' },
-            '3': { A: '3A.png', B: '3B.png' },
-            '4': { A: '4A.png', B: '4B.png' },
-            '5': { A: '5A.png', B: '5B.png' },
-            '6': { A: '6A.png', B: '6B.png' }
+            '1': { A: '1A.jpg', B: '1B.jpg' },
+            '2': { A: '2A.jpg', B: '2B.jpg' },
+            '3': { A: '3A.jpg', B: '3B.jpg' },
+            '4': { A: '4A.jpg', B: '4B.jpg' },
+            '5': { A: '5A.jpg', B: '5B.jpg' },
+            '6': { A: '6A.jpg', B: '6B.jpg' }
         };
         this.init();
     }
@@ -23,7 +23,7 @@ class ScheduleManager {
                 const img = new Image();
                 img.src = `images/horarios/${filename}`;
                 const darkImg = new Image();
-                darkImg.src = `images/horarios/${filename.replace('.png', '-dark.png')}`;
+                darkImg.src = `images/horarios/${filename.replace('.jpg', '-dark.jpg')}`;
             });
         });
     }
