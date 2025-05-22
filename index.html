@@ -10,10 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- Agregar preload para recursos críticos -->
+    <link rel="preload" href="css/header.css" as="style">
+    <link rel="preload" href="css/main.css" as="style">
     <link rel="stylesheet" href="css/animations.css">
     <!-- Mejoras de accesibilidad -->
     <script src="js/a11y.js" defer></script>
@@ -404,13 +404,19 @@
             </div>
         </section>
 
-        <section id="reglamento" class="rules-section">
+        <section id="reglamento" class="rules-section" role="region" aria-labelledby="reglamento-titulo">
             <div class="container">
-                <h2>Reglamento</h2>
+                <h2 id="reglamento-titulo">Reglamento</h2>
                 <div class="rules-content">
                     <h3>Reglamento Interno GAP 2025</h3>
-                    <a href="https://raw.githubusercontent.com/ragnarok0031/sitio-unidad-educativa/11d8959dd3bb8686338e9ef17f7f2581705d664a/docs%20/Reglamento%20interno%20GAP%202025.pdf" download="Reglamento interno GAP 2025.pdf">
-                        <button>Descargar Reglamento Interno GAP 2025</button>
+                    <a href="https://raw.githubusercontent.com/ragnarok0031/sitio-unidad-educativa/11d8959dd3bb8686338e9ef17f7f2581705d664a/docs%20/Reglamento%20interno%20GAP%202025.pdf" 
+                       download="Reglamento interno GAP 2025.pdf"
+                       class="download-link"
+                       aria-label="Descargar Reglamento Interno GAP 2025 en formato PDF">
+                        <button class="download-button">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            Descargar Reglamento Interno GAP 2025
+                        </button>
                     </a>
                 </div>
             </div>
@@ -467,20 +473,7 @@
                         </div>
                     </div>
                         image-900.jpg 900w"mg" 
-                sizes="(max-width: 768px) 100vw,.jpg 300w, 
-                       (max-width: 1024px) 50vw,600.jpg 600w, 
-                       33vw"           image-900.jpg 900w"
-                src="image-600.jpg" sizes="(max-width: 768px) 100vw,
-                alt="Descripción"             (max-width: 1024px) 50vw,
-                loading="lazy"
-            >
-        </main>       alt="Descripción"
-    </div>         loading="lazy"
-
-
-
-
-</html>  </body>    <script src="js/horarios.js"></script>    <script src="js/cookies.js"></script>            >
+                sizes="(max-width: 768px) 100vw,.jpg 300w,                        (max-width: 1024px) 50vw,600.jpg 600w,                        33vw"           image-900.jpg 900w"                src="image-600.jpg" sizes="(max-width: 768px) 100vw,                alt="Descripción"             (max-width: 1024px) 50vw,                loading="lazy"            >        </main>       alt="Descripción"    </div>         loading="lazy"</html>  </body>    <script src="js/horarios.js"></script>    <script src="js/cookies.js"></script>            >
         </main>
     </div>
     <script src="js/cookies.js"></script>
