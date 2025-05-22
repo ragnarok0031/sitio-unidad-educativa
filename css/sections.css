@@ -1,0 +1,94 @@
+/* Sección Biblioteca */
+.library-section {
+  background: var(--gradient-surface);
+  padding: var(--section-spacing) 0;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.library-card {
+  background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  transition: transform 0.3s var(--animation-bounce);
+}
+
+/* Sección Horarios */
+.schedule-section {
+  background: var(--color-surface);
+  padding: var(--section-spacing) 0;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+/* Sección Reglamento */
+.rules-section {
+  background: var(--gradient-surface);
+  padding: var(--section-spacing) 0;
+}
+
+.rules-card {
+  background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Sección Docentes */
+.teachers-section {
+  background: var(--color-surface);
+  padding: var(--section-spacing) 0;
+}
+
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--grid-gap);
+}
+
+.teacher-card {
+  background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: transform 0.3s var(--animation-bounce);
+}
+
+.teacher-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .library-grid,
+  .schedule-grid,
+  .teachers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-table {
+    font-size: 0.875rem;
+  }
+}
