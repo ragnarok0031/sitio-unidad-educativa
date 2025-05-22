@@ -67,18 +67,55 @@ document.addEventListener("DOMContentLoaded", function () {
   animateOnScroll(); // Llamar una vez al inicio
 
   // Menú móvil con animaciones suaves
-  const toggleMenu = () => {
-    menu.classList.toggle("menu-open");
-    const icon = document.getElementById("menuIcon");
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const menuItems = document.querySelectorAll('.mobile-menu li');
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
     
-    if (menu.classList.contains("menu-open")) {
-      menu.style.maxHeight = menu.scrollHeight + "px";
-      icon.className = "fas fa-times";
-    } else {
-      menu.style.maxHeight = "0";
-      icon.className = "fas fa-bars";
+    // Animar items del menú
+    menuItems.forEach((item, index) => {
+      if (isMenuOpen) {
+        item.style.transitionDelay = `${index * 0.1}s`;
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      } else {
+        item.style.transitionDelay = '0s';
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+      }
+    });
+
+    // Prevenir scroll cuando el menú está abierto
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Cerrar menú al hacer click en un enlace
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      if (isMenuOpen) toggleMenu();
+    });
+  });
+
+  // Cerrar menú al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (isMenuOpen && !mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      toggleMenu();
     }
-  };
+  });
+
+  // Cerrar menú al redimensionar la ventana
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && isMenuOpen) {
+      toggleMenu();
+    }
+  });
 
   darkModeButton.addEventListener("click", toggleDarkMode);
   menuToggleButton.addEventListener("click", toggleMenu);
