@@ -205,6 +205,79 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Utilidad para detectar características de la pantalla
+  const ScreenDetector = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    aspectRatio: window.innerWidth / window.innerHeight,
+    orientation: window.innerWidth > window.innerHeight ? 'landscape' : 'portrait',
+    pixelRatio: window.devicePixelRatio || 1,
+    isTouch: 'ontouchstart' in window,
+    
+    getDeviceType() {
+      const width = this.width;
+      if (width < 768) return 'mobile';
+      if (width < 1024) return 'tablet';
+      if (width < 1440) return 'laptop';
+      return 'desktop';
+    },
+
+    updateMetrics() {
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+      this.aspectRatio = this.width / this.height;
+      this.orientation = this.width > this.height ? 'landscape' : 'portrait';
+      document.documentElement.style.setProperty('--vh', `${this.height * 0.01}px`);
+      document.body.setAttribute('data-device', this.getDeviceType());
+      document.body.setAttribute('data-orientation', this.orientation);
+    }
+  };
+
+  // Inicializar detección de pantalla
+  ScreenDetector.updateMetrics();
+
+  // Actualizar métricas al redimensionar o rotar
+  window.addEventListener('resize', () => {
+    ScreenDetector.updateMetrics();
+    adjustLayoutForScreen();
+  });
+
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      ScreenDetector.updateMetrics();
+      adjustLayoutForScreen();
+    }, 100);
+  });
+
+  // Ajustar layout según la pantalla
+  function adjustLayoutForScreen() {
+    const deviceType = ScreenDetector.getDeviceType();
+    const orientation = ScreenDetector.orientation;
+
+    // Ajustar grid columns según el dispositivo
+    const areasGrid = document.querySelector('.areas-grid');
+    if (areasGrid) {
+      switch(deviceType) {
+        case 'mobile':
+          areasGrid.style.gridTemplateColumns = '1fr';
+          break;
+        case 'tablet':
+          areasGrid.style.gridTemplateColumns = orientation === 'landscape' ? 
+            'repeat(2, 1fr)' : 'repeat(1, 1fr)';
+          break;
+        default:
+          areasGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+      }
+    }
+
+    // Ajustar tamaño de fuente base según el ancho de pantalla
+    const baseFontSize = Math.min(16 * (ScreenDetector.width / 1440), 16);
+    document.documentElement.style.fontSize = `${baseFontSize}px`;
+  }
+
+  // Llamar al ajuste inicial
+  adjustLayoutForScreen();
+
   showCookieBanner();
   loadUserPreferences();
 });

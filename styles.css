@@ -16,6 +16,8 @@
   --container-padding: clamp(1rem, 5vw, 2rem);
   --section-spacing: clamp(2rem, 8vh, 6rem);
   --grid-min-width: min(300px, 100%);
+  --screen-height: 100vh;
+  --dynamic-spacing: clamp(1rem, 3vw, 2rem);
 }
 
 /* Animaciones globales */
@@ -81,9 +83,9 @@ ul {
 
 /* Container mejorado */
 .container {
-  width: min(100% - 2rem, 1200px);
+  width: min(var(--content-width), 100% - 2rem);
   margin-inline: auto;
-  padding-inline: var(--container-padding);
+  padding-inline: var(--dynamic-spacing);
 }
 
 /* Header */
@@ -214,7 +216,7 @@ nav.menu li a:hover::after {
 
 /* Hero Section */
 .hero-section {
-  min-height: max(60vh, 400px);
+  min-height: calc(var(--screen-height) - var(--header-height));
   background: var(--gradient-primary);
   position: relative;
   overflow: hidden;
@@ -718,5 +720,50 @@ nav.menu.menu-open {
 @media (max-width: 768px) {
   .cookie-banner p {
     flex-direction: column;
+  }
+}
+
+/* Ajustes según dispositivo */
+[data-device="mobile"] {
+  --header-height: 60px;
+  --content-width: 100%;
+}
+
+[data-device="tablet"] {
+  --header-height: 70px;
+  --content-width: 90%;
+}
+
+[data-device="laptop"],
+[data-device="desktop"] {
+  --header-height: 80px;
+  --content-width: 1200px;
+}
+
+/* Ajustes según orientación */
+[data-orientation="portrait"] {
+  --grid-columns: 1fr;
+}
+
+[data-orientation="landscape"] {
+  --grid-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Altura dinámica para móviles */
+.hero-section {
+  min-height: calc(var(--screen-height) - var(--header-height));
+}
+
+/* Media queries mejorados */
+@supports (height: 100dvh) {
+  .hero-section {
+    min-height: 100dvh;
+  }
+}
+
+/* Ajustes responsive */
+@container (min-width: 768px) {
+  .areas-grid {
+    grid-template-columns: var(--grid-columns);
   }
 }
