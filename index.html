@@ -9,33 +9,31 @@
 </head>
 <body class="dark-mode">
     <div class="min-h-screen bg-[#000000]">
-        
-        <header class="sticky top-0 z-50 bg-[#ff0000] text-white p-4 shadow-lg">
-            <div class="container mx-auto flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <img src="/logo.png" alt="Logo U.E. Guido Arce Pimentel" class="h-12 w-auto">
-                    <h1 class="hidden md:block text-xl md:text-2xl font-crimson-text">U.E. Guido Arce Pimentel</h1>
-                    <h1 class="md:hidden text-xl font-crimson-text">G.A.P.</h1>
+        <header>
+            <div class="container">
+                <div class="logo-container">
+                    <img src="/logo.png" alt="Logo U.E. Guido Arce Pimentel">
+                    <h1 class="main-title">U.E. Guido Arce Pimentel</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <button class="toggle-dark-mode p-2 rounded-full transition-colors duration-300">
+                <nav id="main-menu" class="menu">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#admision">Admisión</a></li>
+                        <li><a href="#areas">Áreas Académicas</a></li>
+                        <li><a href="#actividades">Actividades</a></li>
+                        <li><a href="#estudiantes">Portal Estudiantes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="menu-toggle-container">
+                    <button class="toggle-dark-mode">
                         <i id="darkModeIcon" class="fas fa-moon"></i>
                     </button>
-                    <button class="menu-toggle md:hidden p-2 rounded-full transition-colors duration-300">
+                    <button class="menu-toggle">
                         <i id="menuIcon" class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
-            <nav id="main-menu" class="menu hidden md:block">
-                <ul class="menu-list">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#admision">Admisión</a></li>
-                    <li><a href="#areas">Áreas Académicas</a></li>
-                    <li><a href="#actividades">Actividades</a></li>
-                    <li><a href="#estudiantes">Portal Estudiantes</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
         </header>
 
         <section id="inicio" class="hero-section">
@@ -126,24 +124,22 @@
         </section>
 
         <footer class="bg-[#ff0000] text-white">
-            <div class="container mx-auto">
-                <div class="grid">
-                    <div class="footer-info">
-                        <h3 class="title">Contacto</h3>
-                        <p>Los Negros, Pampagrande</p>
-                        <p>Santa Cruz, Bolivia</p>
+            <div class="container">
+                <div class="footer-info">
+                    <h3 class="title">Contacto</h3>
+                    <p>Los Negros, Pampagrande</p>
+                    <p>Santa Cruz, Bolivia</p>
+                </div>
+                <div class="footer-info">
+                    <h3 class="title">Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <div class="footer-info">
-                        <h3 class="title">Síguenos</h3>
-                        <div class="social-links">
-                            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-                            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-info">
-                        <p>&copy; 2023 U.E. Guido Arce Pimentel</p>
-                        <p>Todos los derechos reservados</p>
-                    </div>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2023 U.E. Guido Arce Pimentel</p>
+                    <p>Todos los derechos reservados</p>
                 </div>
             </div>
         </footer>
