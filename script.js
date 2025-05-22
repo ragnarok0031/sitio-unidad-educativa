@@ -1,47 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('modoOscuroBtn');
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
-    const body = document.body;
-    const MODO_OSCURO_KEY = 'modoOscuro';
-    const ICONOS = {
-        OSCURO: 'images/modo_oscuro.png', // Ruta del icono de noche
-        CLARO: 'images/modo_claro.png'   // Ruta del icono de día
-    };
+document.addEventListener("DOMContentLoaded", function () {
+  const darkModeButton = document.querySelector(".toggle-dark-mode");
+  const menuToggleButton = document.querySelector(".menu-toggle");
+  const menu = document.getElementById("main-menu");
 
-    const toggleModoOscuro = () => {
-        body.classList.toggle('oscuro');
-        const esOscuro = body.classList.contains('oscuro');
-        localStorage.setItem(MODO_OSCURO_KEY, esOscuro);
-        actualizarIcono(esOscuro);
-    };
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+    
+    const darkModeEnabled = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", darkModeEnabled);
+  }
 
-    const actualizarIcono = (esOscuro) => {
-        btn.innerHTML = `<img src="${esOscuro ? ICONOS.OSCURO : ICONOS.CLARO}" alt="${esOscuro ? 'Modo oscuro' : 'Modo claro'}">`;
-        btn.setAttribute('aria-pressed', esOscuro);
-        btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    };
+  function toggleMenu() {
+    menu.classList.toggle("menu-open");
+    const menuIcon = document.getElementById("menuIcon").classList;
+    menuIcon.toggle("fa-bars");
+    menuIcon.toggle("fa-times");
+  }
 
-    const toggleMenu = () => {
-        const isHidden = menu.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', !isHidden);
-    };
+  darkModeButton.addEventListener("click", toggleDarkMode);
+  menuToggleButton.addEventListener("click", toggleMenu);
 
-    // Inicialización
-    const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
-    if (modoGuardado) {
-        body.classList.add('oscuro');
+  // Initialize dark mode based on local storage
+  const darkModeEnabled = localStorage.getItem("darkMode") === "true";
+  document.body.classList.add(darkModeEnabled ? "dark-mode" : "light-mode");
+
+  // Close menu on outside click
+  window.addEventListener("click", function (e) {
+    if (!menu.contains(e.target) && !menuToggleButton.contains(e.target)) {
+      menu.classList.remove("menu-open");
+      document.getElementById("menuIcon").classList.add("fa-bars");
+      document.getElementById("menuIcon").classList.remove("fa-times");
     }
-    actualizarIcono(modoGuardado);
-
-    // Event listeners
-    btn.addEventListener('click', toggleModoOscuro);
-    menuBtn.addEventListener('click', toggleMenu);
-    // Agregar soporte para tecla espaciadora
-    btn.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') {
-            e.preventDefault();
-            toggleModoOscuro();
-        }
-    });
+  });
 });

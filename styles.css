@@ -1,621 +1,111 @@
-:root {
-    --color-fondo: #f3f8f4;
-    --color-principal: #4e946a;
-    --color-secundario: #a8d5ba;
-    --color-texto: #2c3e50;
-    --color-footer: #e0efe4;
-    --color-enlace-hover: #3b7d5a;
-    --transicion-default: 0.3s ease;
-    --border-radius-default: 8px;
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    transition: background-color var(--transicion-default),
-                color var(--transicion-default);
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
 }
 
-/* Estilos generales para el header */
-header {
-    display: flex;
-    justify-content: space-between; /* Distribuir los elementos */
-    align-items: center; /* Alinear verticalmente */
-    padding: 0.5rem 1rem; /* Espaciado interno */
-    background-color: var(--color-principal); /* Fondo verde */
-    color: white; /* Texto blanco */
-    position: sticky; /* Fijar en la parte superior */
-    top: 0;
-    z-index: 1000; /* Asegurar que esté encima de otros elementos */
-    box-sizing: border-box; /* Incluir padding en el ancho total */
-    width: 100%; /* Asegurar que abarque todo el ancho */
+.bg-primary {
+  background-color: #2C5530;
 }
 
-header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    flex: 1; /* Permitir que el título ocupe espacio */
-    text-align: center; /* Centrar el título */
+.bg-secondary {
+  background-color: #4A7856;
 }
 
-/* Estilo para G.A.P en móviles */
-#gapMobile {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    margin-right: auto; /* Alinear a la izquierda */
+.bg-light {
+  background-color: #F5F7F4;
 }
 
-/* Estilo para el botón de menú */
-#menuBtn {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem; /* Separar del texto G.A.P */
+.min-h-screen {
+  min-height: 100vh;
 }
 
-#modoOscuroBtn {
-    margin-left: auto; /* Alinear el botón de modo oscuro a la derecha */
+.title {
+  font-family: 'Crimson Text', serif;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-#menuBtn:hover, #modoOscuroBtn:hover {
-    transform: scale(1.2);
-    color: var(--color-secundario);
+.description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.3em;
 }
 
-#modoOscuroBtn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+nav.menu {
+  display: none;
 }
 
-/* Estilo para el botón de modo oscuro */
-#modoOscuroBtn {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem; /* Separar del menú hamburguesa */
+nav.menu.menu-open {
+  display: block;
 }
 
-#modoOscuroBtn img {
-    width: 24px;
-    height: 24px;
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-#modoOscuroBtn:hover {
-    transform: scale(1.2);
-    color: var(--color-secundario);
+.menu-list li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-nav {
-    background-color: var(--color-secundario);
-    padding: 1rem;
-    text-align: center;
-    display: block; /* Mostrar el menú cuando no tenga la clase hidden */
+.menu-list li a:hover {
+  color: #cccccc;
 }
 
-nav.hidden {
-    display: none; /* Ocultar el menú */
+.section {
+  padding: 60px 0;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
-nav li {
-    margin: 0.5rem 0;
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--color-texto);
-    font-weight: bold;
-    transition: color var(--transicion-default);
-    padding: 0.5rem;
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-enlace-hover);
-    transition: width var(--transicion-default);
+.card-title {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5em;
+  margin-bottom: 15px;
 }
 
-nav a:hover::after {
-    width: 100%;
+.footer {
+  padding: 40px 0;
 }
 
-nav a:hover {
-    color: var(--color-enlace-hover);
+.footer-info {
+  margin-bottom: 20px;
 }
 
-main {
-    padding: 1rem;
+.social-links a {
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 1.5em;
+  transition: color 0.3s ease;
 }
 
-section {
-    margin-bottom: 3rem;
-}
-
-footer {
-    background-color: var(--color-footer);
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-}
-
-body.oscuro {
-    --color-fondo: #1a2820;
-    --color-principal: #2d553e;
-    --color-secundario: #385d47;
-    --color-texto: #e0efe4;
-    --color-footer: #233329;
-    --color-enlace-hover: #4e946a;
-}
-
-body.oscuro header {
-    background-color: var(--color-principal);
-}
-
-body.oscuro nav {
-    background-color: var(--color-secundario);
-}
-
-body.oscuro #modoOscuroBtn {
-    color: var(--color-texto);
-}
-
-body.oscuro #sobre-la-escuela {
-    background-color: var(--color-secundario);
-}
-
-body.oscuro #sobre-la-escuela h2 {
-    color: var(--color-texto);
-}
-
-#sobre-la-escuela {
-    background-color: var(--color-secundario);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-#sobre-la-escuela h2 {
-    color: var(--color-principal);
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-#sobre-la-escuela h3 {
-    color: var(--color-texto);
-    margin-top: 1.5rem;
-}
-
-#sobre-la-escuela p {
-    color: var(--color-texto);
-    line-height: 1.6;
-}
-
-#ubicacion {
-    background-color: var(--color-secundario);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-#ubicacion h2 {
-    color: var (--color-principal);
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.mapa-contenedor {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Ajuste para modo oscuro */
-body.oscuro #ubicacion {
-    background-color: var(--color-secundario);
-}
-
-body.oscuro #ubicacion h2 {
-    color: var(--color-texto);
-}
-
-/* Estilos responsivos para móviles */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px; /* Reducir el tamaño de fuente */
-    }
-
-    header {
-        flex-direction: row; /* Alinear los elementos en una fila */
-        padding: 0.5rem; /* Reducir el padding */
-    }
-
-    #gapMobile {
-        display: block; /* Mostrar "G.A.P" en móviles */
-    }
-
-    h1 {
-        display: none; /* Ocultar el título largo */
-    }
-
-    #modoOscuroBtn, #menuBtn {
-        font-size: 1.2rem; /* Reducir el tamaño de los botones */
-    }
-
-    #menuBtn {
-        margin-left: 0.5rem; /* Separar los botones */
-    }
-
-    #modoOscuroBtn, #menuBtn {
-        font-size: 1rem; /* Reducir el tamaño de los botones */
-        top: 0.3rem; /* Ajustar la posición */
-        right: 0.3rem;
-        padding: 0.3rem; /* Reducir el padding de los botones */
-    }
-
-    h1 {
-        font-size: 1.2rem; /* Reducir el tamaño del título */
-    }
-
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-    }
-
-    nav li {
-        margin: 0.5rem 0;
-    }
-
-    nav a {
-        font-size: 1rem;
-        padding: 0.5rem;
-    }
-
-    main {
-        padding: 1rem;
-    }
-
-    section {
-        margin-bottom: 2rem;
-    }
-
-    footer {
-        font-size: 0.8rem;
-        padding: 0.8rem;
-    }
-
-    .mapa-contenedor {
-        height: 250px;
-    }
-
-    .mapa-contenedor iframe {
-        height: 250px;
-    }
-
-    .school-image img {
-        max-width: 90%; /* Ajustar el tamaño de las imágenes */
-        margin: 1rem auto;
-    }
-
-    #sobre-la-escuela h2,
-    #ubicacion h2 {
-        font-size: 1.5rem; /* Reducir el tamaño de los encabezados */
-    }
-
-    #sobre-la-escuela p,
-    #ubicacion p {
-        font-size: 0.9rem; /* Reducir el tamaño del texto */
-    }
-
-    header h1 {
-        font-size: 1.2rem; /* Reducir el tamaño del título */
-        text-align: center;
-    }
-
-    header h1::before {
-        content: "G.A.P"; /* Mostrar abreviatura */
-        display: block;
-    }
-
-    header h1 {
-        display: none; /* Ocultar el texto largo */
-    }
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #menuBtn {
-        align-self: flex-end;
-    }
-
-    nav ul {
-        width: 100%;
-    }
-
-    .mapa-contenedor iframe {
-        height: 300px;
-    }
-}
-
-.school-image {
-    max-width: 100%;
-    margin: 2rem 0;
-    text-align: center;
-}
-
-.school-image img {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-}
-
-.hidden {
-    display: none;
-}
-
-#gapMobile {
-    position: absolute;
-    top: 1rem;
-    left: 1rem; /* Mover a la esquina superior izquierda */
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    display: none; /* Ocultar por defecto */
-}
-
-/* Mostrar G.A.P solo en móviles */
-@media (max-width: 768px) {
-    #gapMobile {
-        display: block; /* Mostrar en dispositivos móviles */
-    }
-
-    header h1 {
-        display: none; /* Ocultar el título largo */
-    }
-}
-
-@media (max-width: 768px) {
-    #gapMobile {
-        display: block; /* Mostrar solo en dispositivos móviles */
-    }
-
-    header h1 {
-        display: none; /* Ocultar el título largo */
-    }
-
-    #modoOscuroBtn, #menuBtn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem; /* Alinear a la derecha */
-    }
-
-    #menuBtn {
-        right: 3rem; /* Separar el botón ☰ del botón ☀ */
-    }
-}
-
-#modoOscuroBtn, #menuBtn {
-    font-size: 1.5rem;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: var(--border-radius-default);
-    transition: transform var(--transicion-default), color var(--transicion-default);
-}
-
-#modoOscuroBtn:hover, #menuBtn:hover {
-    transform: scale(1.2);
-    color: var(--color-secundario);
-}
-
-/* Estilos para los iconos de día y noche */
-#modoOscuroBtn img {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    transition: transform var(--transicion-default);
-}
-
-#modoOscuroBtn:hover img {
-    transform: scale(1.2);
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        padding: 0.5rem;
-    }
-
-    #menuBtn, #modoOscuroBtn {
-        font-size: 1.2rem;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-}
-
-/* Ajustes para el banner en móviles */
-@media (max-width: 768px) {
-    header {
-        flex-direction: row; /* Mantener los elementos en fila */
-        justify-content: space-between; /* Distribuir espacio entre los elementos */
-        align-items: center; /* Alinear verticalmente */
-        padding: 0.5rem 1rem; /* Ajustar el padding */
-    }
-
-    #menuBtn, #modoOscuroBtn {
-        font-size: 1.2rem; /* Reducir el tamaño de los botones */
-        padding: 0.3rem; /* Reducir el padding */
-    }
-
-    h1 {
-        font-size: 1rem; /* Reducir el tamaño del título */
-        text-align: center; /* Centrar el título */
-        flex: 1; /* Permitir que ocupe espacio */
-    }
-
-    #menuBtn {
-        margin-right: 0; /* Eliminar márgenes innecesarios */
-    }
-
-    #modoOscuroBtn {
-        margin-left: 0; /* Eliminar márgenes innecesarios */
-    }
-}
-
-/* Ajustes para el header en móviles */
-@media (max-width: 768px) {
-    header {
-        display: flex;
-        flex-direction: row; /* Alinear los elementos en una fila */
-        justify-content: space-between; /* Distribuir espacio entre los elementos */
-        align-items: center; /* Alinear verticalmente */
-        padding: 0.5rem 1rem; /* Ajustar el padding */
-        position: relative; /* Asegurar que los elementos se posicionen correctamente */
-    }
-
-    #gapMobile {
-        position: absolute;
-        top: 0.5rem;
-        left: 1rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: white;
-        display: block; /* Mostrar en móviles */
-    }
-
-    h1 {
-        display: none; /* Ocultar el título largo en móviles */
-    }
-
-    #menuBtn {
-        font-size: 1.5rem;
-        margin-left: auto; /* Alinear a la derecha */
-    }
-
-    #modoOscuroBtn {
-        font-size: 1.5rem;
-        margin-left: 0.5rem;
-        padding: 0.3rem;
-    }
-
-    #modoOscuroBtn img {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-/* Ajustes para el header en móviles */
-@media (max-width: 768px) {
-    header {
-        display: flex;
-        flex-direction: row; /* Alinear los elementos en una fila */
-        justify-content: space-between; /* Distribuir espacio entre los elementos */
-        align-items: center; /* Alinear verticalmente */
-        padding: 0.5rem 1rem; /* Ajustar el padding */
-        width: 100%; /* Asegurar que el header abarque todo el ancho */
-        box-sizing: border-box; /* Incluir padding en el ancho total */
-        background-color: var(--color-principal); /* Asegurar el color de fondo */
-    }
-
-    #gapMobile {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: white;
-        margin-right: auto; /* Alinear a la izquierda */
-        flex-shrink: 0; /* Evitar que se reduzca */
-    }
-
-    h1 {
-        display: none; /* Ocultar el título largo en móviles */
-    }
-
-    #menuBtn {
-        font-size: 1.5rem;
-        margin-left: 1rem; /* Separar del texto G.A.P */
-        flex-shrink: 0; /* Evitar que se reduzca */
-    }
-
-    #modoOscuroBtn {
-        font-size: 1.5rem;
-        margin-left: 1rem; /* Separar del menú hamburguesa */
-        padding: 0.3rem;
-        flex-shrink: 0; /* Evitar que se reduzca */
-    }
-
-    #modoOscuroBtn img {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 1rem;
-    }
-
-    #gapMobile {
-        display: block;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: white;
-    }
-
-    h1 {
-        display: none;
-    }
-
-    #menuBtn, #modoOscuroBtn {
-        font-size: 1.2rem;
-        padding: 0.3rem;
-    }
-}
-
-.menu-btn {
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: transform var(--transicion-default), color var(--transicion-default);
-}
-
-.menu-btn:hover {
-    transform: scale(1.2);
-    color: var(--color-secundario);
+.social-links a:hover {
+  color: #cccccc;
 }
