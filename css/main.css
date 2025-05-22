@@ -247,6 +247,12 @@
     box-shadow: var(--shadow-md);
 }
 
+.pdf-container iframe {
+    border: none;
+    width: 100%;
+    height: 600px;
+}
+
 .pdf-controls {
     display: flex;
     justify-content: center;
@@ -291,7 +297,26 @@
         justify-content: center;
     }
     
-    .pdf-container {
+    .pdf-container iframe {
         height: 400px;
     }
+}
+
+/* Sección de Reglas */
+.rules-section {
+    padding: var(--section-spacing) 0;
+    background: var(--color-surface);
+}
+
+.rules-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.rules-card {
+    background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
