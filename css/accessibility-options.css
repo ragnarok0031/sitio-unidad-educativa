@@ -1,0 +1,44 @@
+.a11y-trigger {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.a11y-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: var(--color-surface);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Estilos para los diferentes modos */
+body.high-contrast {
+  --color-text: yellow;
+  --color-background: black;
+}
+
+body.dyslexic-mode {
+  --font-main: 'OpenDyslexic', var(--font-main);
+  --line-height-base: 1.8;
+  --letter-spacing: 0.05em;
+}
+
+body.dark-mode {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-text: #e0e0e0;
+}
+
+/* ... resto de los estilos ... */
