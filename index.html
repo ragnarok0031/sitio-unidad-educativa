@@ -25,7 +25,11 @@
             <div class="container">
                 <!-- Logo y nombre -->
                 <div class="logo-container">
-                    <img src="/logo.png" alt="Logo U.E. Guido Arce Pimentel" class="logo">
+                    <picture>
+                        <source srcset="/images/logo-dark.png" media="(prefers-color-scheme: dark)">
+                        <source srcset="/images/logo-light.png" media="(prefers-color-scheme: light)">
+                        <img src="/images/logo-light.png" alt="Logo U.E. Guido Arce Pimentel" class="logo">
+                    </picture>
                     <div class="brand-text">
                         <h1 class="site-title">U.E. Guido Arce Pimentel</h1>
                         <span class="site-tagline">Educación Secundaria de Excelencia</span>
