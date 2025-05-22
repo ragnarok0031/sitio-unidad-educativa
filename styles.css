@@ -1882,3 +1882,62 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Estilos para la sección de reglamento */
+.rules-section {
+    padding: var(--section-spacing) 0;
+    background: linear-gradient(135deg, var(--color-surface), rgba(26, 26, 26, 0.95));
+}
+
+.rules-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.rules-card {
+    background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.rules-card h3 {
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.rules-content-wrapper {
+    padding: 1rem;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: all 0.3s var(--animation-bounce);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+    color: white;
+}
+
+.download-btn i {
+    font-size: 1.2rem;
+}
