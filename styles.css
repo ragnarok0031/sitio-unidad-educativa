@@ -1,13 +1,23 @@
 /* Sistema de breakpoints optimizado */
 :root {
-  --color-primary: #E63946;
-  --color-primary-dark: #8B0000;
+  /* Colores principales */
   --color-background: #121212;
   --color-surface: #1E1E1E;
+  --color-primary: #E63946;
+  --color-primary-dark: #8B0000;
   --color-text: #E0E0E0;
-  --color-accent: #ff3333;
-  --color-highlight: #ff3333;
+  --color-text-secondary: #A0A0A0;
+  --color-border: #333333;
+
+  /* Gradientes */
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  --gradient-surface: linear-gradient(145deg, var(--color-surface), #2d2d2d);
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.5);
+
   --animation-speed: 0.3s;
   --font-main: 'Roboto', sans-serif;
   --font-headings: 'Roboto', sans-serif;
@@ -1839,4 +1849,36 @@ p { font-size: var(--font-size-fluid); }
   .social-link {
     transition: none;
   }
+}
+
+/* Cards y elementos contenedores */
+.card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Botones y elementos interactivos */
+.cta-button {
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-button:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+/* Texto y tipografía */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
