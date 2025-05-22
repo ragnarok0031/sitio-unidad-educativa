@@ -20,12 +20,8 @@ class HeaderController {
       this.menuToggle.setAttribute('aria-expanded', !isExpanded);
       this.navList.classList.toggle('active');
       
-      if (!isExpanded) {
-        // Prevenir scroll del body
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      // Prevenir scroll del body
+      document.body.style.overflow = !isExpanded ? 'hidden' : '';
     });
   }
 
