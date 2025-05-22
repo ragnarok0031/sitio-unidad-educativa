@@ -362,4 +362,34 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove('menu-open');
     }
   });
+
+  // Optimización de rendimiento
+  const optimizeAnimations = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLowPowered = navigator.hardwareConcurrency <= 4;
+    
+    if (prefersReducedMotion || isLowPowered) {
+      document.body.classList.add('reduce-motion');
+    }
+  };
+
+  // Detección de capacidades del dispositivo
+  const detectDeviceCapabilities = () => {
+    const supports = {
+      touch: 'ontouchstart' in window,
+      hover: window.matchMedia('(hover: hover)').matches,
+      pointer: window.matchMedia('(pointer: fine)').matches,
+      reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    };
+    
+    Object.entries(supports).forEach(([feature, supported]) => {
+      document.documentElement.classList.toggle(`supports-${feature}`, supported);
+    });
+  };
+
+  // Llamar a las funciones de optimización y detección al cargar
+  window.addEventListener('load', () => {
+    optimizeAnimations();
+    detectDeviceCapabilities();
+  });
 });
