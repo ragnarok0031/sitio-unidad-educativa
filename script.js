@@ -322,47 +322,82 @@ document.addEventListener("DOMContentLoaded", function () {
   showCookieBanner();
   loadUserPreferences();
 
-  // Manejo del menú mejorado
-  const menuItems = document.querySelectorAll('.has-dropdown, .has-mega');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const mainMenu = document.querySelector('.main-menu');
-
-  // Toggle menú móvil
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    mainMenu.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-  });
-
-  // Manejo de dropdowns en móvil
-  menuItems.forEach(item => {
-    const link = item.querySelector('.menu-link');
-    link.addEventListener('click', (e) => {
-      if (window.innerWidth <= 1023) {
-        e.preventDefault();
-        item.classList.toggle('active');
+  // Mejorar manejo del menú
+  const initMenu = () => {
+    let lastScroll = 0;
+    let scrollTimer = null;
+    const scrollThreshold = 50;
+    
+    // Calcular ancho del scrollbar
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    
+    // Manejar scroll del header
+    window.addEventListener('scroll', () => {
+      if (scrollTimer !== null) {
+        clearTimeout(scrollTimer);
       }
-    });
-  });
+      
+      scrollTimer = setTimeout(() => {
+        const currentScroll = window.pageYOffset;
+        
+        if (Math.abs(currentScroll - lastScroll) < scrollThreshold) {
+          return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+          header.classList.add('scroll-down');
+          header.classList.remove('scroll-up');
+        } else {
+          header.classList.add('scroll-up');
+          header.classList.remove('scroll-down');
+        }
+        
+        lastScroll = currentScroll;
+      }, 100);
+    }, { passive: true });
+    
+    // Mejorar toggle del menú
+    const toggleMenu = () => {
+      const isOpen = mainMenu.classList.contains('active');
+      
+      if (isOpen) {
+        mainMenu.classList.remove('active');
+        menuBackdrop.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      } else {
+        mainMenu.classList.add('active');
+        menuBackdrop.classList.add('active');
+        document.body.classList.add('menu-open');
+      }
+    };
+    
+    // Crear backdrop
+    const menuBackdrop = document.createElement('div');
+    menuBackdrop.className = 'menu-backdrop';
+    document.body.appendChild(menuBackdrop);
+    
+    menuBackdrop.addEventListener('click', toggleMenu);
+    
+    // Prevenir cierre accidental en touch devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    mainMenu.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    mainMenu.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) {
+        toggleMenu();
+      }
+    }, { passive: true });
+  };
 
-  // Cerrar menú al cambiar tamaño de ventana
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1023) {
-      menuToggle.classList.remove('active');
-      mainMenu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }
-  });
-
-  // Cerrar menú al hacer click fuera
-  document.addEventListener('click', (e) => {
-    if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-      menuToggle.classList.remove('active');
-      mainMenu.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }
-  });
-
+  // Inicializar mejoras
+  document.addEventListener('DOMContentLoaded', initMenu);
+  
   // Optimización de rendimiento
   const optimizeAnimations = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -60,6 +60,11 @@
   --space-fluid-3: clamp(1rem, 2vw, 2rem);
   --space-fluid-4: clamp(1.5rem, 3vw, 3rem);
   --space-fluid-5: clamp(2rem, 4vw, 4rem);
+
+  --header-height: 60px;
+  --menu-z-index: 1000;
+  --menu-backdrop-z-index: 999;
+  --menu-width-mobile: min(300px, 80vw);
 }
 
 /* Animaciones globales */
@@ -142,15 +147,23 @@ ul {
 
 /* Header */
 header {
-  position: sticky;
+  position: fixed; /* Cambio de sticky a fixed para mejor control */
   top: 0;
-  z-index: 1000;
+  left: 0;
   width: 100%;
-  transition: all var(--animation-speed) ease;
-  padding: 0.75rem var(--container-padding);
-  background: linear-gradient(to right, #ff0000, #cc0000);
-  color: var(--color-text);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  height: var(--header-height);
+  z-index: var(--menu-z-index);
+  background: var(--gradient-primary);
+  transform: translateZ(0); /* Forzar GPU rendering */
+  will-change: transform; /* Optimización de rendimiento */
+  transition: transform 0.3s var(--animation-smooth);
+}
+
+/* Ajuste de contenido para el header fijo */
+main {
+  padding-top: var(--header-height);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 header.scrolled {
@@ -276,32 +289,22 @@ header .container {
 @media (max-width: 1023px) {
   .main-menu {
     position: fixed;
-    top: var(--menu-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--menu-height));
+    top: var(--header-height);
+    right: -100%;
+    width: var(--menu-width-mobile);
+    height: calc(100vh - var(--header-height));
     background: var(--color-surface);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  .main-menu.active {
-    transform: translateX(0);
-  }
-
-  .menu-items {
-    height: 100%;
+    transition: transform 0.3s var(--animation-smooth);
     overflow-y: auto;
-    padding: 1rem;
-  }
-
-  .menu-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    font-size: 1.2rem;
-    border-radius: var(--border-radius);
+    -webkit-overflow-scrolling: touch;
+    z-index: var(--menu-z-index);
+    transform: translateX(0);
+    
+    &.active {
+      right: 0;
+      transform: translateX(0);
+      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    }
   }
 
   /* Dropdown en móvil */
@@ -934,133 +937,86 @@ nav.menu.menu-open {
   }
 }
 
-/* Mejoras en la accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Para dispositivos con hover */
-@media (hover: hover) {
-  .area-card:hover,
-  .activity-card:hover {
-    transform: translateY(-5px);
-  }
-}
-
-/* Estilos para el banner de cookies */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-surface);
-  padding: 1rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  animation: slideInUp 0.3s ease-out;
-}
-
-.cookie-banner p {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.cookie-banner button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.cookie-banner .accept-cookies {
-  background: var(--color-primary);
-  color: white;
-}
-
-.cookie-banner .reject-cookies {
-  background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-.cookie-banner button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .cookie-banner p {
-    flex-direction: column;
-  }
-}
-
-/* Ajustes según dispositivo */
-[data-device="mobile"] {
+/* Correcciones para el menú anclado */
+:root {
   --header-height: 60px;
-  --content-width: 100%;
+  --menu-z-index: 1000;
+  --menu-backdrop-z-index: 999;
+  --menu-width-mobile: min(300px, 80vw);
 }
 
-[data-device="tablet"] {
-  --header-height: 70px;
-  --content-width: 90%;
+/* Prevenir scroll horizontal */
+html, body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
 }
 
-[data-device="laptop"],
-[data-device="desktop"] {
-  --header-height: 80px;
-  --content-width: 1200px;
-}
-
-/* Ajustes según orientación */
-[data-orientation="portrait"] {
-  --grid-columns: 1fr;
-}
-
-[data-orientation="landscape"] {
-  --grid-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-/* Altura dinámica para móviles */
-.hero-section {
-  min-height: calc(var(--screen-height) - var(--header-height));
-}
-
-/* Media queries mejorados */
-@supports (height: 100dvh) {
-  .hero-section {
-    min-height: 100dvh;
-  }
-}
-
-/* Ajustes responsive */
-@container (min-width: 768px) {
-  .areas-grid {
-    grid-template-columns: var(--grid-columns);
-  }
-}
-
-/* Scroll animations */
-.scroll-animate {
+/* Backdrop para menú móvil */
+.menu-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: var(--menu-backdrop-z-index);
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s var(--animation-smooth);
+  transition: opacity 0.3s ease;
+  
+  &.active {
+    display: block;
+    opacity: 1;
+  }
 }
 
-.scroll-animate.visible {
-  opacity: 1;
+/* Prevenir scroll del body cuando el menú está abierto */
+body.menu-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px); /* Prevenir salto */
+}
+
+/* Ajustes para dispositivos iOS */
+@supports (-webkit-touch-callout: none) {
+  .main-menu {
+    /* Prevenir rubber-band scroll en iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body.menu-open {
+    /* Fijar posición en iOS */
+    position: fixed;
+    width: 100%;
+  }
+}
+
+/* Ajustes para scrollbar */
+.main-menu {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+}
+
+/* Corrección para animaciones */
+header.scrolled {
   transform: translateY(0);
+}
+
+header.scroll-up {
+  transform: translateY(0);
+}
+
+header.scroll-down {
+  transform: translateY(-100%);
 }
 
 /* Loading animation */
