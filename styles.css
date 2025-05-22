@@ -1,22 +1,27 @@
+/* Variables globales */
 :root {
-    --color-fondo: #f3f8f4;
-    --color-principal: #4e946a;
-    --color-secundario: #a8d5ba;
-    --color-texto: #2c3e50;
-    --color-footer: #e0efe4;
-    --color-enlace-hover: #3b7d5a;
-    --transicion-default: 0.3s ease;
-    --border-radius-default: 8px;
+  --color-primary: #2C5530;
+  --color-secondary: #4A7856;
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-surface: #F5F7F4;
+  --transition-duration: 300ms;
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    transition: background-color var(--transicion-default),
-                color var(--transicion-default);
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-text: #ffffff;
+  --color-surface: #2d2d2d;
+}
+
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color var(--transition-duration),
+              color var(--transition-duration),
+              border-color var(--transition-duration);
 }
 
 /* Estilos generales para el header */
@@ -241,6 +246,13 @@ body.oscuro #ubicacion {
 
 body.oscuro #ubicacion h2 {
     color: var(--color-texto);
+}
+
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
+
+.font-crimson-text {
+  font-family: 'Crimson Text', serif;
 }
 
 /* Estilos responsivos para móviles */
