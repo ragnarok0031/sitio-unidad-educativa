@@ -1,51 +1,47 @@
-const { useState, useEffect } = React;
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('modoOscuroBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    const body = document.body;
+    const MODO_OSCURO_KEY = 'modoOscuro';
+    const ICONOS = {
+        OSCURO: 'images/modo_oscuro.png', // Ruta del icono de noche
+        CLARO: 'images/modo_claro.png'   // Ruta del icono de día
+    };
 
-// Componente principal
-function App() {
-    const [darkMode, setDarkMode] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleModoOscuro = () => {
+        body.classList.toggle('oscuro');
+        const esOscuro = body.classList.contains('oscuro');
+        localStorage.setItem(MODO_OSCURO_KEY, esOscuro);
+        actualizarIcono(esOscuro);
+    };
 
-    // Cargar preferencia de tema
-    useEffect(() => {
-        const storedTheme = localStorage.getItem("theme");
-        setDarkMode(storedTheme === "dark");
-    }, []);
+    const actualizarIcono = (esOscuro) => {
+        btn.innerHTML = `<img src="${esOscuro ? ICONOS.OSCURO : ICONOS.CLARO}" alt="${esOscuro ? 'Modo oscuro' : 'Modo claro'}">`;
+        btn.setAttribute('aria-pressed', esOscuro);
+        btn.setAttribute('title', esOscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    };
 
-    // Guardar preferencia de tema
-    useEffect(() => {
-        localStorage.setItem("theme", darkMode ? "dark" : "light");
-    }, [darkMode]);
+    const toggleMenu = () => {
+        const isHidden = menu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isHidden);
+    };
 
-    return (
-        <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}>
-            {/* Header */}
-            <header className="fixed w-full z-50 bg-white border-b">
-                <nav className="container mx-auto px-4 py-4">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-xl font-bold">U.E. Guido Arce Pimentel</h1>
-                        <button 
-                            onClick={() => setDarkMode(!darkMode)}
-                            className="p-2 rounded-full bg-gray-100"
-                        >
-                            {darkMode ? "☀️" : "🌙"}
-                        </button>
-                    </div>
-                </nav>
-            </header>
+    // Inicialización
+    const modoGuardado = localStorage.getItem(MODO_OSCURO_KEY) === 'true';
+    if (modoGuardado) {
+        body.classList.add('oscuro');
+    }
+    actualizarIcono(modoGuardado);
 
-            <main className="pt-20">
-                <section className="hero-section">
-                    <h2 className="text-4xl text-center py-12">
-                        Formando Líderes del Mañana
-                    </h2>
-                </section>
-            </main>
-        </div>
-    );
-}
-
-// Renderizar la aplicación
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+    // Event listeners
+    btn.addEventListener('click', toggleModoOscuro);
+    menuBtn.addEventListener('click', toggleMenu);
+    // Agregar soporte para tecla espaciadora
+    btn.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            toggleModoOscuro();
+        }
+    });
+});
