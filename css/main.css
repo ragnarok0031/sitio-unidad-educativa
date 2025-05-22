@@ -1,0 +1,81 @@
+/* Estilos para la sección histórica */
+.history-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+}
+
+.history-introduction {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.foundation-date {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: var(--space-sm);
+}
+
+.history-timeline {
+    position: relative;
+    margin: var(--space-xl) 0;
+    padding-left: 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-lg);
+    border-left: 2px solid var(--color-primary);
+}
+
+.timeline-date {
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+}
+
+.foundation-stats {
+    background: linear-gradient(145deg, rgba(230,57,70,0.1), rgba(139,0,0,0.1));
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.teachers-table {
+    overflow-x: auto;
+    margin: var(--space-lg) 0;
+}
+
+.teachers-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.teachers-table th,
+.teachers-table td {
+    padding: var(--space-sm);
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+}
+
+.teachers-table th {
+    background: var(--color-primary);
+    color: white;
+}
+
+.teachers-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .teachers-table {
+        font-size: 0.875rem;
+    }
+    
+    .timeline-item {
+        padding-left: var(--space-md);
+    }
+}
