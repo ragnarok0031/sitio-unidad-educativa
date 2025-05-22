@@ -666,3 +666,57 @@ nav.menu.menu-open {
     transform: translateY(-5px);
   }
 }
+
+/* Estilos para el banner de cookies */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  padding: 1rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: slideInUp 0.3s ease-out;
+}
+
+.cookie-banner p {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.cookie-banner button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cookie-banner .accept-cookies {
+  background: var(--color-primary);
+  color: white;
+}
+
+.cookie-banner .reject-cookies {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cookie-banner button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .cookie-banner p {
+    flex-direction: column;
+  }
+}
