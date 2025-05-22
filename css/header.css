@@ -56,11 +56,11 @@
 /* Navegación principal */
 .nav-list {
   display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: var(--space-md);
   margin: 0;
   padding: 0;
   list-style: none;
+  align-items: center;
 }
 
 .menu-item {
@@ -68,19 +68,31 @@
 }
 
 .menu-link {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s ease;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  
-  &:hover,
-  &:focus-visible {
-    background: rgba(255,255,255,0.1);
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transition: transform 0.3s var(--animation-smooth);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: scaleX(1);
   }
 }
 
@@ -132,20 +144,18 @@
     position: fixed;
     inset: var(--header-height) 0 0 0;
     background: var(--color-surface);
-    flex-direction: column;
-    padding: var(--space-lg);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    
-    &.active {
-      transform: translateX(0);
-    }
+    flex-direction: row; /* Mantener horizontal */
+    padding: 1rem;
+    overflow-x: auto; /* Permitir scroll horizontal */
+    -webkit-overflow-scrolling: touch;
+    transform: none; /* Eliminar transform */
+    white-space: nowrap; /* Evitar saltos de línea */
+    justify-content: flex-start; /* Alinear al inicio */
   }
 
   .menu-link {
-    width: 100%;
-    padding: 1rem;
-    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
   }
 
   .menu-toggle {

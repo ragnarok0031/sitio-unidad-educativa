@@ -16,6 +16,13 @@ class HeaderController {
   setupMenuToggle() {
     this.menuToggle?.addEventListener('click', () => {
       const isExpanded = this.menuToggle.getAttribute('aria-expanded') === 'true';
+      
+      // Mejorar toggle del menú
+      if (!isExpanded) {
+        // Antes de abrir, scrollear al inicio
+        this.navList.scrollLeft = 0;
+      }
+      
       this.toggleMenu(!isExpanded);
     });
 
@@ -60,6 +67,7 @@ class HeaderController {
   setupScrollBehavior() {
     let lastScroll = 0;
     let scrollTimer = null;
+    const scrollThreshold = 50;
 
     window.addEventListener('scroll', () => {
       if (scrollTimer !== null) clearTimeout(scrollTimer);
@@ -67,22 +75,24 @@ class HeaderController {
       scrollTimer = setTimeout(() => {
         const currentScroll = window.pageYOffset;
         
-        if (currentScroll > 100) {
-          this.header.classList.add('scrolled');
-        } else {
-          this.header.classList.remove('scrolled');
-        }
-
-        if (currentScroll > lastScroll && currentScroll > 200) {
+        if (Math.abs(currentScroll - lastScroll) < scrollThreshold) return;
+        
+        // Mejorar comportamiento del header
+        if (currentScroll > lastScroll && currentScroll > 100) {
           this.header.classList.add('scroll-down');
           this.header.classList.remove('scroll-up');
+          
+          // Cerrar menú al hacer scroll hacia abajo
+          if (this.menuToggle.getAttribute('aria-expanded') === 'true') {
+            this.toggleMenu(false);
+          }
         } else {
           this.header.classList.add('scroll-up');
           this.header.classList.remove('scroll-down');
         }
-
+        
         lastScroll = currentScroll;
-      }, 150);
+      }, 100);
     }, { passive: true });
   }
 
