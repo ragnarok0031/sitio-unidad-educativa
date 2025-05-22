@@ -1,0 +1,77 @@
+.horarios-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.horarios-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.cursos-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.curso-section {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.curso-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.paralelos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.paralelo-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.paralelo-card h3 {
+  color: #34495e;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.paralelo-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.paralelo-info span {
+  background-color: #3498db;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.horario-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.horario-imagen:hover {
+  transform: scale(1.02);
+}
