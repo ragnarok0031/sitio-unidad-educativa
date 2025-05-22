@@ -1813,3 +1813,39 @@ body.large-text {
     --contrast-ratio: 7;
   }
 }
+
+/* Estilos para los íconos sociales en el header */
+.social-links-header {
+  display: flex;
+  gap: var(--space-sm);
+  margin-right: var(--space-md);
+}
+
+.social-links-header .social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: var(--color-text);
+}
+
+.social-links-header .social-icon:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* Ajustes responsivos para el nuevo menú */
+@media (max-width: 1023px) {
+  .social-links-header {
+    display: none;
+  }
+  
+  .controls-container {
+    margin-left: auto;
+  }
+}
