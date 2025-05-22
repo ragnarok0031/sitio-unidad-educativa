@@ -427,4 +427,23 @@ document.addEventListener("DOMContentLoaded", function () {
     optimizeAnimations();
     detectDeviceCapabilities();
   });
+
+  // Añadir tracking para descargas del reglamento
+  document.querySelector('.rules-download').addEventListener('click', function(e) {
+    // Registrar el evento de descarga
+    console.log('Reglamento descargado');
+    
+    // Opcional: Mostrar mensaje de confirmación
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Descarga iniciada'
+    });
+  });
 });

@@ -1476,38 +1476,29 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-/* Estilos para la sección de reglamento */
+/* Estilos mejorados para la sección de reglamento */
 .rules-section {
-    padding: var(--section-spacing) 0;
-    background: linear-gradient(135deg, var(--color-surface), rgba(26, 26, 26, 0.95));
+  padding: var(--section-spacing) 0;
+  background: linear-gradient(135deg, var(--color-surface), rgba(26, 26, 26, 0.95));
 }
 
 .rules-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-fluid-4) 0;
+  text-align: center;
 }
 
 .rules-card {
-    background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
-    border-radius: var(--border-radius);
-    padding: var(--space-lg);
-    text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    max-width: 500px;
-    width: 100%;
-}
-
-.rules-card h3 {
-    color: var(--color-text);
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
-.rules-content-wrapper {
-    padding: 1rem;
+  background: linear-gradient(145deg, rgba(255,0,0,0.05), rgba(255,0,0,0.1));
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .download-btn {
@@ -1531,3 +1522,32 @@ h1, h2, h3, h4, h5, h6 {
 .download-btn i {
     font-size: 1.2rem;
 }
+
+/* Document links */
+.docs-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: var(--space-lg);
+}
+
+.docs-links a {
+  display: block;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.docs-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Specific document styles */
+.doc-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var
