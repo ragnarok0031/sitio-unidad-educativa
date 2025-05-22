@@ -1146,6 +1146,14 @@ h1 { font-size: var(--font-size-h1); }
 h2 { font-size: var(--font-size-h2); }
 h3 { font-size: var(--font-size-h3); }
 
+/* Eliminar estilos de accesibilidad redundantes */
+.accessibility-bar,
+.screen-reader-only,
+.help-system,
+.skip-link {
+    display: none;
+}
+
 /* Estilos de cards unificados */
 .area-card,
 .activity-card {

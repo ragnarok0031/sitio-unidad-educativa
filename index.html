@@ -100,190 +100,123 @@
         </nav>
     </header>
 
-    <div id="help-panel" class="help-panel" hidden>
-        <div class="help-content">
-            <h2>Ayuda de navegación</h2>
-            <div class="shortcuts">
-                <h3>Atajos de teclado</h3>
-                <dl>
-                    <dt>Alt + 1</dt>
-                    <dd>Ir al inicio</dd>
-                    <dt>Alt + 2</dt>
-                    <dd>Ir a recursos</dd>
-                    <dt>Alt + A</dt>
-                    <dd>Abrir controles de accesibilidad</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-
     <main id="main-content">
-        <!-- Mejoras de accesibilidad -->
-            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-            
-            <div role="status" aria-live="polite" class="screen-reader-only" id="announcer"></div>
-            
-            <!-- Sistema de ayuda contextual -->
-            <div class="help-system">
-                <button class="help-toggle" aria-expanded="false">
-                    <i class="fas fa-question-circle"></i>
-                    <span class="visually-hidden">Ayuda</span>
-                </button>
-                <div class="help-content" hidden>
-                    <h2>Ayuda y Soporte</h2>
-                    <ul>
-                        <li><a href="#guia">Guía de navegación</a></li>
-                        <li><a href="#faq">Preguntas frecuentes</a></li>
-                        <li><a href="#soporte">Contactar soporte</a></li>
-                    </ul>
+        <section id="inicio" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="main-title">U.E. Guido Arce Pimentel</h1>
+                    <p class="subtitle">Educación Secundaria de Excelencia</p>
+                    <div class="quick-links">
+                        <a href="#admision" class="cta-button">Proceso de Admisión</a>
+                        <a href="#calendario" class="cta-button-secondary">Calendario Académico</a>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Barra de accesibilidad -->
-            <div class="accessibility-bar" role="toolbar" aria-label="Opciones de accesibilidad">
-                <div class="accessibility-controls">
-                  <div class="font-size-controls">
-                    <button class="decrease-font" aria-label="Reducir tamaño de texto">A-</button>
-                    <button class="reset-font" aria-label="Restablecer tamaño de texto">A</button>
-                    <button class="increase-font" aria-label="Aumentar tamaño de texto">A+</button>
-                  </div>
-                  
-                  <div class="mode-toggles">
-                    <button class="toggle-contrast" aria-pressed="false">
-                      <i class="fas fa-adjust"></i>
-                      <span>Alto contraste</span>
-                    </button>
-                    <button class="toggle-dyslexic" aria-pressed="false">
-                      <i class="fas fa-font"></i>
-                      <span>Modo dislexia</span>
-                    </button>
-                    <button class="toggle-dark-mode" aria-pressed="false">
-                      <i class="fas fa-moon"></i>
-                      <span>Modo oscuro</span>
-                    </button>
-                  </div>
-                </div>
+        </section>
 
-                <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+        <section id="institucional" class="vision-mision-section">
+            <div class="container">
+                <div class="institucional-grid">
+                    <div class="vision-card">
+                        <div class="card-header">
+                            <i class="fas fa-eye vision-icon"></i>
+                            <h2>Visión</h2>
+                        </div>
+                        <p class="vision-text">
+                            Constituirse en una comunidad educativa modelo mediante un trabajo coordinado, participativo 
+                            y activo de todos los miembros de la comunidad educativa, con docentes comprometidos con 
+                            su vocación, capaces de brindar una amplia diversidad de metodologías para lograr alumnos 
+                            de excelencia, constructores de sus aprendizajes, críticos, reflexivos, participativos, 
+                            capaces de expresar libremente sus ideas y sentimientos, que respeten su cultura, rescatando 
+                            sus saberes y tradiciones para que puedan aportar a la construcción de un país productivo.
+                        </p>
+                    </div>
+                    
+                    <div class="mision-card">
+                        <div class="card-header">
+                            <i class="fas fa-bullseye mision-icon"></i>
+                            <h2>Misión</h2>
+                        </div>
+                        <p class="mision-text">
+                            Brindar una formación integral y holística en el nivel de Educación Secundaria Comunitaria 
+                            Productiva y alcanzar una formación autónoma, crítica, reflexiva, cooperativa con identidad 
+                            cultural y con un alto grado de respeto a la diversidad y equidad, consolidando la convivencia 
+                            pacífica a través de la práctica de la interculturalidad e intraculturalidad, con vocación 
+                            de servicio a la comunidad para transformar la educación y el vivir bien, con docentes 
+                            innovadores, participativos, creativos y comprometidos con la calidad educativa, con valores 
+                            y principios sociocomunitarios para afrontar los desafíos de una vida futura.
+                        </p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <section id="inicio" class="hero-section">
-                <div class="container">
-                    <div class="hero-content">
-                        <h1 class="main-title">U.E. Guido Arce Pimentel</h1>
-                        <p class="subtitle">Educación Secundaria de Excelencia</p>
-                        <div class="quick-links">
-                            <a href="#admision" class="cta-button">Proceso de Admisión</a>
-                            <a href="#calendario" class="cta-button-secondary">Calendario Académico</a>
+        <section id="sobre-gap" class="about-section">
+            <div class="container">
+                <h2>Sobre GAP</h2>
+                <div class="about-grid">
+                    <div class="history-card">
+                        <div class="card-header">
+                            <i class="fas fa-history"></i>
+                            <h3>Historia</h3>
+                        </div>
+                        <div class="history-content">
+                            <!-- Agregar contenido histórico -->
+                        </div>
+                    </div>
+
+                    <div class="quality-policy-card">
+                        <div class="card-header">
+                            <i class="fas fa-certificate"></i>
+                            <h3>Política de Calidad</h3>
+                        </div>
+                        <div class="quality-content">
+                            <!-- Contenido de política de calidad -->
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="institucional" class="vision-mision-section">
-                <div class="container">
-                    <div class="institucional-grid">
-                        <div class="vision-card">
-                            <div class="card-header">
-                                <i class="fas fa-eye vision-icon"></i>
-                                <h2>Visión</h2>
-                            </div>
-                            <p class="vision-text">
-                                Constituirse en una comunidad educativa modelo mediante un trabajo coordinado, participativo 
-                                y activo de todos los miembros de la comunidad educativa, con docentes comprometidos con 
-                                su vocación, capaces de brindar una amplia diversidad de metodologías para lograr alumnos 
-                                de excelencia, constructores de sus aprendizajes, críticos, reflexivos, participativos, 
-                                capaces de expresar libremente sus ideas y sentimientos, que respeten su cultura, rescatando 
-                                sus saberes y tradiciones para que puedan aportar a la construcción de un país productivo.
-                            </p>
-                        </div>
-                        
-                        <div class="mision-card">
-                            <div class="card-header">
-                                <i class="fas fa-bullseye mision-icon"></i>
-                                <h2>Misión</h2>
-                            </div>
-                            <p class="mision-text">
-                                Brindar una formación integral y holística en el nivel de Educación Secundaria Comunitaria 
-                                Productiva y alcanzar una formación autónoma, crítica, reflexiva, cooperativa con identidad 
-                                cultural y con un alto grado de respeto a la diversidad y equidad, consolidando la convivencia 
-                                pacífica a través de la práctica de la interculturalidad e intraculturalidad, con vocación 
-                                de servicio a la comunidad para transformar la educación y el vivir bien, con docentes 
-                                innovadores, participativos, creativos y comprometidos con la calidad educativa, con valores 
-                                y principios sociocomunitarios para afrontar los desafíos de una vida futura.
-                            </p>
-                        </div>
-                    </div>
+        <section id="carreras" class="careers-section">
+            <div class="container">
+                <h2>Nuestras Carreras</h2>
+                <div class="careers-grid">
+                    <!-- Agregar carreras -->
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="sobre-gap" class="about-section">
-                <div class="container">
-                    <h2>Sobre GAP</h2>
-                    <div class="about-grid">
-                        <div class="history-card">
-                            <div class="card-header">
-                                <i class="fas fa-history"></i>
-                                <h3>Historia</h3>
-                            </div>
-                            <div class="history-content">
-                                <!-- Agregar contenido histórico -->
-                            </div>
-                        </div>
-
-                        <div class="quality-policy-card">
-                            <div class="card-header">
-                                <i class="fas fa-certificate"></i>
-                                <h3>Política de Calidad</h3>
-                            </div>
-                            <div class="quality-content">
-                                <!-- Contenido de política de calidad -->
-                            </div>
-                        </div>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-info">
+                        <h3>U.E. Guido Arce Pimentel</h3>
+                        <!-- Agregar información de contacto -->
                     </div>
-                </div>
-            </section>
-
-            <section id="carreras" class="careers-section">
-                <div class="container">
-                    <h2>Nuestras Carreras</h2>
-                    <div class="careers-grid">
-                        <!-- Agregar carreras -->
-                    </div>
-                </div>
-            </section>
-
-            <footer class="site-footer">
-                <div class="container">
-                    <div class="footer-grid">
-                        <div class="footer-info">
-                            <h3>U.E. Guido Arce Pimentel</h3>
-                            <!-- Agregar información de contacto -->
-                        </div>
-                        <div class="social-links">
-                            <h3 class="sr-only">Síguenos en redes sociales</h3>
-                            <ul>
-                                <li>
-                                    <a href="#" class="social-link" aria-label="Facebook">
-                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-link" aria-label="Twitter">
-                                        <i class="fab fa-twitter" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-link" aria-label="Instagram">
-                                        <i class="fab fa-instagram" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-link" aria-label="YouTube">
-                                        <i class="fab fa-youtube" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                    <div class="social-links">
+                        <h3 class="sr-only">Síguenos en redes sociales</h3>
+                        <ul>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Twitter">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link" aria-label="Instagram">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="social-link" aria-label="YouTube">
+                                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                                </a>
+                            </li>
                         </div>
                     </div>
                 </div>
