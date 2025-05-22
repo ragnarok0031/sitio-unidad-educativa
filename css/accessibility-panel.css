@@ -22,6 +22,13 @@
   background: var(--color-primary-dark);
 }
 
+/* Eliminar estilos de la barra superior */
+.accessibility-bar,
+.a11y-controls {
+  display: none;
+}
+
+/* Asegurar que el panel flotante sea visible */
 .a11y-panel {
   position: fixed;
   bottom: calc(var(--space-lg) + 60px);
