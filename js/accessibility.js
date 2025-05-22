@@ -1,34 +1,69 @@
 class AccessibilityManager {
   constructor() {
+    this.controls = {
+      fontSize: document.querySelectorAll('.font-controls button'),
+      contrast: document.querySelector('.toggle-contrast'),
+      dyslexic: document.querySelector('.toggle-dyslexic'),
+      dark: document.querySelector('.toggle-dark')
+    };
+
+    this.announcer = document.getElementById('a11y-announcer');
+    this.preferences = this.loadPreferences();
+    
     this.init();
   }
 
   init() {
-    this.controls = {
-      fontSize: document.querySelectorAll('.font-control-button'),
-      contrast: document.querySelector('.toggle-contrast'),
-      dyslexic: document.querySelector('.toggle-dyslexic'),
-      darkMode: document.querySelector('.toggle-dark-mode')
-    };
-
-    this.announcer = document.getElementById('a11y-announcer');
     this.setupEventListeners();
-    this.loadPreferences();
+    this.applyPreferences();
+    this.setupKeyboardNavigation();
   }
 
   setupEventListeners() {
-    // Control de tamaño de fuente
+    // Control de fuente
     this.controls.fontSize.forEach(button => {
       button.addEventListener('click', () => {
-        const action = button.dataset.action;
+        const action = button.classList.contains('increase-font') ? 'increase' :
+                      button.classList.contains('decrease-font') ? 'decrease' : 'reset';
         this.changeFontSize(action);
       });
     });
 
-    // Toggles de modo
-    this.controls.contrast?.addEventListener('click', () => this.toggleMode('high-contrast'));
-    this.controls.dyslexic?.addEventListener('click', () => this.toggleMode('dyslexic-mode'));
-    this.controls.darkMode?.addEventListener('click', () => this.toggleMode('dark-mode'));
+    // Controles de modo
+    Object.entries({
+      contrast: 'high-contrast',
+      dyslexic: 'dyslexic-mode',
+      dark: 'dark-mode'
+    }).forEach(([control, className]) => {
+      this.controls[control]?.addEventListener('click', () => this.toggleMode(className));
+    });
+
+    // Detectar preferencias del sistema
+    this.watchSystemPreferences();
+  }
+
+  setupKeyboardNavigation() {
+    // Añadir indicadores visuales para navegación por teclado
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Tab') {
+        document.body.classList.add('using-keyboard');
+      }
+    });
+
+    document.addEventListener('mousedown', () => {
+      document.body.classList.remove('using-keyboard');
+    });
+
+    // Atajos de teclado
+    document.addEventListener('keydown', e => {
+      if (e.altKey) {
+        switch(e.key) {
+          case '1': this.navigateTo('#inicio'); break;
+          case '2': this.navigateTo('#recursos'); break;
+          case 'a': this.focusAccessibilityControls(); break;
+        }
+      }
+    });
   }
 
   changeFontSize(action) {
@@ -68,7 +103,7 @@ class AccessibilityManager {
     const map = {
       'high-contrast': 'contrast',
       'dyslexic-mode': 'dyslexic',
-      'dark-mode': 'darkMode'
+      'dark-mode': 'dark'
     };
     return map[mode];
   }
@@ -82,9 +117,31 @@ class AccessibilityManager {
     return labels[mode];
   }
 
-  announce(message) {
+  announce(message, priority = 'polite') {
     if (this.announcer) {
-      this.announcer.textContent = message;
+      const announcement = document.createElement('div');
+      announcement.textContent = message;
+      
+      this.announcer.textContent = ''; // Limpiar anuncios anteriores
+      this.announcer.appendChild(announcement);
+      this.announcer.setAttribute('aria-live', priority);
+    }
+  }
+
+  navigateTo(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.focus();
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.announce(`Navegando a ${element.textContent || 'sección solicitada'}`);
+    }
+  }
+
+  focusAccessibilityControls() {
+    const controls = document.querySelector('.a11y-controls');
+    if (controls) {
+      controls.focus();
+      this.announce('Controles de accesibilidad activados');
     }
   }
 

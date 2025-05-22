@@ -17,38 +17,51 @@
     <title>U.E. Guido Arce Pimentel</title>
 </head>
 <body>
-    <div class="min-h-screen">
-        <header>
-            <div class="accessibility-toolbar" role="toolbar" aria-label="Opciones de accesibilidad">
-                <div class="control-group">
-                    <div class="font-size-controls" role="group" aria-label="Control de tamaño de texto">
-                        <button class="font-control-button" data-action="decrease" aria-label="Reducir texto">
-                            <i class="fas fa-minus"></i>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="site-header">
+        <div class="accessibility-bar">
+            <div class="container">
+                <nav class="a11y-controls" aria-label="Controles de accesibilidad">
+                    <div class="font-controls" role="group" aria-label="Control de tamaño de texto">
+                        <button class="a11y-btn decrease-font" aria-label="Reducir tamaño de texto">
+                            <i class="fas fa-minus" aria-hidden="true"></i>
+                            <span class="sr-only">Reducir texto</span>
                         </button>
-                        <button class="font-control-button" data-action="reset" aria-label="Restablecer texto">
-                            A
+                        <button class="a11y-btn reset-font" aria-label="Restablecer tamaño de texto">
+                            <span aria-hidden="true">A</span>
+                            <span class="sr-only">Tamaño normal</span>
                         </button>
-                        <button class="font-control-button" data-action="increase" aria-label="Aumentar texto">
-                            <i class="fas fa-plus"></i>
+                        <button class="a11y-btn increase-font" aria-label="Aumentar tamaño de texto">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            <span class="sr-only">Aumentar texto</span>
                         </button>
                     </div>
-                    <div class="mode-toggles" role="group" aria-label="Modos de visualización">
-                        <button class="mode-toggle toggle-contrast" aria-pressed="false">
+
+                    <div class="view-modes" role="group" aria-label="Modos de visualización">
+                        <button class="a11y-btn toggle-contrast" aria-pressed="false">
                             <i class="fas fa-adjust" aria-hidden="true"></i>
                             <span>Alto contraste</span>
                         </button>
-                        <button class="mode-toggle toggle-dyslexic" aria-pressed="false">
+                        <button class="a11y-btn toggle-dyslexic" aria-pressed="false">
                             <i class="fas fa-font" aria-hidden="true"></i>
                             <span>Modo dislexia</span>
                         </button>
-                        <button class="mode-toggle toggle-dark-mode" aria-pressed="false">
+                        <button class="a11y-btn toggle-dark" aria-pressed="false">
                             <i class="fas fa-moon" aria-hidden="true"></i>
                             <span>Modo oscuro</span>
                         </button>
                     </div>
-                </div>
-            </div>
 
+                    <button class="help-toggle" aria-expanded="false" aria-controls="help-panel">
+                        <i class="fas fa-question-circle" aria-hidden="true"></i>
+                        <span>Ayuda</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <div class="main-header">
             <div class="container">
                 <div class="logo-container">
                     <img src="/logo.png" alt="Logo">
@@ -129,10 +142,37 @@
                     </button>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <main>
-            <!-- Mejoras de accesibilidad -->
+        <nav class="breadcrumbs" aria-label="Migas de pan">
+            <div class="container">
+                <ol>
+                    <li><a href="/">Inicio</a></li>
+                    <li aria-current="page">Página actual</li>
+                </ol>
+            </div>
+        </nav>
+    </header>
+
+    <div id="help-panel" class="help-panel" hidden>
+        <div class="help-content">
+            <h2>Ayuda de navegación</h2>
+            <div class="shortcuts">
+                <h3>Atajos de teclado</h3>
+                <dl>
+                    <dt>Alt + 1</dt>
+                    <dd>Ir al inicio</dd>
+                    <dt>Alt + 2</dt>
+                    <dd>Ir a recursos</dd>
+                    <dt>Alt + A</dt>
+                    <dd>Abrir controles de accesibilidad</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Mejoras de accesibilidad -->
             <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
             
             <div role="status" aria-live="polite" class="screen-reader-only" id="announcer"></div>
@@ -275,13 +315,29 @@
                             <!-- Agregar información de contacto -->
                         </div>
                         <div class="social-links">
-                            <h3>Síguenos en:</h3>
-                            <div class="social-icons">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                            </div>
+                            <h3 class="sr-only">Síguenos en redes sociales</h3>
+                            <ul>
+                                <li>
+                                    <a href="#" class="social-link" aria-label="Facebook">
+                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-link" aria-label="Twitter">
+                                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-link" aria-label="Instagram">
+                                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="social-link" aria-label="YouTube">
+                                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
