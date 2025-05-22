@@ -7,8 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.toggle("dark-mode");
     document.body.classList.toggle("light-mode");
     
-    const darkModeEnabled = document.body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", darkModeEnabled);
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode);
+    
+    // Actualizar colores de fondo
+    document.documentElement.style.setProperty('--color-background', isDarkMode ? '#000000' : '#1a1a1a');
+    document.documentElement.style.setProperty('--color-surface', isDarkMode ? '#1a1a1a' : '#2d2d2d');
   }
 
   function toggleMenu() {
