@@ -18,6 +18,10 @@
   --grid-min-width: min(300px, 100%);
   --screen-height: 100vh;
   --dynamic-spacing: clamp(1rem, 3vw, 2rem);
+  --max-width-desktop: 1440px;
+  --content-width-desktop: 1200px;
+  --section-padding-desktop: 4rem;
+  --card-max-width: 340px;
 }
 
 /* Animaciones globales */
@@ -81,11 +85,12 @@ ul {
   margin: 0;
 }
 
-/* Container mejorado */
+/* Contenedor principal mejorado */
 .container {
   width: min(var(--content-width), 100% - 2rem);
-  margin-inline: auto;
-  padding-inline: var(--dynamic-spacing);
+  max-width: var(--content-width-desktop);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
 }
 
 /* Header */
@@ -335,44 +340,77 @@ footer .container {
 
 /* Secciones mejoradas para desktop */
 @media (min-width: 1024px) {
-  .hero-section .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1000px;
-    text-align: center;
+  .hero-section {
+    min-height: 60vh;
+    padding: var(--section-padding-desktop) 0;
   }
 
-  .quick-links {
-    display: flex;
+  .hero-section .main-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-section .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .areas-grid {
+    grid-template-columns: repeat(4, minmax(0, var(--card-max-width)));
     gap: 1.5rem;
     justify-content: center;
   }
 
-  .activities-section .container {
-    max-width: 1200px;
+  .area-card {
+    padding: 1.5rem;
+  }
+
+  .area-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .area-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   .activities-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  /* Footer mejorado */
-  footer .container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
-    align-items: start;
-  }
-
-  footer .footer-info {
-    margin: 0;
-  }
-
-  footer .social-links {
-    display: flex;
+    grid-template-columns: repeat(4, minmax(0, var(--card-max-width)));
     gap: 1.5rem;
     justify-content: center;
+  }
+
+  .activity-card {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  footer .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem var(--container-padding);
+  }
+}
+
+/* Ajustes de espaciado y tamaño */
+@media (min-width: 1440px) {
+  :root {
+    --container-padding: 2rem;
+    --section-padding-desktop: 5rem;
+  }
+
+  .container {
+    max-width: var(--max-width-desktop);
+  }
+
+  .areas-grid,
+  .activities-grid {
+    gap: 2rem;
   }
 }
 
