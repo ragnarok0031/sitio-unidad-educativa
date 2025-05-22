@@ -79,6 +79,13 @@ ul {
   margin: 0;
 }
 
+/* Container mejorado */
+.container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
 /* Header */
 header {
   position: sticky;
@@ -174,6 +181,35 @@ nav.menu li a:hover {
 
 nav.menu li a:hover::after {
   width: 100%;
+}
+
+/* Header mejorado para desktop */
+@media (min-width: 769px) {
+  header .container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .logo-container {
+    width: auto;
+  }
+
+  nav.menu {
+    justify-content: center;
+  }
+
+  nav.menu ul {
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .menu-toggle-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
 }
 
 /* Hero Section */
@@ -273,6 +309,12 @@ nav.menu li a:hover::after {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Grid system mejorado */
+.areas-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 2rem;
+}
+
 /* Footer */
 footer {
   padding: calc(var(--spacing-unit) * 3) 0;
@@ -289,23 +331,47 @@ footer .container {
   flex-wrap: wrap;
 }
 
-footer .footer-info {
-  flex: 1;
-  margin-bottom: 1rem;
-}
+/* Secciones mejoradas para desktop */
+@media (min-width: 1024px) {
+  .hero-section .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    text-align: center;
+  }
 
-footer .social-links {
-  text-align: right;
-}
+  .quick-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
 
-.social-links a {
-  opacity: 0.8;
-  transition: var(--transition-smooth);
-}
+  .activities-section .container {
+    max-width: 1200px;
+  }
 
-.social-links a:hover {
-  opacity: 1;
-  transform: scale(1.2);
+  .activities-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  /* Footer mejorado */
+  footer .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  footer .footer-info {
+    margin: 0;
+  }
+
+  footer .social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
 }
 
 /* Botones */
@@ -580,12 +646,6 @@ nav.menu.menu-open {
     display: flex;
     gap: 1rem;
     justify-content: center;
-  }
-}
-
-@media (min-width: 1024px) {
-  .areas-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
 }
 
