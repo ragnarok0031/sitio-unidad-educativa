@@ -13,6 +13,9 @@
     <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="css/accessibility-panel.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <!-- Mejoras de accesibilidad -->
     <script src="js/a11y.js" defer></script>
     <title>U.E. Guido Arce Pimentel</title>
@@ -32,60 +35,20 @@
 
                 <!-- Navegación principal -->
                 <nav class="main-nav" role="navigation" aria-label="Menú Principal">
-                    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <ul class="nav-list" id="nav-list">
-                        <li class="menu-item">
-                            <a href="#inicio" class="menu-link">Inicio</a>
-                        </li>
-                        <li class="menu-item has-dropdown">
-                            <a href="#recursos" class="menu-link">
-                                Recursos
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item">
-                                    <a href="#biblioteca">Biblioteca Digital</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="#horarios">Horarios de Clases</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="#reglamento">Reglamento UE</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#directivo" class="menu-link">Directivo y Docentes</a>
-                        </li>
-                        <li class="menu-item has-dropdown">
-                            <a href="#sobre-gap" class="menu-link">
-                                Sobre GAP
-                                <i class="fas fa-chevron-down"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item">
-                                    <a href="#historia">Historia</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="#mision-vision">Misión y Visión</a>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="#infraestructura">Infraestructura</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#carreras" class="menu-link">Nuestras Carreras</a>
-                        </li>
+                    <ul class="nav-list">
+                        <li><a href="#inicio" class="menu-link">Inicio</a></li>
+                        <li><a href="#recursos" class="menu-link">Recursos</a></li>
+                        <li><a href="#directivo" class="menu-link">Directivo y Docentes</a></li>
+                        <li><a href="#sobre-gap" class="menu-link">Sobre GAP</a></li>
+                        <li><a href="#carreras" class="menu-link">Nuestras Carreras</a></li>
                     </ul>
                 </nav>
 
                 <!-- Controles -->
                 <div class="header-controls">
-                    <button class="control-btn search-toggle" aria-label="Buscar">
-                        <i class="fas fa-search"></i>
+                    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-list">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                        <span class="sr-only">Menú</span>
                     </button>
                 </div>
             </div>
