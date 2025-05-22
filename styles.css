@@ -44,6 +44,28 @@
   --spacing-base: 8px;
   --grid-gap: calc(var(--spacing-base) * 3);
   --section-padding: calc(var(--spacing-base) * 8);
+
+  /* Breakpoints */
+  --bp-mobile: 320px;
+  --bp-tablet: 768px;
+  --bp-laptop: 1024px;
+  --bp-desktop: 1440px;
+
+  /* Contenedores responsivos */
+  --container-max-width: min(var(--bp-desktop), 95vw);
+  --container-narrow: min(50ch, 95vw);
+  --container-wide: min(80ch, 95vw);
+  
+  /* Tipografía fluida */
+  --min-font: 16;
+  --max-font: 20;
+  --min-width: 320;
+  --max-width: 1440;
+  --font-size-fluid: clamp(
+    calc(var(--min-font) * 1px),
+    calc(var(--min-font) * 1px + (var(--max-font) - var(--min-font)) * (100vw - calc(var(--min-width) * 1px)) / (var(--max-width) - var(--min-width))),
+    calc(var(--max-font) * 1px)
+  );
 }
 
 /* Animaciones globales */
@@ -1161,4 +1183,125 @@ section {
   display: grid;
   gap: var(--space-md);
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+/* Sistema de grilla responsive */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--grid-min-width)), 1fr)
+  );
+  gap: var(--grid-gap);
+}
+
+/* Contenedores flexibles */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap);
+}
+
+/* Imágenes responsivas */
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Media queries optimizados */
+@media (max-width: 320px) {
+  :root {
+    --container-padding: 0.5rem;
+    --grid-gap: 1rem;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 767px) {
+  :root {
+    --container-padding: 1rem;
+    --grid-gap: 1.5rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --container-padding: 2rem;
+    --grid-gap: 2rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 3rem;
+    --grid-gap: 2.5rem;
+  }
+  
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* Mejoras en la tipografía responsiva */
+h1 { font-size: clamp(2rem, 5vw + 1rem, 4rem); }
+h2 { font-size: clamp(1.5rem, 3vw + 1rem, 3rem); }
+h3 { font-size: clamp(1.2rem, 2vw + 1rem, 2rem); }
+p { font-size: var(--font-size-fluid); }
+
+/* Optimización para dispositivos de alta resolución */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .responsive-img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Ajustes para modo paisaje en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* Soporte para notch y áreas seguras */
+@supports(padding: max(0px)) {
+  .container {
+    padding-left: max(var(--container-padding), env(safe-area-inset-left));
+    padding-right: max(var(--container-padding), env(safe-area-inset-right));
+  }
+}
+
+/* Cards responsivas */
+.area-card {
+  min-height: clamp(250px, 30vh, 400px);
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Navegación responsiva mejorada */
+@media (max-width: 767px) {
+  .main-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--color-surface);
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--animation-smooth);
+  }
+
+  .main-menu.active {
+    transform: translateX(0);
+  }
+}
+
+/* Ajustes de layout */
+@container (min-width: 40em) {
+  .content-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
 }
