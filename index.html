@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dropdown.css">
     <!-- Mejoras de accesibilidad -->
     <script src="js/a11y.js" defer></script>
     <title>U.E. Guido Arce Pimentel</title>
@@ -39,12 +40,24 @@
                 <!-- Navegación principal mejorada -->
                 <nav class="main-nav" role="navigation" aria-label="Menú Principal">
                     <ul class="nav-list">
-                        <li><a href="#inicio" class="menu-link">Inicio</a></li>
-                        <li><a href="#biblioteca" class="menu-link">Biblioteca</a></li>
-                        <li><a href="#horarios" class="menu-link">Horarios</a></li>
-                        <li><a href="#reglamento" class="menu-link">Reglamento</a></li>
-                        <li><a href="#docentes" class="menu-link">Docentes</a></li>
-                        <li><a href="#sobre-gap" class="menu-link">Sobre GAP</a></li>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li class="dropdown">
+                            <a href="#recursos">Recursos ▼</a>
+                            <ul class="dropdown-content">
+                                <li><a href="#biblioteca">Biblioteca</a></li>
+                                <li><a href="#horarios">Horarios</a></li>
+                                <li><a href="#reglamento">Reglamento</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#docentes">Directivo y Docentes</a></li>
+                        <li class="dropdown">
+                            <a href="#sobre-gap">Sobre GAP ▼</a>
+                            <ul class="dropdown-content">
+                                <li><a href="#historia">Historia</a></li>
+                                <li><a href="#calidad">Política de Calidad</a></li>
+                                <li><a href="#carreras">Nuestras Carreras</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
 
@@ -483,8 +496,13 @@
            class="whatsapp-float" 
            target="_blank"
            aria-label="Unirse al grupo de WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-            <span class="whatsapp-text">Unirse al grupo GAP</span>
+
+
+
+
+
+
+</html></body>    <script src="js/scripts.js" defer></script>    </div>        </a>            <i class="fab fa-whatsapp"></i>            <span class="whatsapp-text">Unirse al grupo GAP</span>
         </a>
     </div>
 </body>
