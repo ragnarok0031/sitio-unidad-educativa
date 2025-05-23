@@ -1,3 +1,33 @@
+/* Animaciones básicas */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animación scroll-driven moderna */
+@keyframes slide-up {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scroll-animate {
+  animation: slide-up linear both;
+  animation-timeline: scroll();
+  animation-range: entry 20% cover 50%;
+}
+
 /* Animaciones base */
 @keyframes fadeInUp {
   from {
