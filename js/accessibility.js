@@ -9,7 +9,7 @@ class AccessibilityManager {
 
     this.announcer = document.getElementById('a11y-announcer');
     this.preferences = this.loadPreferences();
-    
+
     this.init();
   }
 
@@ -69,7 +69,7 @@ class AccessibilityManager {
   changeFontSize(action) {
     const html = document.documentElement;
     const currentSize = parseFloat(getComputedStyle(html).fontSize);
-    
+
     let newSize;
     switch(action) {
       case 'increase':
@@ -88,15 +88,28 @@ class AccessibilityManager {
   }
 
   toggleMode(mode) {
-    const isEnabled = document.body.classList.toggle(mode);
-    const button = this.controls[this.getControlKey(mode)];
-    
-    if (button) {
-      button.setAttribute('aria-pressed', isEnabled);
+    if (mode === 'dark-mode') {
+      if (window.themeSwitcher && typeof window.themeSwitcher.toggleTheme === 'function') {
+        window.themeSwitcher.toggleTheme();
+      }
+      // ThemeSwitcher handles class toggling and storage for dark mode
+      const isActuallyEnabled = document.body.classList.contains('dark-mode');
+      const button = this.controls[this.getControlKey(mode)];
+      if (button) {
+        button.setAttribute('aria-pressed', isActuallyEnabled);
+      }
+      this.announce(`${this.getModeLabel(mode)} ${isActuallyEnabled ? 'activado' : 'desactivado'}`);
+      // Dark mode state is saved by ThemeSwitcher via localStorage['theme']
+    } else {
+      // Original logic for other modes (e.g., high-contrast, dyslexic-mode)
+      const isEnabled = document.body.classList.toggle(mode);
+      const button = this.controls[this.getControlKey(mode)];
+      if (button) {
+        button.setAttribute('aria-pressed', isEnabled);
+      }
+      this.savePreference(mode, isEnabled);
+      this.announce(`${this.getModeLabel(mode)} ${isEnabled ? 'activado' : 'desactivado'}`);
     }
-
-    this.savePreference(mode, isEnabled);
-    this.announce(`${this.getModeLabel(mode)} ${isEnabled ? 'activado' : 'desactivado'}`);
   }
 
   getControlKey(mode) {
@@ -121,7 +134,7 @@ class AccessibilityManager {
     if (this.announcer) {
       const announcement = document.createElement('div');
       announcement.textContent = message;
-      
+
       this.announcer.textContent = ''; // Limpiar anuncios anteriores
       this.announcer.appendChild(announcement);
       this.announcer.setAttribute('aria-live', priority);
@@ -158,14 +171,14 @@ class AccessibilityManager {
   loadPreferences() {
     try {
       const preferences = JSON.parse(localStorage.getItem('a11y-preferences') || '{}');
-      
+
       // Restaurar tamaño de fuente
       if (preferences.fontSize) {
         document.documentElement.style.fontSize = `${preferences.fontSize}px`;
       }
 
-      // Restaurar modos
-      ['high-contrast', 'dyslexic-mode', 'dark-mode'].forEach(mode => {
+      // Restaurar modos (excepto dark-mode, que es manejado por ThemeSwitcher)
+      ['high-contrast', 'dyslexic-mode'].forEach(mode => {
         if (preferences[mode]) {
           document.body.classList.add(mode);
           const button = this.controls[this.getControlKey(mode)];
@@ -174,9 +187,41 @@ class AccessibilityManager {
           }
         }
       });
+      // Dark mode es aplicado por ThemeSwitcher, pero actualizamos el botón aquí si es necesario
+      // basado en el estado que ThemeSwitcher haya aplicado.
+      if (this.controls.dark) {
+          const isDarkModeActive = document.body.classList.contains('dark-mode');
+          this.controls.dark.setAttribute('aria-pressed', isDarkModeActive);
+      }
+
     } catch (e) {
       console.warn('Error loading accessibility preferences:', e);
     }
+  }
+
+  watchSystemPreferences() {
+    // Escuchar cambios en preferencia de alto contraste del sistema
+    const highContrastMediaQuery = window.matchMedia('(forced-colors: active)');
+    highContrastMediaQuery.addEventListener('change', (e) => {
+        if (e.matches) {
+            document.body.classList.add('high-contrast');
+            // Actualizar estado del botón si es necesario
+            if (this.controls.contrast) {
+                this.controls.contrast.setAttribute('aria-pressed', 'true');
+            }
+            this.announce('Alto contraste activado por preferencia del sistema.');
+        } else {
+            // Solo desactivar si no fue activado manualmente por el usuario
+            const prefs = JSON.parse(localStorage.getItem('a11y-preferences') || '{}');
+            if (!prefs['high-contrast']) {
+                document.body.classList.remove('high-contrast');
+                if (this.controls.contrast) {
+                    this.controls.contrast.setAttribute('aria-pressed', 'false');
+                }
+                this.announce('Alto contraste desactivado por preferencia del sistema.');
+            }
+        }
+    });
   }
 }
 

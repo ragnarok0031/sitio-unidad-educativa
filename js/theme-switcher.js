@@ -43,4 +43,5 @@ class ThemeSwitcher {
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     const themeSwitcher = new ThemeSwitcher();
+    window.themeSwitcher = themeSwitcher;
 });

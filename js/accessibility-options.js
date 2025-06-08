@@ -40,7 +40,7 @@ class AccessibilityOptions {
     // Mode toggles
     document.getElementById('altoContraste').onclick = () => this.toggleMode('alto-contraste');
     document.getElementById('modoDislexia').onclick = () => this.toggleMode('modo-dislexia');
-    document.getElementById('modoOscuro').onclick = () => this.toggleMode('modo-oscuro');
+    document.getElementById('modoOscuro').onclick = () => { if (window.themeSwitcher document.getElementById('modoOscuro').onclick = () => this.toggleMode('modo-oscuro');document.getElementById('modoOscuro').onclick = () => this.toggleMode('modo-oscuro'); typeof window.themeSwitcher.toggleTheme === 'function') window.themeSwitcher.toggleTheme(); };
   }
 
   setFontSize(size) {
